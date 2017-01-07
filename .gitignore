@@ -1,1 +1,5 @@
-/node_modules
+
+/client/node_modules
+/client/.ship
+/client/src/thirdparty
+/server/node_modules
