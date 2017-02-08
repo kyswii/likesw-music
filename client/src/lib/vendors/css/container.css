@@ -1,0 +1,9 @@
+.container-features {
+  padding-top: 50px; }
+
+.container-nav {
+  position: fixed;
+  float: left; }
+
+.container-nav-content {
+  float: right; }

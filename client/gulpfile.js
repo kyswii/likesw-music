@@ -4,23 +4,35 @@ var connect = require("gulp-connect");
 var proxy = require("http-proxy-middleware");
 var sass = require("gulp-sass");
 
-gulp.task('sass', function() {
-    return gulp.src('./src/lib/sass/login.scss')
+gulp.task('sass-nav', function() {
+    return gulp.src('./src/lib/sass/nav.scss')
         .pipe(sass({
             outputStyle: 'nested',
             errLogToConsole: true
         }))
-        .pipe(gulp.dest('./src/lib/vender/css/'));
+        .pipe(gulp.dest('./src/lib/vendors/css/'));
 });
 
-gulp.task('clean', ['sass'], function () {
+gulp.task('sass-container', ['sass-nav'], function() {
+    return gulp.src('./src/lib/sass/container.scss')
+        .pipe(sass({
+            outputStyle: 'nested',
+            errLogToConsole: true
+        }))
+        .pipe(gulp.dest('./src/lib/vendors/css/'));
+});
+
+gulp.task('clean', ['sass-container'], function () {
     return gulp.src('.ship/release', { read: false }).pipe(clean());
 });
 
 gulp.task('copy', ['clean'], function () {
     var filesToMove = [
         './src/*.html',
-        './src/lib/vender/**',
+        './src/css/**',
+        './src/js/**',
+        './src/images/**',
+        './src/lib/vendors/**',
         './src/thirdparty/**'
     ];
 
@@ -34,8 +46,8 @@ gulp.task('serve', ['copy'], function () {
         livereload: true,
         middleware: function (connect, options) {
 
-            var p1 = proxy('/comment', {
-                target: "http://localhost:19999",
+            var p1 = proxy('/music', {
+                target: "http://localhost:19001",
             });
 
             return [p1];
