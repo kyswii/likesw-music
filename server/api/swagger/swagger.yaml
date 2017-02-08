@@ -1,0 +1,176 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Likesw-Music API
+# during dev, should point to your local machine
+host: localhost:19001
+# basePath prefixes all resource paths 
+basePath: /music
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /account/create:
+      x-swagger-router-controller: account
+      post:
+        tags:
+          - account
+        description: Add account
+        operationId: createAccount
+        parameters:
+          - name: "body"
+            in: "body"
+            description: Account information
+            required: true
+            schema:
+              type: object
+        responses:
+          "200":
+            description: Success
+            schema:
+              type: object
+          # responses may fall through to errors
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
+  
+  /account/load:
+      x-swagger-router-controller: account
+      get: 
+        tags:
+          - account
+        description: load account information
+        operationId: loadAccount
+        parameters:
+          - name: email
+            in: query
+            description: Account email
+            required: true
+            type: "string"
+          - name: password
+            in: query
+            description: Account password
+            required: true
+            type: "string"
+        responses:
+          "200":
+            description: Success
+            schema:
+              $ref: "#/definitions/Account"
+          # responses may fall through to errors
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
+
+  /account/{email}/update:
+    x-swagger-router-controller: account
+    put:
+      tags:
+        - account
+      description: Update account informaiton
+      operationId: updateAccount
+      parameters:
+        - name: email
+          in: path
+          description: Account email
+          required: true
+          type: "string"
+        - name: info
+          in: body
+          required: true
+          schema:
+            type: object
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: "string"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+          
+  /song/create:
+    x-swagger-router-controller: song
+    post:
+      tags:
+        - song
+      description: Add song information
+      operationId: createSong
+      parameters:
+        - name: "body"
+          in: "body"
+          description: Song information
+          required: true
+          schema:
+            type: object
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: "string"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /song/{label}/load:
+    x-swagger-router-controller: song
+    get:
+      tags:
+        - song
+      description: load song information
+      operationId: loadSong
+      parameters:
+        - name: label
+          in: path
+          description: belong
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    
+         
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+
+  Account:
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+      name:
+        type: "string"
+      photo:
+        type: "string"
+      tags:
+        type: "string"
+      region:
+        type: "string"
+        
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
