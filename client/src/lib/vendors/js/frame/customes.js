@@ -5,13 +5,13 @@
                 '<li class="dropdown-header"><img class="account-photo dropdow-menu-account-photo" alt="Brand" src="./music' + info.photo + '">&nbsp;&nbsp;\
                     <span class="dropdow-menu-account-name">' + info.name + '</span>\
                 </li>\
-                <li class="dropdown-header"><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;<span class="dropdow-menu-accout-email">' + info.email + '</span></li>\
-                <li class="dropdown-header"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;<span class="dropdow-menu-account-region">' + info.region + '</span></li>\
-                <li class="dropdown-header"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;<span class="dropdow-menu-account-tags">' + info.tags + '</span></li>\
+                <li class="dropdown-header"><span class="glyphicon glyphicon-envelope icon-active-color"></span>&nbsp;&nbsp;<span class="dropdow-menu-accout-email dropdow-menu-accout-info-style">' + info.email + '</span></li>\
+                <li class="dropdown-header"><span class="glyphicon glyphicon-map-marker icon-active-color"></span>&nbsp;&nbsp;<span class="dropdow-menu-account-region dropdow-menu-accout-info-style">' + info.region + '</span></li>\
+                <li class="dropdown-header"><span class="glyphicon glyphicon-tag icon-active-color"></span>&nbsp;&nbsp;<span class="dropdow-menu-account-tags dropdow-menu-accout-info-style">' + info.tags + '</span></li>\
                 <li role="separator" class="divider"></li>\
-                <li><a href="javascript:;" class="account-settings"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Settings</a></li>\
+                <li><a href="javascript:;" class="account-settings"><span class="glyphicon glyphicon-cog icon-active-color"></span>&nbsp;&nbsp;Settings</a></li>\
                 <li role="separator" class="divider"></li>\
-                <li><a href="javascript:;" class="account-logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log out</a></li>'
+                <li><a href="javascript:;" class="account-logout"><span class="glyphicon glyphicon-log-out icon-active-color"></span>&nbsp;&nbsp;Log out</a></li>'
             );
         },
 
@@ -29,7 +29,7 @@
                                     <img class="account-photo account-default-photo" id="registerPhoto" alt="Brand" src="./images/logo.png">\
                                 </div>\
                                 <div class="col-sm-2">\
-                                    <input type="file" name="photo" class="btn btn-warning" id="registerPhotoChoose" placeholder="Upload"/>\
+                                    <input type="file" name="photo" class="modal-file-input" id="registerPhotoChoose" placeholder="Upload"/>\
                                 </div>\
                             </div>\
                             <div class="form-group">\
@@ -117,7 +117,7 @@
                                         <img class="account-photo account-current-photo" id="settingsPhoto" alt="Brand" src="./music' + info.photo + '">\
                                     </div>\
                                     <div class="col-sm-4">\
-                                        <input type="file" name="photo" class="btn btn-warning" id="settingsPhotoChoose"/>\
+                                        <input type="file" name="photo" class="modal-file-input" id="settingsPhotoChoose"/>\
                                     </div>\
                                 </div>\
                                 <div class="form-group">\
@@ -173,20 +173,20 @@
                         <!-- Wrapper for slides -->\
                         <div class="carousel-inner" role="listbox">\
                             <div class="item active">\
-                                <img src="./images/taylor0.jpg" alt="">\
+                                <img src="./music' + info.HOTSongs[0].imageUrl + '" alt="">\
                                 <div class="carousel-caption">\
                                     TAYLOR\
                                 </div>\
                             </div>\
                             <div class="item">\
-                                <img src="./images/taylor1.jpg" alt="">\
+                                <img src="./music' + info.HOTSongs[1].imageUrl + '" alt="">\
                                 <div class="carousel-caption">\
                                     <h3>Taylor</h3>\
                                     <p>Music is beatiful like Taylor</p>\
                                 </div>\
                             </div>\
                             <div class="item">\
-                                <img src="./images/taylor2.jpg" alt="">\
+                                <img src="./music' + info.HOTSongs[2].imageUrl + '" alt="">\
                                 <!--<div class="carousel-caption">\
                                     ...\
                                 </div>-->\
@@ -207,22 +207,22 @@
                     <div class="row">\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./images/thumbnail1.jpg" alt="">\
+                            <img src="./music' + info.TOPSongs[0].imageUrl + '" alt="">\
                             </a>\
                         </div>\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./images/thumbnail2.jpg" alt="">\
+                            <img src="./music' + info.TOPSongs[1].imageUrl + '" alt="">\
                             </a>\
                         </div>\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./images/thumbnail0.jpg" alt="">\
+                            <img src="./music' + info.TOPSongs[2].imageUrl + '" alt="">\
                             </a>\
                         </div>\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./images/thumbnail3.jpg" alt="">\
+                            <img src="./music' + info.TOPSongs[3].imageUrl + '" alt="">\
                             </a>\
                         </div>\
                     </div>\
@@ -235,7 +235,7 @@
                     <div class="row">\
                         <div class="col-sm-6 col-md-4">\
                             <div class="thumbnail">\
-                                <img src="./images/thumbnail-a.jpg" alt="">\
+                                <img src="./music' + info.TOPAlbums[0].imageUrl + '" alt="">\
                                 <div class="caption">\
                                     <h3>Thumbnail label</h3>\
                                     <p>Cras justo odio, dapibus .</p>\
@@ -245,7 +245,7 @@
                         </div>\
                         <div class="col-sm-6 col-md-4">\
                             <div class="thumbnail">\
-                                <img src="./images/thumbnail-d.jpg" alt="">\
+                                <img src="./music' + info.TOPAlbums[1].imageUrl + '" alt="">\
                                 <div class="caption">\
                                     <h3>Thumbnail label</h3>\
                                     <p>Cras justo odio, dapibus .</p>\
@@ -255,7 +255,7 @@
                         </div>\
                         <div class="col-sm-6 col-md-4">\
                             <div class="thumbnail">\
-                                <img src="./images/thumbnail-c.jpg" alt="">\
+                                <img src="./music' + info.TOPAlbums[2].imageUrl + '" alt="">\
                                 <div class="caption">\
                                     <h3>Thumbnail label</h3>\
                                     <p>Cras justo odio, dapibus.</p>\

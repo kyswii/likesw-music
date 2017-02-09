@@ -106,7 +106,6 @@
     function dropdownStyleChange(info) {
         console.log('dropdownStyleChange..........');
         $('.navbar-brand-account-photo').attr('src', './music' + info.photo);
-        $('.nav-dropdown-account-name').text(info.name);
         $('.nav-dropdown-account-detail-info').html(AppHTML.accountInfo(info));
 
         $('#myModal').modal('hide');

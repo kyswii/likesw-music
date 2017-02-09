@@ -2,5 +2,37 @@
 .container-nav {
     position: fixed;
     float: left;
+
+    .nav-pills {
+        li {
+            a {
+                color: #303030;
+                font-weight: bold;
+            }
+        }
+
+        li.active {
+            a {
+                color: #ffffff;
+                background: #fc2347;
+            }
+            a:hover {
+                background: #f12347;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .container-nav {
+        display: none;
+        width: 100%;
+        bottom: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 4px;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.2);
+    }
 }
 

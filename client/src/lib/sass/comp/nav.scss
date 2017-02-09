@@ -11,4 +11,41 @@ $m-top-background-color: #f94027;
         height: 25px;
         border-radius: 2px;
     }
+
+    #likeswMusicTitle {
+        color: #303030;
+        font-weight: bold;
+    }
+
+    .nav-dropdown-account-detail-info {
+        right: 0;
+        left: auto;
+    }
+
+    .account-login {
+        font-weight: bold;
+    }
+
+    .account-register {
+        font-weight: bold;
+    }
+
+    .account-logout {
+        font-weight: bold;
+    }
+
+    .account-settings {
+        font-weight: bold;
+    }
+
+    .dropdow-menu-account-name {
+        font-weight: bold;
+        font-size: 14px;
+        color: #303030;
+    }
+
+    .dropdow-menu-accout-info-style {
+        font-weight: bold;
+    }
+
 }

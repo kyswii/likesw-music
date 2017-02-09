@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="./thirdparty/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="./css/default.css" rel="stylesheet" />
     <link href="./lib/vendors/css/nav.css" rel="stylesheet" />
     <link href="./lib/vendors/css/container.css" rel="stylesheet" />
 
@@ -15,27 +17,22 @@
     <nav class="navbar navbar-default navbar-fixed-top nav-features">
         <div class="container-fluid">
 
-            <div class="navbar-header home">
-                <a class="navbar-brand" href="javascript:;"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></a>
+            <div class="home">
+                <a class="navbar-brand" href="javascript:;">&nbsp;&nbsp;<span id="likeswMusicTitle">MUSIC</span></a>
             </div>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav nav-pills navbar-right" style="float: right;">
 
-                <!--<li>
-                    <a class="navbar-brand" href="javascript:;"><span class="glyphicon glyphicon-music"></span></a>
-                </li>-->
+                <li role="presentation">
+                    <a href="javascript:;" id="navMusic"><span class="glyphicon glyphicon-music icon-active-color"></span></a>
+                </li>               
 
-                <li>
-                    <a class="navbar-brand" href="javascript:;"><img class="account-photo navbar-brand-account-photo" alt="Brand" src="./images/default-account.gif"></a>
-                    <!--<button type="button" class="btn btn-default navbar-btn"><img class="account-photo navbar-brand-account-photo" alt="Brand" src="./images/logo.png"></button>-->
-                </li>
-
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="account-name nav-dropdown-account-name">Log in</span><span class="caret"></span></a>
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="account-photo navbar-brand-account-photo" alt="Brand" src="./images/default-account.gif">&nbsp;&nbsp;<span class="glyphicon glyphicon-option-vertical icon-active-color"></span></a>
                     <ul class="dropdown-menu nav-dropdown-account-detail-info">
-                        <li><a href="javascript:;" class="account-login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log in</a></li>
+                        <li><a href="javascript:;" class="account-login"><span class="glyphicon glyphicon-log-in icon-active-color"></span>&nbsp;&nbsp;Log in</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="javascript:;" class="account-register"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Register</a></li>
+                        <li><a href="javascript:;" class="account-register"><span class="glyphicon glyphicon-plus icon-active-color"></span>&nbsp;&nbsp;Register</a></li>
                     </ul>
                 </li>
 
@@ -46,12 +43,12 @@
     <div class="container-fluid container-features">
         <div class="col-sm-2 container-nav" id="containerNav">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#" id="containerNavHome"><span class="glyphicon glyphicon-home" style="color: #f7516d;"></span>&nbsp;&nbsp;Home</a></li>
-                <li role="presentation"><a href="#" id="containerNavLibrary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Library</a></li>
-                <li role="presentation"><a href="#" id="containerNavForYou"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;For You</a></li>
-                <li role="presentation"><a href="#" class="list-group-item" id="containerNavMessages" style="border: none;"><span class="glyphicon glyphicon-comment"></span><span class="badge">14</span>&nbsp;&nbsp;Messages</a></li>
-                <li role="presentation"><a href="#" id="containerNavPlaylist"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Playlist</a></li>
-                <li role="presentation"><a href="#" id="containerNavDownload"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Download</a></li>
+                <li role="presentation" class="active"><a href="#" id="containerNavHome"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
+                <li role="presentation"><a href="#" id="containerNavLibrary"><span class="glyphicon glyphicon-book icon-active-color"></span>&nbsp;&nbsp;Library</a></li>
+                <li role="presentation"><a href="#" id="containerNavForYou"><span class="glyphicon glyphicon-heart icon-active-color"></span>&nbsp;&nbsp;For You</a></li>
+                <li role="presentation"><a href="#" class="list-group-item" id="containerNavMessages" style="border: none;"><span class="glyphicon glyphicon-comment icon-active-color"></span><span class="badge">14</span>&nbsp;&nbsp;Messages</a></li>
+                <li role="presentation"><a href="#" id="containerNavPlaylist"><span class="glyphicon glyphicon-headphones icon-active-color"></span>&nbsp;&nbsp;Playlist</a></li>
+                <li role="presentation"><a href="#" id="containerNavDownload"><span class="glyphicon glyphicon-download-alt icon-active-color"></span>&nbsp;&nbsp;Download</a></li>
             </ul>
         </div>
         <div class="col-sm-10 container-nav-content" id="containerNavContent">
@@ -60,6 +57,7 @@
             <!-- end -->
         </div>
     </div>
+</div>
 
 
     <!-- Login-Modal -->
@@ -70,10 +68,14 @@
 
     <script src="./thirdparty/jquery/dist/jquery.min.js"></script>
     <script src="./thirdparty/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <script src="./lib/vendors/js/frame/customes.js"></script>
     <script src="./lib/vendors/js/account.js"></script>
+    <script src="./lib/vendors/js/song.js"></script>
+
+    <script src="./js/default.js"></script>
     <script src="./js/account-view.js"></script>
-    <script src="./js/container-content-view.js"></script>
+    <script src="./js/song-view.js"></script>
 
 </body>
 
