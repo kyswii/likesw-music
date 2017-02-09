@@ -113,7 +113,7 @@ paths:
           description: Song information
           required: true
           schema:
-            type: object
+            $ref: "#/definitions/Song"
       responses:
         "200":
           description: Success
@@ -168,6 +168,21 @@ definitions:
       region:
         type: "string"
         
+  Song:
+    properties:
+      song:
+        type: "string"
+      artist:
+        type: "string"
+      belong:
+        type: "string"
+      tags:
+        type: "string"
+      album:
+        type: "string"
+      time:
+        type: "string"
+  
   ErrorResponse:
     required:
       - message

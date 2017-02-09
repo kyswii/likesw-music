@@ -20,13 +20,13 @@ ImageAct.imageIn = function (info, callback) {
     var dataBuffer = new Buffer(base64Data, 'base64');
 
     var time = (new Date()).toString();
-    var imgUrl = './public/images/' + info.email + '-' + time + '.png';
+    var imgUrl = './public/images/accounts/' + info.email + '-' + time + '.png';
     console.log('imgUrl', imgUrl);
     fs.writeFile(imgUrl, dataBuffer, function (err) {
         if (err) {
             callback('ERROR');
         } else {
-            callback('/public/images/' + info.email + '-' + time + '.png');
+            callback('/public/images/accounts/' + info.email + '-' + time + '.png');
         }
     });
 }

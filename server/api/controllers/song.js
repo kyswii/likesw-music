@@ -2,7 +2,7 @@
 
 const util = require('util');
 const wrap = require("co-express");
-const SongAct = require("../../mysql/models/account");
+const SongAct = require("../../mysql/models/song");
 
 var SongApi = {};
 console.log('Song controllers........')
