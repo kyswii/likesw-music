@@ -2,8 +2,12 @@ $m-top-background-color: #f94027;
 
 .nav-features {
     .home {
-        width: 100px;
         line-height: 50px;
+    }
+
+    .likesw-music-info {
+        float: right;
+        margin-top: 5px;
     }
 
     .account-photo {
@@ -46,6 +50,12 @@ $m-top-background-color: #f94027;
 
     .dropdow-menu-accout-info-style {
         font-weight: bold;
+    }
+
+    #navMusic {
+        .glyphicon {
+            font-size: 20px;
+        }
     }
 
 }

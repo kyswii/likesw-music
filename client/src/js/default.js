@@ -9,7 +9,7 @@
 
     //
     $('#navMusic').click(function () {
-        $('#myModal').html(AppHTML.loginModal);
+        $('#myModal').html(AppHTML.musicModal);
         $('#myModal').modal();
     })
 

@@ -9,6 +9,11 @@
                 color: #303030;
                 font-weight: bold;
             }
+
+            a.list-group-item {
+                color: #303030;
+                background-color: #d5c9d8;
+            }
         }
 
         li.active {
@@ -20,19 +25,36 @@
                 background: #f12347;
             }
         }
+
+        .badge {
+            float: right;
+        }
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .container-nav {
         display: none;
-        width: 100%;
+        min-width: 200px;
         bottom: 0;
         padding-top: 20px;
         padding-bottom: 20px;
         border-radius: 4px;
         z-index: 999;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.5);
+
+        .nav-pills {
+            li {
+                a {
+                    color: #ffffff;
+                }
+
+                a:focus, a:hover {
+                    color: #303030;
+                    background: #efefef;
+                }
+            }
+        }
     }
 }
 

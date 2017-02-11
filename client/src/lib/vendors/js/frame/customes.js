@@ -1,5 +1,6 @@
 (function () {
     var AppHTML = {
+        //
         accountInfo: function(info) {
             return (
                 '<li class="dropdown-header"><img class="account-photo dropdow-menu-account-photo" alt="Brand" src="./music' + info.photo + '">&nbsp;&nbsp;\
@@ -15,6 +16,7 @@
             );
         },
 
+        //
         registerModal: 
             '<div class="modal-dialog" role="document">\
                 <div class="modal-content">\
@@ -71,6 +73,7 @@
                 </div>\
             </div>',
         
+        //
         loginModal:
             '<div class="modal-dialog modal-sm" role="document">\
                 <div class="modal-content">\
@@ -101,7 +104,8 @@
                     </div>\
                 </div>\
             </div>',
-
+        
+        //
         settingsModal: function(info) {
             return (
                 '<div class="modal-dialog" role="document">\
@@ -160,6 +164,130 @@
                 </div>'
             );
         },
+
+        //
+        musicModal: 
+            '<div class="modal-dialog" role="document">\
+                <div class="modal-content">\
+                    <div class="modal-header">\
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                        <h4 class="modal-title" id="myModalLabel">M</h4>\
+                    </div>\
+                    <div class="modal-body">\
+                        <div class="row modal-music-content">\
+                            <img src="./images/q.jpg" id="musicImage" alt="">\
+                        </div>\
+                        <div class="row modal-music-content">\
+                            <div class="music-row-row music-progress-before">\
+                                <div class="progress" id="musicProgress">\
+                                    <div class="progress-bar" id="musicProgressBar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">\
+                                        <span class="sr-only">60% Complete</span>\
+                                    </div>\
+                                </div>\
+                                <span class="progress-time" id="progressTimeGone">0</span>\
+                                <span class="progress-time" id="progressTimeRem">4:00</span>\
+                            </div>\
+                        </div>\
+                        <div class="row modal-music-content">\
+                            <div class="music-row-row music-info">\
+                                <div id="musicName">Tiny Wings</div>\
+                                <div id="musicInfo">Soundtoy - Tiny Wings - Single</div>\
+                            </div>\
+                        </div>\
+                        <div class="row modal-music-content">\
+                            <div class="music-row-row">\
+                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-backward music-act-glyphicon" id="musicBackward"></span></a></div>\
+                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-play music-act-glyphicon" id="musicStatus" style="font-size: 28px;"></span></a></div>\
+                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-forward music-act-glyphicon" id="musicForward"></span></a></div>\
+                            </div>\
+                        </div>\
+                        <div class="row modal-music-content">\
+                            <div class="music-row-row sound-progress-before">\
+                                <div class="col-xs-1 sound-col-xs"><a href="javascript:;"><span class="glyphicon glyphicon-volume-down sound-act-glyphicon" id="soundDown"></span></a></div>\
+                                <div class="col-xs-10 sound-col-xs">\
+                                    <div class="progress" id="soundProgress">\
+                                        <div class="progress-bar" id="soundProgressBar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">\
+                                            <span class="sr-only">60% Complete</span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-xs-1 sound-col-xs"><a href="javascript:;"><span class="glyphicon glyphicon-volume-up sound-act-glyphicon" id="soundUp"></span></a></div>\
+                            </div>\
+                        </div>\
+                        <div class="row modal-music-content">\
+                            <div class="music-row-row music-option">\
+                                <div class="col-xs-4"><a href="javascript:;"><span class="music-option-glyphicon" id="music-"></span></a></div>\
+                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-heart-empty music-option-glyphicon" id="musicLove"></span></a></div>\
+                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-option-horizontal music-option-glyphicon" id="musicOption"></span></a></div>\
+                            </div>\
+                        </div>\
+                        <div class="row modal-music-playlist">\
+                            <div class="music-playlist-header">\
+                                <span class="music-playlist-header-title">Playlist</span>\
+                                <a href="javascript:;"><span class="glyphicon glyphicon-random music-playlist-header-random"></span></a>\
+                            </div>\
+                            <div class="music-playlist-content">\
+                                <ul class="list-group" id="musicPlaylist">\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/thumbnail3.jpg">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                        <li class="list-group-item">\
+                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
+                                            <span>Cras justo odio</span>\
+                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                                        </li>\
+                                    </ul>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>',
+        
+        //
+
+        //
         homeFrame: function(info) {
             return (
                 '<div class="jumbotron">\
@@ -173,23 +301,22 @@
                         <!-- Wrapper for slides -->\
                         <div class="carousel-inner" role="listbox">\
                             <div class="item active">\
-                                <img src="./music' + info.HOTSongs[0].imageUrl + '" alt="">\
+                                <img src="./music' + info.Do[0].url + '" alt="">\
                                 <div class="carousel-caption">\
-                                    TAYLOR\
+                                    <h3>Taylor Swift<h3>\
                                 </div>\
                             </div>\
                             <div class="item">\
-                                <img src="./music' + info.HOTSongs[1].imageUrl + '" alt="">\
+                                <img src="./music' + info.Do[1].url + '" alt="">\
                                 <div class="carousel-caption">\
-                                    <h3>Taylor</h3>\
-                                    <p>Music is beatiful like Taylor</p>\
+                                    <h3>Jay Chou</h3>\
                                 </div>\
                             </div>\
                             <div class="item">\
-                                <img src="./music' + info.HOTSongs[2].imageUrl + '" alt="">\
-                                <!--<div class="carousel-caption">\
-                                    ...\
-                                </div>-->\
+                                <img src="./music' + info.Do[2].url + '" alt="">\
+                                <div class="carousel-caption">\
+                                    <h3>Wuclef Jean</h3>\
+                                </div>\
                             </div>\
                         </div>\
                         <!-- Controls -->\
@@ -202,64 +329,90 @@
                             <span class="sr-only">Next</span>\
                         </a>\
                     </div>\
+                    <h1>Do you like it ?</h1>\
+                    <p>Country music -- Cordial and warm without losing the popular elements &nbsp;&nbsp;<a href="javascript:;" class="song-play" name="country"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
                 </div>\
                 <div class="jumbotron">\
                     <div class="row">\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./music' + info.TOPSongs[0].imageUrl + '" alt="">\
+                                <img src="./music' + info.Or[0].url + '" alt="">\
                             </a>\
                         </div>\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./music' + info.TOPSongs[1].imageUrl + '" alt="">\
+                                <img src="./music' + info.Or[1].url + '" alt="">\
                             </a>\
                         </div>\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./music' + info.TOPSongs[2].imageUrl + '" alt="">\
+                                <img src="./music' + info.Or[2].url + '" alt="">\
                             </a>\
                         </div>\
                         <div class="col-xs-6 col-md-3">\
                             <a href="#" class="thumbnail">\
-                            <img src="./music' + info.TOPSongs[3].imageUrl + '" alt="">\
+                                <img src="./music' + info.Or[3].url + '" alt="">\
                             </a>\
                         </div>\
                     </div>\
-                    <h1>Likesw-Music</h1>\
-                    <p>If you are my girlfriend, you will be happy!</p>\
+                    <h1>Or this ?</h1>\
+                    <p>Light music -- Simple structure, Lively rhythm, beautiful melody&nbsp;&nbsp;<a href="javascript:;" class="play-song" name="light"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
                 </div>\
                 <div class="jumbotron">\
-                    <h1>Likesw-Music</h1>\
-                    <p>If you are my girlfriend, you will be happy!</p>\
+                    <h1>Whatever you like</h1>\
+                    <p>Here, you can find what you want</p>\
                     <div class="row">\
                         <div class="col-sm-6 col-md-4">\
                             <div class="thumbnail">\
-                                <img src="./music' + info.TOPAlbums[0].imageUrl + '" alt="">\
+                                <img src="./music' + info.Whatever[0].url + '" alt="">\
                                 <div class="caption">\
-                                    <h3>Thumbnail label</h3>\
-                                    <p>Cras justo odio, dapibus .</p>\
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>\
+                                    <h3>Popular music</h3>\
+                                    <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="popular"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
                                 </div>\
                             </div>\
                         </div>\
                         <div class="col-sm-6 col-md-4">\
                             <div class="thumbnail">\
-                                <img src="./music' + info.TOPAlbums[1].imageUrl + '" alt="">\
+                                <img src="./music' + info.Whatever[1].url + '" alt="">\
                                 <div class="caption">\
-                                    <h3>Thumbnail label</h3>\
-                                    <p>Cras justo odio, dapibus .</p>\
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>\
+                                    <h3>Jazz music</h3>\
+                                    <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="jazz"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
                                 </div>\
                             </div>\
                         </div>\
                         <div class="col-sm-6 col-md-4">\
                             <div class="thumbnail">\
-                                <img src="./music' + info.TOPAlbums[2].imageUrl + '" alt="">\
+                                <img src="./music' + info.Whatever[2].url + '" alt="">\
                                 <div class="caption">\
-                                    <h3>Thumbnail label</h3>\
-                                    <p>Cras justo odio, dapibus.</p>\
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>\
+                                    <h3>British music</h3>\
+                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="british"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="col-sm-6 col-md-4">\
+                            <div class="thumbnail">\
+                                <img src="./music' + info.Whatever[3].url + '" alt="">\
+                                <div class="caption">\
+                                    <h3>Rock music</h3>\
+                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="rock"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="col-sm-6 col-md-4">\
+                            <div class="thumbnail">\
+                                <img src="./music' + info.Whatever[4].url + '" alt="">\
+                                <div class="caption">\
+                                    <h3>Classical music</h3>\
+                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="classical"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="col-sm-6 col-md-4">\
+                            <div class="thumbnail">\
+                                <img src="./music' + info.Whatever[5].url + '" alt="">\
+                                <div class="caption">\
+                                    <h3>Electronic music</h3>\
+                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="electronic"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
                                 </div>\
                             </div>\
                         </div>\
@@ -271,6 +424,8 @@
                 </div>'
             );
         },
+
+        //
         libraryFrame: function(info) {
             return (
                 '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">\
