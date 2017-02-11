@@ -58,7 +58,7 @@ paths:
             type: "string"
           - name: password
             in: query
-            description: Account password
+            description: Account email
             required: true
             type: "string"
         responses:
@@ -124,7 +124,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   
-  /song/{label}/load:
+  /song/load:
     x-swagger-router-controller: song
     get:
       tags:
@@ -132,7 +132,70 @@ paths:
       description: load song information
       operationId: loadSong
       parameters:
-        - name: label
+        - name: name
+          in: query
+          description: name
+          required: false
+          type: "string"
+        - name: artist
+          in: query
+          required: false
+          description: artist
+          type: "string"
+        - name: album
+          in: query
+          required: false
+          description: album
+          type: "string"
+        - name: tags
+          in: query
+          required: false
+          description: tags
+          type: "string"
+          
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    
+  /image/create:
+    x-swagger-router-controller: image
+    post:
+      tags:
+        - image
+      description: Add information
+      operationId: createImage
+      parameters:
+        - name: body
+          in: body
+          description: Image information
+          required: true
+          schema:
+            $ref: "#/definitions/Image"
+      responses:
+        200:
+          description: Success
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /image/{belong}/load:
+    x-swagger-router-controller: image
+    get:
+      tags:
+        - image
+      description: Load image information
+      operationId: loadImage
+      parameters:
+        - name: belong
           in: path
           description: belong
           required: true
@@ -146,8 +209,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-    
-         
+        
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -170,18 +232,27 @@ definitions:
         
   Song:
     properties:
-      song:
+      name:
         type: "string"
       artist:
         type: "string"
-      belong:
+      album:
         type: "string"
       tags:
         type: "string"
-      album:
+      image:
         type: "string"
-      time:
-        type: "string"
+      
+  Image:
+    properties:
+      name: 
+        type: string
+      belong:
+        type: string
+      tags:
+        type: string
+      introduction:
+        type: string
   
   ErrorResponse:
     required:

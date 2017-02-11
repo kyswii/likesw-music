@@ -6,7 +6,7 @@ const SongAct = require("../../mysql/models/song");
 
 var SongApi = {};
 console.log('Song controllers........')
-// url: /music/account/create
+// url: /music/song/create
 SongApi.createSong = wrap(function* (req, res, next) {
     try {
         console.log('........')
@@ -16,7 +16,7 @@ SongApi.createSong = wrap(function* (req, res, next) {
     }
 });
 
-// url: /music/account/load
+// url: /music/song/load
 SongApi.loadSong = wrap(function* (req, res, next) {
     try {
         SongAct.loadSong(req, res);
