@@ -12,7 +12,7 @@
     };
 
     ACCOUNT.loginWrong = function () {
-
+        $('.login-wrong').slideDown('slow');
     };
 
     ACCOUNT.loginFinished = function (info) {
@@ -31,9 +31,9 @@
         $('#myModal').modal();
 
         // $('#register-photo-choose').on('click', function () {
-        var filechooser = document.getElementById('registerPhotoChoose');
-        var previewer = document.getElementById('registerPhoto');
-        accountPhotoChoose(filechooser, previewer);
+        var filechooserid = 'registerPhotoChoose';
+        var previewerid = 'registerPhoto';
+        accountPhotoChoose(filechooserid, previewerid);
         // });
 
         $('#registerSubmit').on('click', function () {
@@ -51,7 +51,10 @@
     });
 
     var PHOTO = null;
-    function accountPhotoChoose(filechooser, previewer) {
+    function accountPhotoChoose(filechooserid, previewerid) {
+
+        var filechooser = document.getElementById(filechooserid);
+        var previewer = document.getElementById(previewerid);
 
         filechooser.onchange = function () {
             var files = this.files;
@@ -75,6 +78,10 @@
 
             reader.readAsDataURL(file);
         };
+
+        $('.register-photo-choose-btn').click(function () {
+            $('#' + filechooserid).trigger("click");
+        });
     }
 
     function accountInfoSubmit() {
@@ -123,9 +130,9 @@
         $('#myModal').html(AppHTML.settingsModal(info));
         $('#myModal').modal();
 
-        var filechooser = document.getElementById('settingsPhotoChoose');
-        var previewer = document.getElementById('settingsPhoto');
-        accountPhotoChoose(filechooser, previewer);
+        var filechooserid = 'settingsPhotoChoose';
+        var previewerid = 'settingsPhoto';
+        accountPhotoChoose(filechooserid, previewerid);
 
         $('#settingsSubmit').on('click', function () {
             accountInfoUpdate(info);

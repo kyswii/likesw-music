@@ -1,8 +1,63 @@
 
 .container-nav-content {
-    float: right;
+    margin-left: 200px;
+    padding: 0 15px;
+
+    .carousel-inner-img {
+        min-height: 200px;
+    }
 
     .home-music-listen {
-        color: #fc2347;
+        color: #ffffff;
+        background-color: #fc2347;
     }
+
+    .home-music-listen:focus {
+        background-color: #fc234f;
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+
+    #homeFrame {
+        .jumbotron {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        .jumbotron:nth-child(1) {
+            background-color: rgba(175, 232, 237, 0.1);
+        }
+
+        .jumbotron:nth-child(2) {
+            background-color: rgba(244, 101, 65, 0.1);
+        }
+
+        .jumbotron:nth-child(4) {
+            background-color: rgba(161, 244, 66, 0.1);
+        }
+
+        .what-ever {
+            margin-top: 50px;
+
+            .what-ever-listen {
+                color: #888888;
+                font-size: 13px;
+                cursor: pointer;
+            }
+            .what-ever-listen:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+}
+
+@media (max-width: 767px) {
+    .container-nav-content {
+        margin-left: 0;
+        padding: 0;
+    }
+    
 }

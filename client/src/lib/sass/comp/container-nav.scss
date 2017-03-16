@@ -2,6 +2,9 @@
 .container-nav {
     position: fixed;
     float: left;
+    width: 200px;
+    padding-left: 15px;
+    padding-right: 15px;
 
     .nav-pills {
         li {

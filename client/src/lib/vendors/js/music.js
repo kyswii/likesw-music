@@ -14,7 +14,7 @@
     Music.prototype.imagesLoadReq = function (belong) {
         //
         if (this.imagesAlreadyLoad(belong)) {
-            that.imagesLoadFinished(belong, this.images[belong]);
+            this.imagesLoadFinished(belong, this.images[belong]);
             return;
         }
         //

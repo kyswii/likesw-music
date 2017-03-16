@@ -12,8 +12,7 @@ SongAct.createSong = function (req, res) {
         if (err) throw err;
         console.log('createSong', req.body);
         var info = req.body;
-        var time = (new Date()).getTime();
-        info.url = '/public/songs/' + time + '.mp3';
+        info.url = '/public/songs/' + info.artist + ' - ' + info.name + '.mp3';
         conn.query('INSERT INTO songs SET ?', info, function (err, result) {
             if (err) throw err;
 
@@ -33,7 +32,7 @@ SongAct.loadSong = function (req, res) {
                 label[item] = req.swagger.params[item].value;
             }            
         }
-  
+  console.log('label.......', label);
         conn.query('SELECT * FROM songs WHERE ?', label, function (err, result) {
             if (err) throw err;
             SongMethods.songClassify(label, result, function (info) {

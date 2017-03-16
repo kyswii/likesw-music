@@ -31,7 +31,8 @@
                                     <img class="account-photo account-default-photo" id="registerPhoto" alt="Brand" src="./images/logo.png">\
                                 </div>\
                                 <div class="col-sm-2">\
-                                    <input type="file" name="photo" class="modal-file-input" id="registerPhotoChoose" placeholder="Upload"/>\
+                                    <button type="button" class="btn btn-default register-photo-choose-btn">Choose</button>\
+                                    <input type="file" name="photo" class="modal-file-input hidden" id="registerPhotoChoose" placeholder="Upload"/>\
                                 </div>\
                             </div>\
                             <div class="form-group">\
@@ -93,8 +94,10 @@
                                 <label for="inputPassword3" class="col-sm-3 control-label">Password</label>\
                                 <div class="col-sm-9">\
                                     <input type="password" class="form-control" id="loginPassword" placeholder="Password">\
-                                    <div class="alert alert-danger" role="alert">...</div>\
                                 </div>\
+                            </div>\
+                            <div class="container-fulid login-wrong">\
+                                <div class="alert alert-danger" role="alert"><strong>Error:&nbsp;&nbsp;</strong>The user is not consistent with the password.</div>\
                             </div>\
                         </form>\
                     </div>\
@@ -121,7 +124,8 @@
                                         <img class="account-photo account-current-photo" id="settingsPhoto" alt="Brand" src="./music' + info.photo + '">\
                                     </div>\
                                     <div class="col-sm-4">\
-                                        <input type="file" name="photo" class="modal-file-input" id="settingsPhotoChoose"/>\
+                                        <button type="button" class="btn btn-default register-photo-choose-btn">Choose</button>\
+                                        <input type="file" name="photo" class="modal-file-input hidden" id="settingsPhotoChoose"/>\
                                     </div>\
                                 </div>\
                                 <div class="form-group">\
@@ -290,137 +294,140 @@
         //
         homeFrame: function(info) {
             return (
-                '<div class="jumbotron">\
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">\
-                        <!-- Indicators -->\
-                        <ol class="carousel-indicators">\
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>\
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>\
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>\
-                        </ol>\
-                        <!-- Wrapper for slides -->\
-                        <div class="carousel-inner" role="listbox">\
-                            <div class="item active">\
-                                <img src="./music' + info.Do[0].url + '" alt="">\
-                                <div class="carousel-caption">\
-                                    <h3>Taylor Swift<h3>\
+                '<div id="homeFrame">\
+                    <div class="jumbotron">\
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">\
+                            <!-- Indicators -->\
+                            <ol class="carousel-indicators">\
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>\
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>\
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>\
+                            </ol>\
+                            <!-- Wrapper for slides -->\
+                            <div class="carousel-inner" role="listbox">\
+                                <div class="item active">\
+                                    <img src="./music' + info.Do[0].url + '" class="carousel-inner-img" alt="">\
+                                    <div class="carousel-caption">\
+                                        <h3>Taylor Swift<h3>\
+                                    </div>\
+                                </div>\
+                                <div class="item">\
+                                    <img src="./music' + info.Do[1].url + '" class="carousel-inner-img" alt="">\
+                                    <div class="carousel-caption">\
+                                        <h3>Jay Chou</h3>\
+                                    </div>\
+                                </div>\
+                                <div class="item">\
+                                    <img src="./music' + info.Do[2].url + '" class="carousel-inner-img" alt="">\
+                                    <div class="carousel-caption">\
+                                        <h3>Wuclef Jean</h3>\
+                                    </div>\
                                 </div>\
                             </div>\
-                            <div class="item">\
-                                <img src="./music' + info.Do[1].url + '" alt="">\
-                                <div class="carousel-caption">\
-                                    <h3>Jay Chou</h3>\
-                                </div>\
-                            </div>\
-                            <div class="item">\
-                                <img src="./music' + info.Do[2].url + '" alt="">\
-                                <div class="carousel-caption">\
-                                    <h3>Wuclef Jean</h3>\
-                                </div>\
-                            </div>\
+                            <!-- Controls -->\
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">\
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\
+                                <span class="sr-only">Previous</span>\
+                            </a>\
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">\
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\
+                                <span class="sr-only">Next</span>\
+                            </a>\
                         </div>\
-                        <!-- Controls -->\
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">\
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\
-                            <span class="sr-only">Previous</span>\
-                        </a>\
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">\
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\
-                            <span class="sr-only">Next</span>\
-                        </a>\
+                        <h1>Do you like it ?</h1>\
+                        <p>Countryside music -- Cordial and warm without losing the popular elements</p>\
+                        <p><button type="button" class="btn btn-sm song-play home-music-listen >" name="countryside"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Play it now*</button></p>\
                     </div>\
-                    <h1>Do you like it ?</h1>\
-                    <p>Country music -- Cordial and warm without losing the popular elements &nbsp;&nbsp;<a href="javascript:;" class="song-play" name="country"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                </div>\
-                <div class="jumbotron">\
-                    <div class="row">\
-                        <div class="col-xs-6 col-md-3">\
-                            <a href="#" class="thumbnail">\
-                                <img src="./music' + info.Or[0].url + '" alt="">\
-                            </a>\
-                        </div>\
-                        <div class="col-xs-6 col-md-3">\
-                            <a href="#" class="thumbnail">\
-                                <img src="./music' + info.Or[1].url + '" alt="">\
-                            </a>\
-                        </div>\
-                        <div class="col-xs-6 col-md-3">\
-                            <a href="#" class="thumbnail">\
-                                <img src="./music' + info.Or[2].url + '" alt="">\
-                            </a>\
-                        </div>\
-                        <div class="col-xs-6 col-md-3">\
-                            <a href="#" class="thumbnail">\
-                                <img src="./music' + info.Or[3].url + '" alt="">\
-                            </a>\
-                        </div>\
-                    </div>\
-                    <h1>Or this ?</h1>\
-                    <p>Light music -- Simple structure, Lively rhythm, beautiful melody&nbsp;&nbsp;<a href="javascript:;" class="play-song" name="light"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                </div>\
-                <div class="jumbotron">\
-                    <h1>Whatever you like</h1>\
-                    <p>Here, you can find what you want</p>\
-                    <div class="row">\
-                        <div class="col-sm-6 col-md-4">\
-                            <div class="thumbnail">\
-                                <img src="./music' + info.Whatever[0].url + '" alt="">\
-                                <div class="caption">\
-                                    <h3>Popular music</h3>\
-                                    <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="popular"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                                </div>\
+                    <div class="jumbotron">\
+                        <div class="row">\
+                            <div class="col-sm-6">\
+                                <h1>Or this ?</h1>\
+                                <p>Light music -- Simple structure, Lively rhythm, beautiful melody</p>\
+                                <p><button type="button" class="btn btn-sm song-play home-music-listen" name="light"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Play it now*</button></p>\
                             </div>\
-                        </div>\
-                        <div class="col-sm-6 col-md-4">\
-                            <div class="thumbnail">\
-                                <img src="./music' + info.Whatever[1].url + '" alt="">\
-                                <div class="caption">\
-                                    <h3>Jazz music</h3>\
-                                    <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="jazz"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="col-sm-6 col-md-4">\
-                            <div class="thumbnail">\
-                                <img src="./music' + info.Whatever[2].url + '" alt="">\
-                                <div class="caption">\
-                                    <h3>British music</h3>\
-                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="british"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="col-sm-6 col-md-4">\
-                            <div class="thumbnail">\
-                                <img src="./music' + info.Whatever[3].url + '" alt="">\
-                                <div class="caption">\
-                                    <h3>Rock music</h3>\
-                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="rock"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="col-sm-6 col-md-4">\
-                            <div class="thumbnail">\
-                                <img src="./music' + info.Whatever[4].url + '" alt="">\
-                                <div class="caption">\
-                                    <h3>Classical music</h3>\
-                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="classical"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="col-sm-6 col-md-4">\
-                            <div class="thumbnail">\
-                                <img src="./music' + info.Whatever[5].url + '" alt="">\
-                                <div class="caption">\
-                                    <h3>Electronic music</h3>\
-                                    <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="electronic"><span class="glyphicon glyphicon-play-circle home-music-listen"></span></a></p>\
+                            <div class="col-sm-6">\
+                                <div class="thumbnail">\
+                                    <img src="./music' + info.Or[0].url + '" alt="">\
                                 </div>\
                             </div>\
                         </div>\
                     </div>\
-                </div>\
-                <div class="jumbotron">\
-                    <h1>Likesw-Music</h1>\
-                    <p>If you are my girlfriend, you will be happy!</p>\
+                    <div class="jumbotron">\
+                        <h1>Whatever you like</h1>\
+                        <p>Here, you can find what you want</p>\
+                        <p><button type="button" class="btn btn-sm song-play home-music-listen" name="other"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Play it now*</button></p>\
+                        <div class="what-ever">\
+                            <div class="row">\
+                                <div class="col-sm-6 col-md-6">\
+                                    <div class="thumbnail">\
+                                        <img src="./music' + info.Whatever[0].url + '" alt="">\
+                                        <div class="caption">\
+                                            <h3>Popular music</h3>\
+                                            <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="popular"></a></p>\
+                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-sm-6 col-md-6">\
+                                    <div class="thumbnail">\
+                                        <img src="./music' + info.Whatever[1].url + '" alt="">\
+                                        <div class="caption">\
+                                            <h3>Jazz music</h3>\
+                                            <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="jazz"></a></p>\
+                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <div class="row">\
+                                <div class="col-sm-6 col-md-6">\
+                                    <div class="thumbnail">\
+                                        <img src="./music' + info.Whatever[2].url + '" alt="">\
+                                        <div class="caption">\
+                                            <h3>British music</h3>\
+                                            <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="british"></a></p>\
+                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-sm-6 col-md-6">\
+                                    <div class="thumbnail">\
+                                        <img src="./music' + info.Whatever[3].url + '" alt="">\
+                                        <div class="caption">\
+                                            <h3>Rock music</h3>\
+                                            <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="rock"></a></p>\
+                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <div class="row">\
+                                <div class="col-sm-6 col-md-6">\
+                                    <div class="thumbnail">\
+                                        <img src="./music' + info.Whatever[4].url + '" alt="">\
+                                        <div class="caption">\
+                                            <h3>Classical music</h3>\
+                                            <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="classical"></a></p>\
+                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-sm-6 col-md-6">\
+                                    <div class="thumbnail">\
+                                        <img src="./music' + info.Whatever[5].url + '" alt="">\
+                                        <div class="caption">\
+                                            <h3>Electronic music</h3>\
+                                            <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="electronic"></a></p>\
+                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="jumbotron">\
+                        <h1>Likesw-Music</h1>\
+                    </div>\
                 </div>'
             );
         },
@@ -506,6 +513,8 @@
                 </div>'
             );
         }
+
+
     }
 
     window.AppHTML = AppHTML;

@@ -1,9 +1,16 @@
 .container-features {
-  padding-top: 50px; }
+  margin-top: 50px; }
+
+@media (max-width: 767px) {
+  .container-features {
+    padding: 0px; } }
 
 .container-nav {
   position: fixed;
-  float: left; }
+  float: left;
+  width: 200px;
+  padding-left: 15px;
+  padding-right: 15px; }
   .container-nav .nav-pills li a {
     color: #303030;
     font-weight: bold; }
@@ -35,6 +42,36 @@
       background: #efefef; } }
 
 .container-nav-content {
-  float: right; }
+  margin-left: 200px;
+  padding: 0 15px; }
+  .container-nav-content .carousel-inner-img {
+    min-height: 200px; }
   .container-nav-content .home-music-listen {
-    color: #fc2347; }
+    color: #ffffff;
+    background-color: #fc2347; }
+  .container-nav-content .home-music-listen:focus {
+    background-color: #fc234f; }
+  .container-nav-content h2 {
+    font-weight: bold; }
+  .container-nav-content #homeFrame .jumbotron {
+    margin-bottom: 0;
+    border-radius: 0; }
+  .container-nav-content #homeFrame .jumbotron:nth-child(1) {
+    background-color: rgba(175, 232, 237, 0.1); }
+  .container-nav-content #homeFrame .jumbotron:nth-child(2) {
+    background-color: rgba(244, 101, 65, 0.1); }
+  .container-nav-content #homeFrame .jumbotron:nth-child(4) {
+    background-color: rgba(161, 244, 66, 0.1); }
+  .container-nav-content #homeFrame .what-ever {
+    margin-top: 50px; }
+    .container-nav-content #homeFrame .what-ever .what-ever-listen {
+      color: #888888;
+      font-size: 13px;
+      cursor: pointer; }
+    .container-nav-content #homeFrame .what-ever .what-ever-listen:hover {
+      text-decoration: underline; }
+
+@media (max-width: 767px) {
+  .container-nav-content {
+    margin-left: 0;
+    padding: 0; } }

@@ -3,6 +3,8 @@
 /client/.ship
 /client/src/thirdparty
 /client/npm-debug.log
+/client/src/images
 
 /server/node_modules
 /server/npm-debug.log
+/server/public
