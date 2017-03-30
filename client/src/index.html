@@ -28,8 +28,10 @@
                 </li>
 
                 <li role="presentation" class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="account-photo navbar-brand-account-photo" alt="Brand" src="./images/default-account.gif">&nbsp;&nbsp;<span
-                            class="glyphicon glyphicon-option-vertical icon-active-color"></span></a>
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="account-photo navbar-brand-account-photo" alt="Brand" src="./images/default-account.gif">&nbsp;&nbsp;
+                        <span
+                            class="glyphicon glyphicon-option-vertical icon-active-color"></span>
+                    </a>
                     <ul class="dropdown-menu nav-dropdown-account-detail-info">
                         <li><a href="javascript:;" class="account-login"><span class="glyphicon glyphicon-log-in icon-active-color"></span>&nbsp;&nbsp;Log in</a></li>
                         <li role="separator" class="divider"></li>
@@ -64,6 +66,78 @@
     <!-- Login-Modal -->
     <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 
+    </div>
+
+    <div class="modal fade bs-example-modal-sm" id="musicModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">M</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row modal-music-content">
+                        <img src="" id="musicImage" alt="">
+                    </div>
+                    <div class="row modal-music-content">
+                        <div class="music-row-row music-progress-before">
+                            <div class="progress" id="musicProgress">
+                                <div class="progress-bar" id="musicProgressBar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                    <span class="sr-only">60% Complete</span>
+                                </div>
+                            </div>
+                            <span class="progress-time" id="progressTimeGone">0</span>
+                            <span class="progress-time" id="progressTimeRem">4:00</span>
+                        </div>
+                    </div>
+                    <div class="row modal-music-content">
+                        <div class="music-row-row music-info">
+                            <div id="musicName">Tiny Wings</div>
+                            <div id="musicInfo">Soundtoy - Tiny Wings - Single</div>
+                        </div>
+                    </div>
+                    <div class="row modal-music-content">
+                        <div class="music-row-row">
+                            <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-backward music-act-glyphicon" id="musicBackward"></span></a></div>
+                            <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-play music-act-glyphicon" id="musicStatus" style="font-size: 28px;"></span></a></div>
+                            <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-forward music-act-glyphicon" id="musicForward"></span></a></div>
+                        </div>
+                    </div>
+                    <div class="row modal-music-content">
+                        <div class="music-row-row sound-progress-before">
+                            <div class="col-xs-1 sound-col-xs"><a href="javascript:;"><span class="glyphicon glyphicon-volume-down sound-act-glyphicon" id="soundDown"></span></a></div>
+                            <div class="col-xs-10 sound-col-xs">
+                                <div class="progress" id="soundProgress">
+                                    <div class="progress-bar" id="soundProgressBar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                                        style="width: 60%;">
+                                        <span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 sound-col-xs"><a href="javascript:;"><span class="glyphicon glyphicon-volume-up sound-act-glyphicon" id="soundUp"></span></a></div>
+                        </div>
+                    </div>
+                    <div class="row modal-music-content">
+                        <div class="music-row-row music-option">
+                            <div class="col-xs-4"><a href="javascript:;"><span class="music-option-glyphicon" id="music-"></span></a></div>
+                            <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-heart-empty music-option-glyphicon" id="musicLove"></span></a></div>
+                            <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-option-horizontal music-option-glyphicon" id="musicOption"></span></a></div>
+                        </div>
+                    </div>
+                    <div class="row modal-music-playlist">
+                        <div class="music-playlist-header">
+                            <span class="music-playlist-header-title">Playlist</span>
+                            <a href="javascript:;"><span class="glyphicon glyphicon-random music-playlist-header-random"></span></a>
+                        </div>
+                        <div class="music-playlist-content">
+                            <ul class="list-group" id="musicPlaylist">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <audio src="" id="audio"></audio>

@@ -45,7 +45,7 @@
         return false;
     }
 
-    Music.prototype.songsLoadReq = function (label) {
+    Music.prototype.songsLoadReq = function (label, callback) {
         var that = this;
         console.log('songsLoadReq.. info', label);
         $.ajax('/music/song/load', {
@@ -54,16 +54,13 @@
             contentType: 'application/json',
             success: function (result) {
                 that.songs = result;
-                that.songsLoadFinished(result);
+                callback(result);
             },
             error: function (err) {
                 console.log('songsLoadReq error...');
             }
         })
     }
-
-    // callback
-    Music.prototype.songsLoadFinished = function (info) { }
 
 
 
