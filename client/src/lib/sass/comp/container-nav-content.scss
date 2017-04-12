@@ -24,19 +24,26 @@
         .jumbotron {
             margin-bottom: 0;
             border-radius: 0;
+
+            &:nth-child(1) {
+                padding: 0;
+            }
+
+            &:nth-child(2) {
+                padding-top: 10px;
+                background-color: rgba(175, 232, 237, 0.1);
+            }
+
+            &:nth-child(3) {
+                background-color: rgba(244, 101, 65, 0.1);
+            }
+
+            &:nth-child(5) {
+                background-color: rgba(161, 244, 66, 0.1);
+            }
         }
 
-        .jumbotron:nth-child(1) {
-            background-color: rgba(175, 232, 237, 0.1);
-        }
-
-        .jumbotron:nth-child(2) {
-            background-color: rgba(244, 101, 65, 0.1);
-        }
-
-        .jumbotron:nth-child(4) {
-            background-color: rgba(161, 244, 66, 0.1);
-        }
+        
 
         .what-ever {
             margin-top: 50px;
@@ -48,6 +55,91 @@
             }
             .what-ever-listen:hover {
                 text-decoration: underline;
+            }
+        }
+    }
+
+    #libraryFrame {
+        .panel-group{
+            .panel{
+                h3 {
+                    font-weight: 600; 
+                }
+
+                .lib-category-header {
+                    height: 50px;
+                    line-height: 50px;
+
+                    .lib-category-title {
+                        display: inline;
+                        float: left;
+                        font-weight: 600;
+                        font-size: 25px;
+                    }
+
+                    .lib-category-option {
+                        display: inline;
+                        float: right;
+
+                        .option-item {
+                            padding: 5px;
+                            color: #888888;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: #fc2347;
+                            }
+                        }
+                    }
+                }
+
+                #libSongList {
+                    .list-group-item {
+                       
+                    }
+                    
+                }
+
+                #libArtistChart {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+
+                    .l-item {
+                        margin: 10px;
+                        background: #fc2347;
+                        color: #ffffff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+
+                        transition: transform 0.5s;
+                        -webkit-transition: -webkit-transform 0.5s;
+                        -moz-transition: -webkit-transform 0.5s;
+                        -o-transition: -o-transform 0.5s;
+
+                        &:hover {
+                            transform: scale(1.1);
+                            -webkit-transform: scale(1.1);
+                            -moz-transform: scale(1.1);
+                            -o-transform: scale(1.1);
+                            
+                        }
+
+                    }
+                }
+            }
+
+            .see-more {
+                text-align: right;
+
+                .panel-title {
+                    font-size: 14px;
+                    color: #888888;
+                }
             }
         }
     }

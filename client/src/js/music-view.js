@@ -1,6 +1,9 @@
 (function () {
 
     var AUDIO = document.getElementById('audio');
+    AUDIO.volume = 0.6;
+
+    var SOUNDPROGRESSBAR = document.getElementById('soundProgressBar');
 
     var MUSIC = new Music();
 
@@ -10,7 +13,9 @@
     var PROCESS_INTERVAL = null;
     var PROCESS_TIME = 100;
 
-    MUSIC.imagesLoadReq('home');
+    MUSIC.imagesLoadReq('home', function (belong, info) {
+        homeRender(belong, info);
+    });
 
     MUSIC.songsLoadReq({ "tags": 'countryside' }, function (info) {
         PLAYLIST = info.data;
@@ -18,30 +23,43 @@
         AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
     });
 
-    MUSIC.imagesLoadFinished = function (belong, info) {
-        if (belong == 'home') {
-            console.log('imagesLoadFinished....', info)
-            $('#containerNavContent').html(AppHTML.homeFrame(info));
+    //
+    var Router = Backbone.Router.extend({
+        routes: {
+            'home': "home",
+            'library': 'library',
+            'foryou': 'foryou',
+            'messages': 'messages',
+            'playlist': 'playlist'
+        },
 
-            //
-            songPlay();
+        home: function () {
+            MUSIC.imagesLoadReq('home', function (belong, info) {
+                homeRender(belong, info);
+            });
+        },
+
+        library: function() {
+            // MUSIC.songsLoadReq('library', function (belong, info) {
+                libraryRender();
+            // });
+        },
+
+        foryou: function () {
+
+        },
+
+        messages: function () {
+
+        },
+
+        playlist: function () {
+
         }
-
-        if (belong == 'library') {
-            $('#containerNavContent').html(AppHTML.libraryFrame(info));
-        }
-
-        // ...
-    }
-
-    $('#containerNavHome').click(function () {
-        MUSIC.imagesLoadReq('home');
     });
 
-    $('#containerNavLibrary').click(function () {
-        // MUSIC.songsLoadReq('library');
-        $('#containerNavContent').html(AppHTML.libraryFrame(''));
-    });
+    new Router();
+    Backbone.history.start();
 
     //
     $('#navMusic').click(function () {
@@ -67,7 +85,7 @@
         if (CURRENTPLAY <= 0) {
             return;
         }
-        
+
         CURRENTPLAY -= 1;
         AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
         updateCurrentPlayInfo();
@@ -80,11 +98,34 @@
         if ((CURRENTPLAY + 1) >= PLAYLIST.length) {
             return;
         }
-      
+
         CURRENTPLAY += 1;
         AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
         updateCurrentPlayInfo();
         AUDIO.play();
+    });
+
+    //
+    $('#soundDown').click(function () {
+        var width = SOUNDPROGRESSBAR.style.width.match(/\d+/g);
+        if (width < 20) {
+            return;
+        }
+        SOUNDPROGRESSBAR.style.width = (parseInt(width) - 20) + '%';
+        AUDIO.volume = (Math.ceil(AUDIO.volume * 10) - 2) / 10;
+        console.log('down..', AUDIO.volume);
+    });
+
+    //
+    $('#soundUp').click(function () {
+        var width = SOUNDPROGRESSBAR.style.width.match(/\d+/g);
+        console.log('width', width, width >= 100);
+        if (width >= 100) {
+            return;
+        }
+        SOUNDPROGRESSBAR.style.width = (parseInt(width) + 20) + '%';
+        AUDIO.volume = (Math.ceil(AUDIO.volume * 10) + 2) / 10;
+        console.log('up..', AUDIO.volume);
     });
 
 
@@ -93,7 +134,7 @@
         console.log('ended......');
         if (CURRENTPLAY + 1 < PLAYLIST.length) {
             CURRENTPLAY += 1;
-            
+
             updateCurrentPlayInfo();
             $('#musicProgressBar').css('width', '0');
             AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
@@ -114,9 +155,24 @@
         $('#musicStatus').addClass('glyphicon-pause');
 
         PROCESS_INTERVAL = setInterval(function () {
-            var percent = AUDIO.currentTime/AUDIO.duration * 100 + '%';
+            var percent = AUDIO.currentTime / AUDIO.duration * 100 + '%';
             $('#musicProgressBar').css('width', percent);
         }, PROCESS_TIME);
+    }
+
+    //
+    function homeRender(belong, info) {
+        $('#containerNavContent').html(AppHTML.homeFrame(info));
+
+        //
+        songPlay();
+    }
+
+    // 
+    function libraryRender() {
+        $('#containerNavContent').html(AppHTML.libraryFrame(''));
+
+        drawLibChart();
     }
 
     //
@@ -131,6 +187,7 @@
                 updatePlayList(info.data);
                 AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
                 AUDIO.play();
+                // console.log('volume', AUDIO.volume);
                 $('#musicStatus').removeClass('glyphicon-play');
                 $('#musicStatus').addClass('glyphicon-pause');
             });
@@ -162,6 +219,53 @@
         document.getElementById('musicImage').src = '/music/' + PLAYLIST[CURRENTPLAY].image;
         document.getElementById('musicName').innerText = PLAYLIST[CURRENTPLAY].name;
         document.getElementById('musicInfo').innerText = PLAYLIST[CURRENTPLAY].artist + ' - ' + PLAYLIST[CURRENTPLAY].album;
+    }
+
+    //
+    function drawLibChart() {
+        /*var hotChart = echarts.init(document.getElementById('libHotChart'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '世界人口总量',
+                subtext: '数据来自网络'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['2011年']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01]
+            },
+            yAxis: {
+                type: 'category',
+                data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+            },
+            series: [
+                {
+                    name: '2011年',
+                    type: 'bar',
+                    data: [18203, 23489, 29034, 104970, 131744, 630230]
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        hotChart.setOption(option);*/
+
     }
 
 }());

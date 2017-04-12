@@ -170,128 +170,6 @@
         },
 
         //
-        musicModal: 
-            '<div class="modal-dialog" role="document">\
-                <div class="modal-content">\
-                    <div class="modal-header">\
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-                        <h4 class="modal-title" id="myModalLabel">M</h4>\
-                    </div>\
-                    <div class="modal-body">\
-                        <div class="row modal-music-content">\
-                            <img src="./images/q.jpg" id="musicImage" alt="">\
-                        </div>\
-                        <div class="row modal-music-content">\
-                            <div class="music-row-row music-progress-before">\
-                                <div class="progress" id="musicProgress">\
-                                    <div class="progress-bar" id="musicProgressBar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">\
-                                        <span class="sr-only">60% Complete</span>\
-                                    </div>\
-                                </div>\
-                                <span class="progress-time" id="progressTimeGone">0</span>\
-                                <span class="progress-time" id="progressTimeRem">4:00</span>\
-                            </div>\
-                        </div>\
-                        <div class="row modal-music-content">\
-                            <div class="music-row-row music-info">\
-                                <div id="musicName">Tiny Wings</div>\
-                                <div id="musicInfo">Soundtoy - Tiny Wings - Single</div>\
-                            </div>\
-                        </div>\
-                        <div class="row modal-music-content">\
-                            <div class="music-row-row">\
-                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-backward music-act-glyphicon" id="musicBackward"></span></a></div>\
-                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-play music-act-glyphicon" id="musicStatus" style="font-size: 28px;"></span></a></div>\
-                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-forward music-act-glyphicon" id="musicForward"></span></a></div>\
-                            </div>\
-                        </div>\
-                        <div class="row modal-music-content">\
-                            <div class="music-row-row sound-progress-before">\
-                                <div class="col-xs-1 sound-col-xs"><a href="javascript:;"><span class="glyphicon glyphicon-volume-down sound-act-glyphicon" id="soundDown"></span></a></div>\
-                                <div class="col-xs-10 sound-col-xs">\
-                                    <div class="progress" id="soundProgress">\
-                                        <div class="progress-bar" id="soundProgressBar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">\
-                                            <span class="sr-only">60% Complete</span>\
-                                        </div>\
-                                    </div>\
-                                </div>\
-                                <div class="col-xs-1 sound-col-xs"><a href="javascript:;"><span class="glyphicon glyphicon-volume-up sound-act-glyphicon" id="soundUp"></span></a></div>\
-                            </div>\
-                        </div>\
-                        <div class="row modal-music-content">\
-                            <div class="music-row-row music-option">\
-                                <div class="col-xs-4"><a href="javascript:;"><span class="music-option-glyphicon" id="music-"></span></a></div>\
-                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-heart-empty music-option-glyphicon" id="musicLove"></span></a></div>\
-                                <div class="col-xs-4"><a href="javascript:;"><span class="glyphicon glyphicon-option-horizontal music-option-glyphicon" id="musicOption"></span></a></div>\
-                            </div>\
-                        </div>\
-                        <div class="row modal-music-playlist">\
-                            <div class="music-playlist-header">\
-                                <span class="music-playlist-header-title">Playlist</span>\
-                                <a href="javascript:;"><span class="glyphicon glyphicon-random music-playlist-header-random"></span></a>\
-                            </div>\
-                            <div class="music-playlist-content">\
-                                <ul class="list-group" id="musicPlaylist">\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/thumbnail3.jpg">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                        <li class="list-group-item">\
-                                            <img class="list-group-item-img" src="./images/logo.png">&nbsp;&nbsp;\
-                                            <span>Cras justo odio</span>\
-                                            <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
-                                        </li>\
-                                    </ul>\
-                            </div>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>',
-        
-        //
-
-        //
         homeFrame: function(info) {
             return (
                 '<div id="homeFrame">\
@@ -334,6 +212,8 @@
                                 <span class="sr-only">Next</span>\
                             </a>\
                         </div>\
+                    </div>\
+                    <div class="jumbotron">\
                         <h1>Do you like it ?</h1>\
                         <p>Countryside music -- Cordial and warm without losing the popular elements</p>\
                         <p><button type="button" class="btn btn-sm song-play home-music-listen >" name="countryside"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Play it now*</button></p>\
@@ -435,79 +315,121 @@
         //
         libraryFrame: function(info) {
             return (
-                '<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">\
-                    <div class="panel panel-default">\
-                        <div class="panel-heading" role="tab" id="headingOne">\
-                            <h3>Songs</h3>\
-                            <div class="row">\
-                                <div class="col-sm-3">\
-                                    <a href="#" class="thumbnail">\
-                                        <img src="./images/thumbnail1.jpg" alt="">\
-                                    </a>\
+                '<div id="libraryFrame">\
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">\
+                        <div class="panel panel-default">\
+                            <div class="panel-heading" role="tab" id="headingOne">\
+                                <div class="lib-category-header">\
+                                    <div class="lib-category-title">Song</div>\
+                                    <div class="lib-category-option">\
+                                        <span class="glyphicon glyphicon-menu-right option-item"></span>\
+                                    </div>\
                                 </div>\
-                                <div class="col-sm-8">\
-                                    <h4 class="panel-title">\
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
-                                            Collapsible Group Item #1\
+                                <div class="row">\
+                                    <div class="col-sm-5">\
+                                        <a href="#" class="thumbnail">\
+                                            <img src="./images/q.jpg" alt="">\
                                         </a>\
-                                    </h4>\
+                                    </div>\
+                                    <div class="col-sm-7">\
+                                        <div>\
+                                            <ul class="list-group" id="libSongList">\
+                                                <li class="list-group-item">Something Just Like This</li>\
+                                                <li class="list-group-item">Something Just Like This</li>\
+                                                <li class="list-group-item">Something Just Like This</li>\
+                                            </ul>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="see-more">\
+                                    <p class="panel-title">\
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">\
+                                            See More&nbsp;&nbsp;\
+                                            <span class="glyphicon glyphicon-menu-down"></span>\
+                                        </a>\
+                                    </p>\
+                                </div>\
+                            </div>\
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">\
+                                <div class="panel-body">\
+                                    Anim pariatur cliche reprehenderit,\
                                 </div>\
                             </div>\
                         </div>\
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">\
-                            <div class="panel-body">\
-                                Anim pariatur cliche reprehenderit,\
-                            </div>\
-                        </div>\
-                    </div>\
-                    <div class="panel panel-default">\
-                        <div class="panel-heading" role="tab" id="headingTwo">\
-                            <h3>Albums</h3>\
-                            <div class="row">\
-                                <div class="col-sm-3">\
-                                    <a href="#" class="thumbnail">\
-                                        <img src="./images/thumbnail0.jpg" alt="">\
-                                    </a>\
+                        <div class="panel panel-default">\
+                            <div class="panel-heading" role="tab" id="headingTwo">\
+                                <div class="lib-category-header">\
+                                    <div class="lib-category-title">Album</div>\
+                                    <div class="lib-category-option">\
+                                        <span class="glyphicon glyphicon-menu-right option-item"></span>\
+                                    </div>\
                                 </div>\
-                                <div class="col-sm-8">\
-                                    <h4 class="panel-title">\
+                                <div class="row">\
+                                    <div class="col-sm-5">\
+                                        <a href="#" class="thumbnail">\
+                                            <img src="./images/q.jpg" alt="">\
+                                        </a>\
+                                    </div>\
+                                    <div class="col-sm-7">\
+                                    </div>\
+                                </div>\
+                                <div class="see-more">\
+                                    <p class="panel-title">\
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"\
                                             aria-controls="collapseTwo">\
-                                            Collapsible Group Item #2\
+                                            See More&nbsp;&nbsp;\
+                                            <span class="glyphicon glyphicon-menu-down"></span>\
                                         </a>\
-                                    </h4>\
+                                    </p>\
+                                </div>\
+                            </div>\
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">\
+                                <div class="panel-body">\
+                                    Anim pariatur cliche reprehenderit,\
                                 </div>\
                             </div>\
                         </div>\
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">\
-                            <div class="panel-body">\
-                                Anim pariatur cliche reprehenderit,\
-                            </div>\
-                        </div>\
-                    </div>\
-                    <div class="panel panel-default">\
-                        <div class="panel-heading" role="tab" id="headingThree">\
-                            <h3>MV</h3>\
-                            <div class="row">\
-                                <div class="col-sm-3">\
-                                    <a href="#" class="thumbnail">\
-                                        <img src="./images/thumbnail3.jpg" alt="">\
-                                    </a>\
+                        <div class="panel panel-default">\
+                            <div class="panel-heading" role="tab" id="headingThree">\
+                                <div class="lib-category-header">\
+                                    <div class="lib-category-title">Artist</div>\
+                                    <div class="lib-category-option">\
+                                        <span class="glyphicon glyphicon-menu-right option-item"></span>\
+                                    </div>\
                                 </div>\
-                                <div class="col-sm-8">\
-                                    <h4 class="panel-title">\
+                                <div class="row">\
+                                    <div class="col-sm-5">\
+                                        <a href="#" class="thumbnail">\
+                                            <img src="./images/q.jpg" alt="">\
+                                        </a>\
+                                    </div>\
+                                    <div class="col-sm-7" id="libArtistChart">\
+                                        <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;">Taylor</div>\
+                                        <div class="l-item" style="width: 140px; height: 140px; border-radius: 70px;">Taylor Swift</div>\
+                                        <div class="l-item" style="width: 80px; height: 80px; border-radius: 40px;">Jay</div>\
+                                        <div class="l-item" style="width: 90px; height: 90px; border-radius: 45px;"></div>\
+                                        <div class="l-item" style="width: 130px; height: 130px; border-radius: 65px;"></div>\
+                                        <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;"></div>\
+                                        <div class="l-item" style="width: 120px; height: 120px; border-radius: 60px;"></div>\
+                                    </div>\
+                                </div>\
+                                <div class="see-more">\
+                                    <p class="panel-title">\
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"\
                                             aria-controls="collapseThree">\
-                                            Collapsible Group Item #3\
+                                            See More&nbsp;&nbsp;\
+                                            <span class="glyphicon glyphicon-menu-down"></span>\
                                         </a>\
-                                    </h4>\
+                                    </p>\
+                                </div>\
+                            </div>\
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">\
+                                <div class="panel-body">\
+                                    Anim pariatur cliche reprehenderit,\
                                 </div>\
                             </div>\
                         </div>\
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">\
-                            <div class="panel-body">\
-                                Anim pariatur cliche reprehenderit,\
-                            </div>\
+                        <div class="panel">\
                         </div>\
                     </div>\
                 </div>'

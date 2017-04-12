@@ -11,21 +11,23 @@
     };
 
     //
-    Music.prototype.imagesLoadReq = function (belong) {
+    Music.prototype.imagesLoadReq = function (belong, callback) {
         //
         if (this.imagesAlreadyLoad(belong)) {
-            this.imagesLoadFinished(belong, this.images[belong]);
+            callback(belong, this.images[belong]);
             return;
         }
         //
         var that = this;
         var url = '/music/image/' + belong + '/load'; 
+        console.log('url....', url);
         $.ajax(url, {
             type: 'GET',
             contentType: 'application/json',
             success: function (result) {
                 that.images[belong] = result;
-                that.imagesLoadFinished(belong, result);
+                callback(belong, result);
+                // that.imagesLoadFinished(belong, result);
             },
             error: function (err) {
                 console.log('homeImagesLoadReq err...');

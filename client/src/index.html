@@ -29,8 +29,8 @@
 
                 <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="account-photo navbar-brand-account-photo" alt="Brand" src="./images/default-account.gif">&nbsp;&nbsp;
-                        <span
-                            class="glyphicon glyphicon-option-vertical icon-active-color"></span>
+                        <!--<span
+                            class="glyphicon glyphicon-option-vertical icon-active-color"></span>-->
                     </a>
                     <ul class="dropdown-menu nav-dropdown-account-detail-info">
                         <li><a href="javascript:;" class="account-login"><span class="glyphicon glyphicon-log-in icon-active-color"></span>&nbsp;&nbsp;Log in</a></li>
@@ -46,11 +46,11 @@
     <div class="container-fluid container-features">
         <div class="container-nav" id="containerNav">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#" id="containerNavHome"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
-                <li role="presentation"><a href="#" id="containerNavLibrary"><span class="glyphicon glyphicon-book icon-active-color"></span>&nbsp;&nbsp;Library</a></li>
-                <li role="presentation"><a href="#" id="containerNavForYou"><span class="glyphicon glyphicon-heart icon-active-color"></span>&nbsp;&nbsp;For You</a></li>
-                <li role="presentation"><a href="#" class="list-group-item" id="containerNavMessages" style="border: none;"><span class="glyphicon glyphicon-comment icon-active-color"></span><span class="badge">14</span>&nbsp;&nbsp;Messages</a></li>
-                <li role="presentation"><a href="#" id="containerNavPlaylist"><span class="glyphicon glyphicon-headphones icon-active-color"></span>&nbsp;&nbsp;Playlist</a></li>
+                <li role="presentation" class="active"><a href="#home" id="containerNavHome"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
+                <li role="presentation"><a href="#library" id="containerNavLibrary"><span class="glyphicon glyphicon-book icon-active-color"></span>&nbsp;&nbsp;Library</a></li>
+                <li role="presentation"><a href="#foryou" id="containerNavForYou"><span class="glyphicon glyphicon-heart icon-active-color"></span>&nbsp;&nbsp;For You</a></li>
+                <li role="presentation"><a href="#messages" class="list-group-item" id="containerNavMessages" style="border: none;"><span class="glyphicon glyphicon-comment icon-active-color"></span><span class="badge">14</span>&nbsp;&nbsp;Messages</a></li>
+                <li role="presentation"><a href="#playlist" id="containerNavPlaylist"><span class="glyphicon glyphicon-headphones icon-active-color"></span>&nbsp;&nbsp;Playlist</a></li>
                 <li role="presentation"><a href="#" id="containerNavDownload"><span class="glyphicon glyphicon-download-alt icon-active-color"></span>&nbsp;&nbsp;Download</a></li>
             </ul>
         </div>
@@ -145,6 +145,9 @@
 
     <script src="./thirdparty/jquery/dist/jquery.min.js"></script>
     <script src="./thirdparty/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./thirdparty/echarts/dist/echarts.min.js"></script>
+    <script src="./thirdparty/underscore/underscore-min.js"></script>
+    <script src="./thirdparty/backbone/backbone-min.js"></script>
 
     <script src="./lib/vendors/js/frame/customes.js"></script>
     <script src="./lib/vendors/js/account.js"></script>

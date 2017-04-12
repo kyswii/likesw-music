@@ -56,12 +56,15 @@
   .container-nav-content #homeFrame .jumbotron {
     margin-bottom: 0;
     border-radius: 0; }
-  .container-nav-content #homeFrame .jumbotron:nth-child(1) {
-    background-color: rgba(175, 232, 237, 0.1); }
-  .container-nav-content #homeFrame .jumbotron:nth-child(2) {
-    background-color: rgba(244, 101, 65, 0.1); }
-  .container-nav-content #homeFrame .jumbotron:nth-child(4) {
-    background-color: rgba(161, 244, 66, 0.1); }
+    .container-nav-content #homeFrame .jumbotron:nth-child(1) {
+      padding: 0; }
+    .container-nav-content #homeFrame .jumbotron:nth-child(2) {
+      padding-top: 10px;
+      background-color: rgba(175, 232, 237, 0.1); }
+    .container-nav-content #homeFrame .jumbotron:nth-child(3) {
+      background-color: rgba(244, 101, 65, 0.1); }
+    .container-nav-content #homeFrame .jumbotron:nth-child(5) {
+      background-color: rgba(161, 244, 66, 0.1); }
   .container-nav-content #homeFrame .what-ever {
     margin-top: 50px; }
     .container-nav-content #homeFrame .what-ever .what-ever-listen {
@@ -70,6 +73,53 @@
       cursor: pointer; }
     .container-nav-content #homeFrame .what-ever .what-ever-listen:hover {
       text-decoration: underline; }
+  .container-nav-content #libraryFrame .panel-group .panel h3 {
+    font-weight: 600; }
+  .container-nav-content #libraryFrame .panel-group .panel .lib-category-header {
+    height: 50px;
+    line-height: 50px; }
+    .container-nav-content #libraryFrame .panel-group .panel .lib-category-header .lib-category-title {
+      display: inline;
+      float: left;
+      font-weight: 600;
+      font-size: 25px; }
+    .container-nav-content #libraryFrame .panel-group .panel .lib-category-header .lib-category-option {
+      display: inline;
+      float: right; }
+      .container-nav-content #libraryFrame .panel-group .panel .lib-category-header .lib-category-option .option-item {
+        padding: 5px;
+        color: #888888;
+        cursor: pointer; }
+        .container-nav-content #libraryFrame .panel-group .panel .lib-category-header .lib-category-option .option-item:hover {
+          color: #fc2347; }
+  .container-nav-content #libraryFrame .panel-group .panel #libArtistChart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; }
+    .container-nav-content #libraryFrame .panel-group .panel #libArtistChart .l-item {
+      margin: 10px;
+      background: #fc2347;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.5s;
+      -webkit-transition: -webkit-transform 0.5s;
+      -moz-transition: -webkit-transform 0.5s;
+      -o-transition: -o-transform 0.5s; }
+      .container-nav-content #libraryFrame .panel-group .panel #libArtistChart .l-item:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1); }
+  .container-nav-content #libraryFrame .panel-group .see-more {
+    text-align: right; }
+    .container-nav-content #libraryFrame .panel-group .see-more .panel-title {
+      font-size: 14px;
+      color: #888888; }
 
 @media (max-width: 767px) {
   .container-nav-content {
