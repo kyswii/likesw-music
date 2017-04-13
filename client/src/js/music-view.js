@@ -128,6 +128,11 @@
         console.log('up..', AUDIO.volume);
     });
 
+    //
+    $(document).on("click", '#optionItem1', function () {
+        console.log('.........');
+        // $('.lib-content').addClass('lib-content-in');
+    });
 
     //
     AUDIO.onended = function () {

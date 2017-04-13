@@ -319,25 +319,33 @@
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">\
                         <div class="panel panel-default">\
                             <div class="panel-heading" role="tab" id="headingOne">\
-                                <div class="lib-category-header">\
-                                    <div class="lib-category-title">Song</div>\
-                                    <div class="lib-category-option">\
-                                        <span class="glyphicon glyphicon-menu-right option-item"></span>\
+                                <div class="row lib-category-header">\
+                                    <div class="col-xs-4 lib-category-title">Song</div>\
+                                    <div class="col-xs-8 lib-category-option">\
+                                        <span class="option-item" id="optionItem1">See More</span>\
                                     </div>\
                                 </div>\
-                                <div class="row">\
-                                    <div class="col-sm-5">\
+                                <div class="row lib-category-container">\
+                                    <div class="col-sm-5 lib-theme">\
                                         <a href="#" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
                                         </a>\
                                     </div>\
-                                    <div class="col-sm-7">\
-                                        <div>\
-                                            <ul class="list-group" id="libSongList">\
-                                                <li class="list-group-item">Something Just Like This</li>\
-                                                <li class="list-group-item">Something Just Like This</li>\
-                                                <li class="list-group-item">Something Just Like This</li>\
-                                            </ul>\
+                                    <div class="col-sm-7 lib-content">\
+                                        <div class="lib-content-item">\
+                                            <div class="lib-theme-option">\
+                                                <span class="glyphicon glyphicon-menu-right"></span>\
+                                            </div>\
+                                            <div>\
+                                                <ul class="list-group" id="libSongList">\
+                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">1</span>Something Just Like This</li>\
+                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">2</span>Something Just Like This</li>\
+                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">3</span>Something Just Like This</li>\
+                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">4</span>Something Just Like This</li>\
+                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">5</span>Something Just Like This</li>\
+                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">6</span>Something Just Like This</li>\
+                                                </ul>\
+                                            </div>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -358,10 +366,10 @@
                         </div>\
                         <div class="panel panel-default">\
                             <div class="panel-heading" role="tab" id="headingTwo">\
-                                <div class="lib-category-header">\
-                                    <div class="lib-category-title">Album</div>\
-                                    <div class="lib-category-option">\
-                                        <span class="glyphicon glyphicon-menu-right option-item"></span>\
+                                <div class="row lib-category-header">\
+                                    <div class="col-xs-4 lib-category-title">Album</div>\
+                                    <div class="col-xs-8 lib-category-option">\
+                                        <span class="option-item">See More</span>\
                                     </div>\
                                 </div>\
                                 <div class="row">\
@@ -370,7 +378,35 @@
                                             <img src="./images/q.jpg" alt="">\
                                         </a>\
                                     </div>\
-                                    <div class="col-sm-7">\
+                                    <div class="col-sm-7 lib-content">\
+                                        <div class="lib-content-item">\
+                                            <div class="lib-theme-option">\
+                                                <span class="glyphicon glyphicon-menu-right"></span>\
+                                            </div>\
+                                            <div class="row" id="libAlbumList">\
+                                                <div class="col-xs-6 col-sm-4 lib-album-item">\
+                                                    <img src="./images/q.jpg" alt="...">\
+                                                    <div class="caption">\
+                                                        <p class="lib-album-name">Thumbnail label</p>\
+                                                        <p class="lib-album-info">Thumbnail label</p>\
+                                                    </div>\
+                                                </div>\
+                                                <div class="col-xs-6 col-sm-4 lib-album-item">\
+                                                    <img src="./images/q.jpg" alt="...">\
+                                                    <div class="caption">\
+                                                        <p class="lib-album-name">Thumbnail label</p>\
+                                                        <p class="lib-album-info">Thumbnail label</p>\
+                                                    </div>\
+                                                </div>\
+                                                <div class="col-xs-6 col-sm-4 lib-album-item">\
+                                                    <img src="./images/q.jpg" alt="...">\
+                                                    <div class="caption">\
+                                                        <p class="lib-album-name">Thumbnail label</p>\
+                                                        <p class="lib-album-info">Thumbnail label</p>\
+                                                    </div>\
+                                                </div>\
+                                            </div>\
+                                        </div>\
                                     </div>\
                                 </div>\
                                 <div class="see-more">\
@@ -391,10 +427,10 @@
                         </div>\
                         <div class="panel panel-default">\
                             <div class="panel-heading" role="tab" id="headingThree">\
-                                <div class="lib-category-header">\
-                                    <div class="lib-category-title">Artist</div>\
-                                    <div class="lib-category-option">\
-                                        <span class="glyphicon glyphicon-menu-right option-item"></span>\
+                                <div class="row lib-category-header">\
+                                    <div class="col-xs-4 lib-category-title">Artist</div>\
+                                    <div class="col-xs-8 lib-category-option">\
+                                        <span class="option-item">See More</span>\
                                     </div>\
                                 </div>\
                                 <div class="row">\
@@ -403,14 +439,21 @@
                                             <img src="./images/q.jpg" alt="">\
                                         </a>\
                                     </div>\
-                                    <div class="col-sm-7" id="libArtistChart">\
-                                        <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;">Taylor</div>\
-                                        <div class="l-item" style="width: 140px; height: 140px; border-radius: 70px;">Taylor Swift</div>\
-                                        <div class="l-item" style="width: 80px; height: 80px; border-radius: 40px;">Jay</div>\
-                                        <div class="l-item" style="width: 90px; height: 90px; border-radius: 45px;"></div>\
-                                        <div class="l-item" style="width: 130px; height: 130px; border-radius: 65px;"></div>\
-                                        <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;"></div>\
-                                        <div class="l-item" style="width: 120px; height: 120px; border-radius: 60px;"></div>\
+                                    <div class="col-sm-7 lib-content">\
+                                        <div class="lib-content-item">\
+                                            <div class="lib-theme-option">\
+                                                <span class="glyphicon glyphicon-menu-right"></span>\
+                                            </div>\
+                                            <div id="libArtistList">\
+                                                <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;">Taylor</div>\
+                                                <div class="l-item" style="width: 140px; height: 140px; border-radius: 70px;">Taylor Swift</div>\
+                                                <div class="l-item" style="width: 80px; height: 80px; border-radius: 40px;">Jay</div>\
+                                                <div class="l-item" style="width: 90px; height: 90px; border-radius: 45px;"></div>\
+                                                <div class="l-item" style="width: 130px; height: 130px; border-radius: 65px;"></div>\
+                                                <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;"></div>\
+                                                <div class="l-item" style="width: 120px; height: 120px; border-radius: 60px;"></div>\
+                                            </div>\
+                                        </div>\
                                     </div>\
                                 </div>\
                                 <div class="see-more">\

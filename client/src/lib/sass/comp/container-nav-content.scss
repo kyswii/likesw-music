@@ -1,3 +1,5 @@
+$m-theme-color: #fc2347;
+
 
 .container-nav-content {
     margin-left: 200px;
@@ -9,7 +11,7 @@
 
     .home-music-listen {
         color: #ffffff;
-        background-color: #fc2347;
+        background-color: $m-theme-color;
     }
 
     .home-music-listen:focus {
@@ -67,40 +69,118 @@
                 }
 
                 .lib-category-header {
-                    height: 50px;
-                    line-height: 50px;
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                    line-height: 35px;
 
                     .lib-category-title {
-                        display: inline;
-                        float: left;
+                        padding-left: 5px;
                         font-weight: 600;
                         font-size: 25px;
+                        border-bottom: solid 1px #aaaaaa;
                     }
 
                     .lib-category-option {
-                        display: inline;
-                        float: right;
-
+                        text-align: right;
                         .option-item {
                             padding: 5px;
+                            color: $m-theme-color;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .lib-category-container {
+
+                    min-height: 380px;
+
+                    .lib-theme {
+                        
+                    }
+
+                    .lib-content {
+                       
+                    }
+                }
+
+                .lib-content-item {
+                    width: 100%;
+                    padding: 5px;
+                    background: #eeeeee;
+                    border-radius: 5px;
+
+                    .lib-theme-option {
+                        height: 50px;
+                        line-height: 50px;
+
+                        text-align: right;
+
+                        span {
+                            padding-left: 10px;
+                            padding-right: 5px;
                             color: #888888;
                             cursor: pointer;
+                        }
+                    }
+                }
+                
 
-                            &:hover {
-                                color: #fc2347;
+                #libSongList {
+                    .list-group-item {
+                        padding: 4px 4px;
+
+                        border-left: none;
+                        border-right: none;
+
+                        span.rank{
+                            font-weight: bold;
+                            padding-left: 9px;
+                            padding-right: 9px;
+                        }
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 4px;
+                        }
+                    }
+                    
+                }
+
+                #libAlbumList {
+                    &.row {
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+
+                    .lib-album-item {
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        padding-bottom: 10px;
+
+                        img {
+                            width: 100%;
+                            border-radius: 5px;
+                        }
+
+                        .caption {
+                            p {
+                                margin-bottom: 0px;
+                            }
+                            .lib-album-name {
+                                margin-top: 5px;
+                                font-size: 14px;
+                                font-weight: bold;
+                            }
+                            .lib-album-info {
+                                font-size: 13px;
+                                color: #666666;
                             }
                         }
                     }
                 }
 
-                #libSongList {
-                    .list-group-item {
-                       
-                    }
-                    
-                }
-
-                #libArtistChart {
+                #libArtistList {
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
@@ -109,7 +189,7 @@
 
                     .l-item {
                         margin: 10px;
-                        background: #fc2347;
+                        background: $m-theme-color;
                         color: #ffffff;
                         display: flex;
                         align-items: center;
@@ -152,4 +232,30 @@
         padding: 0;
     }
     
+}
+
+//
+.lib-content-in {
+    left: 0;
+    width: 100%;
+}
+
+@keyframes opin {
+    from {left: 100%; width: 0;}
+    to {left: 0; width: 100%}
+}
+
+@-webkit-keyframes opin {
+    from {left: 100%; width: 0;}
+    to {left: 0; width: 100%}
+}
+
+@-moz-keyframes opin {
+    from {left: 100%; width: 0;}
+    to {left: 0; width: 100%}
+}
+
+@-o-keyframes opin {
+    from {left: 100%; width: 0;}
+    to {left: 0; width: 100%}
 }
