@@ -46,7 +46,9 @@
         },
 
         foryou: function () {
-
+            // MUSIC.songsLoadReq('foryou', function (belong, info) {
+                foryouRender();
+            // });
         },
 
         messages: function () {
@@ -178,6 +180,11 @@
         $('#containerNavContent').html(AppHTML.libraryFrame(''));
 
         drawLibChart();
+    }
+
+    //
+    function foryouRender() {
+        $('#containerNavContent').html(AppHTML.foryouFrame());
     }
 
     //

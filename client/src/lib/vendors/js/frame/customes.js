@@ -477,6 +477,236 @@
                     </div>\
                 </div>'
             );
+        },
+
+        //
+        foryouFrame: function(info) {
+            return (
+                '<div id="foryouFrame">\
+                    <div class="row">\
+                        <div class="col-sm-4 fy-user-img">\
+                            <img src="./images/q.jpg">\
+                        </div>\
+                        <div class="col-sm-8 fy-user-info">\
+                            <div class="row">\
+                                <span class="m-title">Taylor Swift</span>\
+                            </div>\
+                            <div class="row">\
+                                <span class="label">\
+                                    <span class="glyphicon glyphicon-heart"></span>\
+                                    <span class="badge">41</span>\
+                                </span>\
+                                <span class="label">\
+                                    <span class="glyphicon glyphicon-share"></span>\
+                                    <span class="badge">99</span>\
+                                </span>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="row">\
+                        <p class="m-title"><span>For You</span></p>\
+                        <div class="col-sm-7 fy-song-list">\
+                            <div class="m-list-group">\
+                                <div class="m-list-group-option">\
+                                    <span class="glyphicon glyphicon-random"></span>\
+                                    <span class="">See More</span>\
+                                </div>\
+                                <ul class="list-group">\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">1</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">2</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">3</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">4</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">5</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">6</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">7</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">8</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">9</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">10</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">11</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">12</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">13</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">14</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                    <li class="list-group-item">\
+                                        <span class="m-list-rank">15</span>\
+                                        <div class="m-list-info">\
+                                            <p>Cras justo odio</p>\
+                                        </div>\
+                                        <div class="m-list-option">\
+                                            <span class="glyphicon glyphicon-heart"></span>\
+                                            <span class="glyphicon glyphicon-share"></span>\
+                                        </div>\
+                                    </li>\
+                                </ul>\
+                            </div>\
+                        </div>\
+                        <div class="col-sm-5 fy-song-intro">\
+                            <div class="m-thumbnail">\
+                                <div class="m-thumbnail-img">\
+                                    <img src="./images/q.jpg">\
+                                </div>\
+                                <div class="caption">\
+                                    <div class="fy-album">\
+                                        <div class="fy-album-item">\
+                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
+                                            <div class="fy-album-item-info">\
+                                                <p>Taylor Swift</p>\
+                                                <p>Swift</p>\
+                                            </div>\
+                                        </div>\
+                                        <div class="fy-album-item">\
+                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
+                                            <div class="fy-album-item-info">\
+                                                <p>Taylor Swift</p>\
+                                                <p>Swift</p>\
+                                            </div>\
+                                        </div>\
+                                        <div class="fy-album-item">\
+                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
+                                            <div class="fy-album-item-info">\
+                                                <p>Taylor Swift</p>\
+                                                <p>Swift</p>\
+                                            </div>\
+                                        </div>\
+                                        <div class="fy-album-item">\
+                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
+                                            <div class="fy-album-item-info">\
+                                                <p>Taylor Swift</p>\
+                                                <p>Swift</p>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>'
+            );
         }
 
 
