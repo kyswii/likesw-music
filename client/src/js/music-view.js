@@ -52,11 +52,15 @@
         },
 
         messages: function () {
-
+            // MUSIC.songsLoadReq('foryou', function (belong, info) {
+                messagesRender();
+            // });
         },
 
         playlist: function () {
-
+            // MUSIC.songsLoadReq('foryou', function (belong, info) {
+                playlistRender();
+            // });
         }
     });
 
@@ -137,6 +141,72 @@
     });
 
     //
+    $(document).on('click', '#libraryFrame .option-item', function () {
+        var name = $(this).attr('name');
+        if (name == 'song') {
+            var html = '<ul class="list-group lib-song-seemore">';
+            for (var i=0; i<14; i++) {
+                html += '<li class="list-group-item">\
+                                <div class="rank">\
+                                    <span>' + (i + 1) + '</span>\
+                                </div>\
+                                <div class="song-info">\
+                                    <p>Taylor Swift</p>\
+                                    <p>Swift</p>\
+                                </div>\
+                                <div class="song-option">\
+                                    <span class="glyphicon glyphicon-heart" name="' + i + '"></span>\
+                                    <span class="glyphicon glyphicon-share" name="' + i + '"></span>\
+                                </div>\
+                            </li>';
+            };
+            html += '</ul>';
+
+            $('#myModal').html(AppHTML.libSeeMore('song', html));
+
+        } else if (name == 'album') {
+            var html = '<div class="row lib-album-seemore">'
+            for (var i=0; i<9; i++) {
+                html += '<div class="col-xs-6 col-sm-4">\
+                            <div class="thumbnail">\
+                                <img src="./images/q.jpg" alt="...">\
+                                <div class="caption">\
+                                    <h5>Thumbnail label</h5>\
+                                    <p>taylor</p>\
+                                </div>\
+                            </div>\
+                        </div>';
+            }
+            html += '</div>';
+
+            $('#myModal').html(AppHTML.libSeeMore('album', html));
+        } else if (name == 'artist') {
+            var html = '<div class="row lib-artist-seemore">';
+            for (var i = 0; i < 10; i++) {
+                html += '<div class="col-xs-6 col-sm-4 lib-artist-seemore-item">\
+                            <img src="./images/q.jpg">\
+                            <p>Taylor Swift</p>\
+                        </div>';
+            }
+            html += '</div>';
+
+            $('#myModal').html(AppHTML.libSeeMore('artist', html));
+        }
+
+        // $('.lib-modal').addClass('lib-modal-in');
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+    });
+
+    //
+    $(document).on('click', '.glyphicon-heart', function() {
+        if ($('.navbar-brand-account-photo').attr('src').indexOf('default-account') != -1) {
+            $('#myModal').html(AppHTML.loginModalPrompt);
+            $('#myModal').modal('show');
+        }
+    })
+
+    //
     AUDIO.onended = function () {
         console.log('ended......');
         if (CURRENTPLAY + 1 < PLAYLIST.length) {
@@ -179,7 +249,6 @@
     function libraryRender() {
         $('#containerNavContent').html(AppHTML.libraryFrame(''));
 
-        drawLibChart();
     }
 
     //
@@ -187,6 +256,15 @@
         $('#containerNavContent').html(AppHTML.foryouFrame());
     }
 
+    //
+    function messagesRender() {
+        $('#containerNavContent').html(AppHTML.messagesFrame());
+    }
+
+    //
+    function playlistRender() {
+        $('#containerNavContent').html(AppHTML.playlistFrame());
+    }
     //
     function songPlay() {
         $('.song-play').click(function () {
@@ -219,7 +297,8 @@
             group += '<li class="list-group-item">\
                         <img class="list-group-item-img" src="./music/' + data[item].image + '">&nbsp;&nbsp;\
                         <span>' + data[item].artist + '-' + data[item].name + '</span>\
-                        <span class="glyphicon glyphicon-plus-sign list-group-item-open"></span>\
+                        <span class="glyphicon glyphicon-share list-group-item-option" name="' + data[item].id + '"></span>\
+                        <span class="glyphicon glyphicon-heart list-group-item-option" name="' + data[item].id + '"></span>\
                     </li>'
         }
 
@@ -232,52 +311,5 @@
         document.getElementById('musicName').innerText = PLAYLIST[CURRENTPLAY].name;
         document.getElementById('musicInfo').innerText = PLAYLIST[CURRENTPLAY].artist + ' - ' + PLAYLIST[CURRENTPLAY].album;
     }
-
-    //
-    function drawLibChart() {
-        /*var hotChart = echarts.init(document.getElementById('libHotChart'));
-
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: '世界人口总量',
-                subtext: '数据来自网络'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['2011年']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                boundaryGap: [0, 0.01]
-            },
-            yAxis: {
-                type: 'category',
-                data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
-            },
-            series: [
-                {
-                    name: '2011年',
-                    type: 'bar',
-                    data: [18203, 23489, 29034, 104970, 131744, 630230]
-                }
-            ]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        hotChart.setOption(option);*/
-
-    }
-
+    
 }());

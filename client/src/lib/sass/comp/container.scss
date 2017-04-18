@@ -3,8 +3,9 @@
     margin-top: 50px;
 }
 
-@media (max-width: 767px) {
-    .container-features {
-        padding: 0px;
-    }
+
+.container-features {
+    padding-left: 0;
+    padding-right: 0;
 }
+  

@@ -109,6 +109,22 @@
             </div>',
         
         //
+        loginModalPrompt:
+            '<div class="modal-dialog modal-sm" role="document">\
+                <div class="modal-content">\
+                    <div class="modal-header">\
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                        <h4 class="modal-title" id="myModalLabel">Error</h4>\
+                    </div>\
+                    <div class="modal-body">\
+                        <div class="alert alert-warning" role="alert">\
+                            Sorry, You are not logged in yet!\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>',
+        
+        //
         settingsModal: function(info) {
             return (
                 '<div class="modal-dialog" role="document">\
@@ -322,13 +338,16 @@
                                 <div class="row lib-category-header">\
                                     <div class="col-xs-4 lib-category-title">Song</div>\
                                     <div class="col-xs-8 lib-category-option">\
-                                        <span class="option-item" id="optionItem1">See More</span>\
+                                        <span class="option-item" name="song">See More</span>\
                                     </div>\
                                 </div>\
                                 <div class="row lib-category-container">\
                                     <div class="col-sm-5 lib-theme">\
-                                        <a href="#" class="thumbnail">\
+                                        <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
+                                            <div class="lib-play">\
+                                                <span class="glyphicon glyphicon-play-circle"></span>\
+                                            </div>\
                                         </a>\
                                     </div>\
                                     <div class="col-sm-7 lib-content">\
@@ -369,13 +388,16 @@
                                 <div class="row lib-category-header">\
                                     <div class="col-xs-4 lib-category-title">Album</div>\
                                     <div class="col-xs-8 lib-category-option">\
-                                        <span class="option-item">See More</span>\
+                                        <span class="option-item" name="album">See More</span>\
                                     </div>\
                                 </div>\
-                                <div class="row">\
-                                    <div class="col-sm-5">\
-                                        <a href="#" class="thumbnail">\
+                                <div class="row lib-category-container">\
+                                    <div class="col-sm-5 lib-theme">\
+                                        <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
+                                            <div class="lib-play">\
+                                                <span class="glyphicon glyphicon-play-circle"></span>\
+                                            </div>\
                                         </a>\
                                     </div>\
                                     <div class="col-sm-7 lib-content">\
@@ -430,13 +452,16 @@
                                 <div class="row lib-category-header">\
                                     <div class="col-xs-4 lib-category-title">Artist</div>\
                                     <div class="col-xs-8 lib-category-option">\
-                                        <span class="option-item">See More</span>\
+                                        <span class="option-item" name="artist">See More</span>\
                                     </div>\
                                 </div>\
-                                <div class="row">\
-                                    <div class="col-sm-5">\
-                                        <a href="#" class="thumbnail">\
+                                <div class="row lib-category-container">\
+                                    <div class="col-sm-5 lib-theme">\
+                                        <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
+                                            <div class="lib-play">\
+                                                <span class="glyphicon glyphicon-play-circle"></span>\
+                                            </div>\
                                         </a>\
                                     </div>\
                                     <div class="col-sm-7 lib-content">\
@@ -707,8 +732,97 @@
                     </div>\
                 </div>'
             );
-        }
+        },
 
+        //
+        messagesFrame: function(info) {
+            return (
+                '<div id="messagesFrame">\
+                    <div class="row">\
+                        <div class="me-header">\
+                            <p class="me-title">Messages</p>\
+                            <p class="me-refresh">\
+                                <span class="glyphicon glyphicon-refresh"></span>\
+                            </p>\
+                        </div>\
+                    </div>\
+                    <div class="row">\
+                        <div class="row me-artist">\
+                            <img src="./images/q.jpg">\
+                            <div>\
+                                <p>Taylor Swift</p>\
+                                <p>12:09</p>\
+                            </div>\
+                        </div>\
+                        <div class="row me-comment">\
+                            <div class="col-sm-7 me-comment-text">\
+                                <p>Hello World, Apple Pay lets you use your iPhone to pay securely and easily at over a million store locations across the United States and within apps — with a single touch.</p>\
+                            </div>\
+                            <div class="col-sm-5 me-comment-song">\
+                                <img src="./images/q.jpg">\
+                                <div>\
+                                    <p>Taylor Swift</p>\
+                                    <p>glyphicon commtent</p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="row me-option">\
+                            <span class="glyphicon glyphicon-heart"></span>\
+                            <span class="glyphicon glyphicon-share"></span>\
+                            <span class="glyphicon glyphicon-comment"></span>\
+                        </div>\
+                    </div>\
+                    <div class="row">\
+                        <div class="row me-artist">\
+                            <img src="./images/q.jpg">\
+                            <div>\
+                                <p>Taylor Swift</p>\
+                                <p>12:09</p>\
+                            </div>\
+                        </div>\
+                        <div class="row me-comment">\
+                            <div class="col-sm-7 me-comment-text">\
+                                <p>Hello World, Apple Pay lets you use your iPhone to pay securely and easily at over a million store locations across the United States and within apps — with a single touch.</p>\
+                            </div>\
+                            <div class="col-sm-5 me-comment-song">\
+                                <img src="./images/q.jpg">\
+                                <div>\
+                                    <p>Taylor Swift</p>\
+                                    <p>glyphicon commtent</p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="row me-option">\
+                            <span class="glyphicon glyphicon-heart"></span>\
+                            <span class="glyphicon glyphicon-share"></span>\
+                            <span class="glyphicon glyphicon-comment"></span>\
+                        </div>\
+                    </div>\
+                </div>'
+            );
+        },
+
+        //
+        playlistFrame: function(info) {
+            return (
+                '<div>\
+                    <h1>Hello world</h1>\
+                </div>'
+            );
+        },
+
+        //
+        libSeeMore: function(title, list) {
+            return (
+                '<div class="lib-modal">\
+                    <div class="lib-modal-header">\
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                        <h4 class="modal-title" id="myModalLabel">' + title + '</h4>\
+                    </div>\
+                    <div class="lib-modal-body">' + list + '</div>\
+                </div>'
+            )
+        }
 
     }
 
