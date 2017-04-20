@@ -200,11 +200,30 @@
 
     //
     $(document).on('click', '.glyphicon-heart', function() {
-        if ($('.navbar-brand-account-photo').attr('src').indexOf('default-account') != -1) {
-            $('#myModal').html(AppHTML.loginModalPrompt);
-            $('#myModal').modal('show');
+        if (!isLogin()) {
+            return;
         }
-    })
+    });
+    
+    //
+    //
+    $(document).on('click', '.glyphicon-share', function() {
+        // console.log($(this).attr('name'));
+        if (!isLogin()) {
+            return;
+        }
+
+        var arr = $(this).attr('name').split('&');
+        
+        songShareComment(arr);
+
+    });
+
+    //
+    $(document).on('click', '.alert-close', function () {
+        $('.alert-bg').css('display', 'none');
+    });
+
 
     //
     AUDIO.onended = function () {
@@ -294,11 +313,12 @@
 
         for (var item = 0; item < data.length; item++) {
             console.log('item.....', data[item]);
+            var name = data[item].id + '&' + data[item].artist + '&' + data[item].name + '&' + data[item].image + '&' + data[item].url;
             group += '<li class="list-group-item">\
                         <img class="list-group-item-img" src="./music/' + data[item].image + '">&nbsp;&nbsp;\
                         <span>' + data[item].artist + '-' + data[item].name + '</span>\
-                        <span class="glyphicon glyphicon-share list-group-item-option" name="' + data[item].id + '"></span>\
-                        <span class="glyphicon glyphicon-heart list-group-item-option" name="' + data[item].id + '"></span>\
+                        <span class="glyphicon glyphicon-share list-group-item-option" name="' + name + '"></span>\
+                        <span class="glyphicon glyphicon-heart list-group-item-option" name="' + name + '"></span>\
                     </li>'
         }
 
@@ -312,4 +332,44 @@
         document.getElementById('musicInfo').innerText = PLAYLIST[CURRENTPLAY].artist + ' - ' + PLAYLIST[CURRENTPLAY].album;
     }
     
+    //
+    function isLogin() {
+        if ($('.navbar-brand-account-photo').attr('src').indexOf('default-account') != -1) {
+            $('.m-alert-header').text('Sorry');
+            $('.m-alert-body').html('<div class="alert alert-danger" role="alert">You are not logged in yet!</div>');
+            $('.m-alert-footer').html('<button type="button" class="btn btn-default alert-close">Close</button>');
+            $('.alert-bg').css('display', 'block');
+
+            return false;
+        }
+
+        return true;
+    }
+
+    //
+    function songShareComment(arr) {
+        $('.m-alert-header').text('Share');
+        $('.m-alert-body').html(
+            '<div class="row m-alert-share">\
+                <div class="share-song">\
+                    <img src="./music/' + arr[3] + '" alt="">\
+                    <div>\
+                        <p>' + arr[2] + '</p>\
+                        <p>' + arr[1] + '</p>\
+                    </div>\
+                </div>\
+            </div>\
+            <div class="row m-alert-share">\
+                <form>\
+                    <textarea class="form-control" placeholder="Your Comment" rows="3"></textarea>\
+                </form>\
+            </div>'
+        );
+
+        $('.m-alert-footer').html(
+            '<button type="button" class="btn btn-danger alert-publish">Publish</button>\
+            <button type="button" class="btn btn-default alert-close">Close</button>'
+            );
+        $('.alert-bg').css('display', 'block');
+    }
 }());

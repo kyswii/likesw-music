@@ -109,21 +109,7 @@
             </div>',
         
         //
-        loginModalPrompt:
-            '<div class="modal-dialog modal-sm" role="document">\
-                <div class="modal-content">\
-                    <div class="modal-header">\
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-                        <h4 class="modal-title" id="myModalLabel">Error</h4>\
-                    </div>\
-                    <div class="modal-body">\
-                        <div class="alert alert-warning" role="alert">\
-                            Sorry, You are not logged in yet!\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>',
-        
+
         //
         settingsModal: function(info) {
             return (
