@@ -237,7 +237,9 @@
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1999;
-  display: none; }
+  display: none;
+  overflow-x: hidden;
+  overflow-y: auto; }
   .alert-bg .m-alert {
     width: 500px;
     margin: 30px auto auto auto;

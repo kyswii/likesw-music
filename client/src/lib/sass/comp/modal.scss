@@ -287,6 +287,8 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 1999;
     display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .m-alert {
         width: 500px;

@@ -3,7 +3,7 @@
         //
         accountInfo: function(info) {
             return (
-                '<li class="dropdown-header"><img class="account-photo dropdow-menu-account-photo" alt="Brand" src="./music' + info.photo + '">&nbsp;&nbsp;\
+                '<li class="dropdown-header"><img class="account-photo dropdow-menu-account-photo" alt="' + info.id + '" src="./music' + info.photo + '">&nbsp;&nbsp;\
                     <span class="dropdow-menu-account-name">' + info.name + '</span>\
                 </li>\
                 <li class="dropdown-header"><span class="glyphicon glyphicon-envelope icon-active-color"></span>&nbsp;&nbsp;<span class="dropdow-menu-accout-email dropdow-menu-accout-info-style">' + info.email + '</span></li>\
@@ -246,7 +246,7 @@
                                         <div class="caption">\
                                             <h3>Popular music</h3>\
                                             <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="popular"></a></p>\
-                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                            <p><span class="what-ever-listen song-play" name="popular">Play it now ></span></p>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -256,7 +256,7 @@
                                         <div class="caption">\
                                             <h3>Jazz music</h3>\
                                             <p>Cras justo odio, dapibus .&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="jazz"></a></p>\
-                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                            <p><span class="what-ever-listen song-play" name="jazz">Play it now ></span></p>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -268,7 +268,7 @@
                                         <div class="caption">\
                                             <h3>British music</h3>\
                                             <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="british"></a></p>\
-                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                            <p><span class="what-ever-listen song-play" name="british">Play it now ></span></p>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -278,7 +278,7 @@
                                         <div class="caption">\
                                             <h3>Rock music</h3>\
                                             <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="rock"></a></p>\
-                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                            <p><span class="what-ever-listen song-play" name="rock">Play it now ></span></p>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -290,7 +290,7 @@
                                         <div class="caption">\
                                             <h3>Classical music</h3>\
                                             <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="classical"></a></p>\
-                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                            <p><span class="what-ever-listen song-play" name="classical">Play it now ></span></p>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -300,7 +300,7 @@
                                         <div class="caption">\
                                             <h3>Electronic music</h3>\
                                             <p>Cras justo odio, dapibus.&nbsp;&nbsp;<a href="javascript:;" class="song-play" name="electronic"></a></p>\
-                                            <p><span class="what-ever-listen">Play it now ></span></p>\
+                                            <p><span class="what-ever-listen song-play" name="electronic">Play it now ></span></p>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -722,6 +722,35 @@
 
         //
         messagesFrame: function(info) {
+            var html = '';
+            info.forEach(function (d, i) {
+                html += '<div class="row">\
+                        <div class="row me-artist">\
+                            <img src="./music' + d.photo + '">\
+                            <div>\
+                                <p>' + d.aName + '</p>\
+                                <p>' + d.time + '</p>\
+                            </div>\
+                        </div>\
+                        <div class="row me-comment">\
+                            <div class="col-sm-7 me-comment-text">\
+                                <p>' + d.comment + '</p>\
+                            </div>\
+                            <div class="col-sm-5 me-comment-song">\
+                                <img src="./music' + d.image + '">\
+                                <div>\
+                                    <p>' + d.sName + '</p>\
+                                    <p>' + d.artist + '</p>\
+                                </div>\
+                            </div>\
+                        </div>\
+                        <div class="row me-option">\
+                            <span class="glyphicon glyphicon-heart"></span>\
+                            <span class="glyphicon glyphicon-share"></span>\
+                            <span class="glyphicon glyphicon-comment"></span>\
+                        </div>\
+                    </div>'
+            });
             return (
                 '<div id="messagesFrame">\
                     <div class="row">\
@@ -731,60 +760,9 @@
                                 <span class="glyphicon glyphicon-refresh"></span>\
                             </p>\
                         </div>\
-                    </div>\
-                    <div class="row">\
-                        <div class="row me-artist">\
-                            <img src="./images/q.jpg">\
-                            <div>\
-                                <p>Taylor Swift</p>\
-                                <p>12:09</p>\
-                            </div>\
-                        </div>\
-                        <div class="row me-comment">\
-                            <div class="col-sm-7 me-comment-text">\
-                                <p>Hello World, Apple Pay lets you use your iPhone to pay securely and easily at over a million store locations across the United States and within apps — with a single touch.</p>\
-                            </div>\
-                            <div class="col-sm-5 me-comment-song">\
-                                <img src="./images/q.jpg">\
-                                <div>\
-                                    <p>Taylor Swift</p>\
-                                    <p>glyphicon commtent</p>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="row me-option">\
-                            <span class="glyphicon glyphicon-heart"></span>\
-                            <span class="glyphicon glyphicon-share"></span>\
-                            <span class="glyphicon glyphicon-comment"></span>\
-                        </div>\
-                    </div>\
-                    <div class="row">\
-                        <div class="row me-artist">\
-                            <img src="./images/q.jpg">\
-                            <div>\
-                                <p>Taylor Swift</p>\
-                                <p>12:09</p>\
-                            </div>\
-                        </div>\
-                        <div class="row me-comment">\
-                            <div class="col-sm-7 me-comment-text">\
-                                <p>Hello World, Apple Pay lets you use your iPhone to pay securely and easily at over a million store locations across the United States and within apps — with a single touch.</p>\
-                            </div>\
-                            <div class="col-sm-5 me-comment-song">\
-                                <img src="./images/q.jpg">\
-                                <div>\
-                                    <p>Taylor Swift</p>\
-                                    <p>glyphicon commtent</p>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div class="row me-option">\
-                            <span class="glyphicon glyphicon-heart"></span>\
-                            <span class="glyphicon glyphicon-share"></span>\
-                            <span class="glyphicon glyphicon-comment"></span>\
-                        </div>\
-                    </div>\
-                </div>'
+                    </div>'
+                    + html
+                + '</div>'
             );
         },
 

@@ -209,6 +209,74 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+            
+  /share/save:
+    x-swagger-router-controller: share
+    post:
+      tags:
+        - share
+      description: save share
+      operationId: saveComment
+      parameters:
+        - name: body
+          in: body
+          description: save info
+          required: true
+          schema:
+            type: string
+            format: json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /collect/save:
+    x-swagger-router-controller: collect
+    post:
+      tags:
+        - collect
+      description: save collect
+      operationId: collectSong
+      parameters:
+        - name: body
+          in: body
+          description: info
+          required: true
+          schema:
+            type: string
+            format: json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /messages/load:
+    x-swagger-router-controller: messages
+    get:
+      tags:
+        - messages
+      description: load messages
+      operationId: loadMessages
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
         
   /swagger:
     x-swagger-pipe: swagger_raw

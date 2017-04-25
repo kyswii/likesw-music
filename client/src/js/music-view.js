@@ -23,6 +23,10 @@
         AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
     });
 
+    MUSIC.songsLoadReq({"tags": 'all-songs'}, function (info) {
+        console.log('load all songs');
+    });
+
     //
     var Router = Backbone.Router.extend({
         routes: {
@@ -40,9 +44,8 @@
         },
 
         library: function() {
-            // MUSIC.songsLoadReq('library', function (belong, info) {
-                libraryRender();
-            // });
+         
+            libraryRender();              
         },
 
         foryou: function () {
@@ -52,9 +55,10 @@
         },
 
         messages: function () {
-            // MUSIC.songsLoadReq('foryou', function (belong, info) {
-                messagesRender();
-            // });
+            MUSIC.messagesLoadReq(function (info) {
+                // console.log('messages....', info);
+                messagesRender(info);
+            });
         },
 
         playlist: function () {
@@ -135,6 +139,26 @@
     });
 
     //
+    //
+    
+    $(document).on('click', '.song-play', function () {
+        var name = $(this).attr('name');
+        var label = { "tags": name };
+console.log('label...', label);
+        MUSIC.songsLoadReq(label, function (info) {
+            PLAYLIST = info.data;
+            CURRENTPLAY = 0;
+            updatePlayList(info.data);
+            AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
+            AUDIO.play();
+            // console.log('volume', AUDIO.volume);
+            $('#musicStatus').removeClass('glyphicon-play');
+            $('#musicStatus').addClass('glyphicon-pause');
+        });
+    });
+    
+
+    //
     $(document).on("click", '#optionItem1', function () {
         console.log('.........');
         // $('.lib-content').addClass('lib-content-in');
@@ -144,58 +168,18 @@
     $(document).on('click', '#libraryFrame .option-item', function () {
         var name = $(this).attr('name');
         if (name == 'song') {
-            var html = '<ul class="list-group lib-song-seemore">';
-            for (var i=0; i<14; i++) {
-                html += '<li class="list-group-item">\
-                                <div class="rank">\
-                                    <span>' + (i + 1) + '</span>\
-                                </div>\
-                                <div class="song-info">\
-                                    <p>Taylor Swift</p>\
-                                    <p>Swift</p>\
-                                </div>\
-                                <div class="song-option">\
-                                    <span class="glyphicon glyphicon-heart" name="' + i + '"></span>\
-                                    <span class="glyphicon glyphicon-share" name="' + i + '"></span>\
-                                </div>\
-                            </li>';
-            };
-            html += '</ul>';
-
-            $('#myModal').html(AppHTML.libSeeMore('song', html));
+            allSongsRender();
 
         } else if (name == 'album') {
-            var html = '<div class="row lib-album-seemore">'
-            for (var i=0; i<9; i++) {
-                html += '<div class="col-xs-6 col-sm-4">\
-                            <div class="thumbnail">\
-                                <img src="./images/q.jpg" alt="...">\
-                                <div class="caption">\
-                                    <h5>Thumbnail label</h5>\
-                                    <p>taylor</p>\
-                                </div>\
-                            </div>\
-                        </div>';
-            }
-            html += '</div>';
-
-            $('#myModal').html(AppHTML.libSeeMore('album', html));
+            allAlbumsRender();
+            
         } else if (name == 'artist') {
-            var html = '<div class="row lib-artist-seemore">';
-            for (var i = 0; i < 10; i++) {
-                html += '<div class="col-xs-6 col-sm-4 lib-artist-seemore-item">\
-                            <img src="./images/q.jpg">\
-                            <p>Taylor Swift</p>\
-                        </div>';
-            }
-            html += '</div>';
-
-            $('#myModal').html(AppHTML.libSeeMore('artist', html));
+            allArtistsRender();
+            
         }
 
         // $('.lib-modal').addClass('lib-modal-in');
-        $('.lib-modal').animate({'marginLeft': '0'}, 500);
-        $('#myModal').modal('show');
+        
     });
 
     //
@@ -203,6 +187,17 @@
         if (!isLogin()) {
             return;
         }
+        var arr = $(this).attr('name').split('&');
+        var songid = parseInt(arr[0]);
+        var accountid = parseInt($('.dropdow-menu-account-photo').attr('alt'));
+        var info = {
+            songID: songid,
+            accountID: accountid
+        };
+
+        MUSIC.collectSong(info, function (result) {
+            console.log('collection....');
+        });
     });
     
     //
@@ -222,6 +217,24 @@
     //
     $(document).on('click', '.alert-close', function () {
         $('.alert-bg').css('display', 'none');
+    });
+
+    //
+    $(document).on('click', '.share-publish', function () {
+        var songid = parseInt($(this).attr('name').substring(10));
+        var accountid = parseInt($('.dropdow-menu-account-photo').attr('alt'));
+        var time = (new Date()).getFullYear() + '-' + ((new Date()).getMonth() + 1) + '-' + (new Date()).getDate();
+        var info = {
+            songID: songid,
+            accountID: accountid,
+            comment: 'comment',
+            time: time
+        };
+console.log('share...', info);
+        MUSIC.publishComment(info, function (result) {
+            console.log('save......', result);
+            $('.alert-bg').css('display', 'none');
+        });
     });
 
 
@@ -260,8 +273,6 @@
     function homeRender(belong, info) {
         $('#containerNavContent').html(AppHTML.homeFrame(info));
 
-        //
-        songPlay();
     }
 
     // 
@@ -276,32 +287,13 @@
     }
 
     //
-    function messagesRender() {
-        $('#containerNavContent').html(AppHTML.messagesFrame());
+    function messagesRender(info) {
+        $('#containerNavContent').html(AppHTML.messagesFrame(info));
     }
 
     //
     function playlistRender() {
         $('#containerNavContent').html(AppHTML.playlistFrame());
-    }
-    //
-    function songPlay() {
-        $('.song-play').click(function () {
-            var name = $(this).attr('name');
-            var label = { "tags": name };
-
-            MUSIC.songsLoadReq(label, function (info) {
-                PLAYLIST = info.data;
-                CURRENTPLAY = 0;
-                updatePlayList(info.data);
-                AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
-                AUDIO.play();
-                // console.log('volume', AUDIO.volume);
-                $('#musicStatus').removeClass('glyphicon-play');
-                $('#musicStatus').addClass('glyphicon-pause');
-            });
-
-        });
     }
 
     //
@@ -367,9 +359,95 @@
         );
 
         $('.m-alert-footer').html(
-            '<button type="button" class="btn btn-danger alert-publish">Publish</button>\
+            '<button type="button" class="btn btn-danger share-publish" name="shareSong-' + arr[0] + '">Publish</button>\
             <button type="button" class="btn btn-default alert-close">Close</button>'
-            );
+        );
         $('.alert-bg').css('display', 'block');
+    }
+
+    //
+    function allSongsRender() {
+   
+        // var songs = info.data;
+        var html = '<ul class="list-group lib-song-seemore">';
+        if (!MUSIC.songs) {
+            html += '<li><div class="alert alert-danger" role="alert">Sorry, Nothing!</div></li>';
+        } else {
+            MUSIC.songs.forEach(function (d, i) {
+                var name = d.id + '&' + d.artist + '&' + d.name + '&' + d.image + '&' + d.url;
+                html += '<li class="list-group-item">\
+                                <div class="rank">\
+                                    <span>' + (i + 1) + '</span>\
+                                </div>\
+                                <div class="song-info">\
+                                    <p>' + d.name + '</p>\
+                                    <p>' + d.artist + '</p>\
+                                </div>\
+                                <div class="song-option">\
+                                    <span class="glyphicon glyphicon-heart" name="' + name + '"></span>\
+                                    <span class="glyphicon glyphicon-share" name="' + name + '"></span>\
+                                </div>\
+                            </li>';
+            });
+        }
+        
+        
+        html += '</ul>';
+
+        $('#myModal').html(AppHTML.libSeeMore('song', html));
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+       
+    }
+
+    //
+    function allAlbumsRender() {
+        var html = '<div class="row lib-album-seemore">';
+
+        if (_.isEmpty(MUSIC.albums)) {
+            html += '<div class="alert alert-danger" role="alert">Sorry, Nothing!</div>';
+        } else {            
+            for (var item in MUSIC.albums) {
+                html += '<div class="col-xs-6 col-sm-4">\
+                            <div class="thumbnail">\
+                                <img src="./music' + MUSIC.albums[item].img + '" alt="...">\
+                                <div class="caption">\
+                                    <h5>' + item + '</h5>\
+                                    <p>taylor</p>\
+                                </div>\
+                            </div>\
+                        </div>';
+            }
+        }
+        
+        html += '</div>';
+
+        $('#myModal').html(AppHTML.libSeeMore('album', html));
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+     
+    }
+
+    //
+    function allArtistsRender(info) {
+        var html = '<div class="row lib-artist-seemore">';
+
+        if (_.isEmpty(MUSIC.artists)) {
+            html += '<div class="alert alert-danger" role="alert">Sorry, Nothing!</div>';
+        } else {
+            for (var item in MUSIC.artists) {
+                html += '<div class="col-xs-6 col-sm-4 lib-artist-seemore-item">\
+                            <img src="./music' + MUSIC.artists[item].img + '">\
+                            <p>' + item + '</p>\
+                        </div>';
+            }
+        }
+        
+        html += '</div>';
+
+        $('#myModal').html(AppHTML.libSeeMore('artist', html));
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+     
     }
 }());
