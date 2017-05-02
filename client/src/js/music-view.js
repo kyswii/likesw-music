@@ -237,6 +237,18 @@ console.log('share...', info);
         });
     });
 
+    //
+    $(document).on('click', '.lib-play', function () {
+        console.log('pause....');
+        $('.lib-play span').each(function () {
+            if ($(this).hasClass('glyphicon-pause')) {
+                $(this).removeClass('glyphicon-pause').addClass('glyphicon-play-circle');
+            }
+        });
+        $(this).find('span').removeClass('glyphicon-play-circle').addClass('glyphicon-pause');
+
+    });
+
 
     //
     AUDIO.onended = function () {
