@@ -190,56 +190,72 @@
     
     .lib-modal-body {
         padding: 15px 10px;
-        
+
         .lib-song-seemore {
-            .list-group-item {
-                border-left: none; 
-                border-right: none;
-
-                .rank {
-                    display: inline-block;
-                    width: 30px;
-                    text-align: center;
-                    line-height: 36px;
-                    font-weight: 600;
+            &>.row {
+                margin-left: 0;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .lib-songs-option {
+                
+                .lib-songs-play {
+                    cursor: pointer;
+                    color: #fc2347;
                 }
+            }
 
-                .song-info {
-                    position: absolute;
-                    display: inline-block;
-                    margin-left: 20px;
-                    margin-right: 20px;
-                    text-overflow: ellipsis;
+            .lib-songs-list {
+           
+                .list-group-item {
+                    border-left: none; 
+                    border-right: none;
 
-                    p {
-                        margin-bottom: 0;
-                        line-height: 18px;
+                    .rank {
+                        display: inline-block;
+                        width: 30px;
+                        text-align: center;
+                        line-height: 36px;
+                        font-weight: 600;
+                    }
 
-                        &:nth-child(1) {
-                            font-size: 14px;
-                        }
+                    .song-info {
+                        position: absolute;
+                        display: inline-block;
+                        margin-left: 20px;
+                        margin-right: 20px;
+                        text-overflow: ellipsis;
 
-                        &:nth-child(2) {
-                            font-size: 13px;
-                            color: #666666;
+                        p {
+                            margin-bottom: 0;
+                            line-height: 18px;
+
+                            &:nth-child(1) {
+                                font-size: 14px;
+                            }
+
+                            &:nth-child(2) {
+                                font-size: 13px;
+                                color: #666666;
+                            }
                         }
                     }
-                }
 
-                .song-option {
-                    position: absolute;
-                    right: 15px;
-                    display: inline-block;
-                    line-height: 36px;
-                    font-size: 14px;
-                    color: #969696;
+                    .song-option {
+                        position: absolute;
+                        right: 15px;
+                        display: inline-block;
+                        line-height: 36px;
+                        font-size: 14px;
+                        color: #969696;
 
-                    .glyphicon {
-                        cursor: pointer;
-                        margin-left: 10px;
+                        .glyphicon {
+                            cursor: pointer;
+                            margin-left: 10px;
 
-                        &:hover {
-                            color: #fc2347;
+                            &:hover {
+                                color: #fc2347;
+                            }
                         }
                     }
                 }

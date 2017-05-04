@@ -19,6 +19,9 @@ CollectAct.collectSong = function (req, res) {
             conn.query('UPDATE account SET collect_song = ? WHERE id = ?', [JSON.stringify(info), req.body.accountID], function () {
                 if (err) throw err;
 
+                conn.query('UPDATE songs SET sumCollect = sumCollect + 1 WHERE id = ?', req.body.songID, function (err, result) {
+                    if (err) throw err;
+                });
                 res.json('Success!');
             });
         });

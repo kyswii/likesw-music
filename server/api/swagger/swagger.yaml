@@ -99,7 +99,41 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-          
+  
+  /basic/load:
+    x-swagger-router-controller: basic
+    get:
+      tags: 
+        - basic
+      description: get data
+      operationId: loadBasicData
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /all/load:
+    x-swagger-router-controller: basic
+    get:
+      tags:
+        - basic
+      description: get all
+      operationId: loadAllData
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      
   /song/create:
     x-swagger-router-controller: song
     post:

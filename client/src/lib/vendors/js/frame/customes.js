@@ -218,7 +218,7 @@
                     <div class="jumbotron">\
                         <h1>Do you like it ?</h1>\
                         <p>Countryside music -- Cordial and warm without losing the popular elements</p>\
-                        <p><button type="button" class="btn btn-sm song-play home-music-listen >" name="countryside"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Play it now*</button></p>\
+                        <p><button type="button" class="btn btn-sm song-play home-music-listen" name="countryside"><span class="glyphicon glyphicon-headphones"></span>&nbsp;&nbsp;Play it now*</button></p>\
                     </div>\
                     <div class="jumbotron">\
                         <div class="row">\
@@ -316,6 +316,29 @@
 
         //
         libraryFrame: function(info) {
+            var s_html = '<li class="list-group-item"><div class="alert alert-danger" role="alert">Sorry, Nothing!</div></li>';
+            var al_html = '<div class="alert alert-danger" role="alert">Sorry, Nothing!</div>';
+            var ar_html = ar_html;
+            if (info.songs) {
+                s_html = '';
+                info.songs.forEach(function (d, i) {
+                    s_html += '<li class="list-group-item"><img src="./music' + d.image + '" alt=""><span class="rank">' + (i + 1) + '</span>' + d.name + '</li>';
+                });
+            }
+
+            if (info.albums) {
+                al_html = '';
+                info.albums.forEach(function (d, i) {
+                    al_html += '<div class="col-xs-6 col-sm-4 lib-album-item song-play" name="albums-' + d.name + '">\
+                                    <img src="./music' + d.image + '" alt="...">\
+                                    <div class="caption">\
+                                        <p class="lib-album-name">' + d.name + '</p>\
+                                        <p class="lib-album-info">' + d.tags + '</p>\
+                                    </div>\
+                                </div>'
+                });
+            }
+
             return (
                 '<div id="libraryFrame">\
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">\
@@ -331,7 +354,7 @@
                                     <div class="col-sm-5 lib-theme">\
                                         <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
-                                            <div class="lib-play">\
+                                            <div class="lib-play song-play" name="hot-songs">\
                                                 <span class="glyphicon glyphicon-play-circle"></span>\
                                             </div>\
                                         </a>\
@@ -342,14 +365,9 @@
                                                 <span class="glyphicon glyphicon-menu-right"></span>\
                                             </div>\
                                             <div>\
-                                                <ul class="list-group" id="libSongList">\
-                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">1</span>Something Just Like This</li>\
-                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">2</span>Something Just Like This</li>\
-                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">3</span>Something Just Like This</li>\
-                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">4</span>Something Just Like This</li>\
-                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">5</span>Something Just Like This</li>\
-                                                    <li class="list-group-item"><img src="./images/q.jpg" alt=""><span class="rank">6</span>Something Just Like This</li>\
-                                                </ul>\
+                                                <ul class="list-group" id="libSongList">' 
+                                                    + s_html +
+                                                '</ul>\
                                             </div>\
                                         </div>\
                                     </div>\
@@ -381,7 +399,7 @@
                                     <div class="col-sm-5 lib-theme">\
                                         <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
-                                            <div class="lib-play">\
+                                            <div class="lib-play song-play" name="hot-albums">\
                                                 <span class="glyphicon glyphicon-play-circle"></span>\
                                             </div>\
                                         </a>\
@@ -391,29 +409,9 @@
                                             <div class="lib-theme-option">\
                                                 <span class="glyphicon glyphicon-menu-right"></span>\
                                             </div>\
-                                            <div class="row" id="libAlbumList">\
-                                                <div class="col-xs-6 col-sm-4 lib-album-item">\
-                                                    <img src="./images/q.jpg" alt="...">\
-                                                    <div class="caption">\
-                                                        <p class="lib-album-name">Thumbnail label</p>\
-                                                        <p class="lib-album-info">Thumbnail label</p>\
-                                                    </div>\
-                                                </div>\
-                                                <div class="col-xs-6 col-sm-4 lib-album-item">\
-                                                    <img src="./images/q.jpg" alt="...">\
-                                                    <div class="caption">\
-                                                        <p class="lib-album-name">Thumbnail label</p>\
-                                                        <p class="lib-album-info">Thumbnail label</p>\
-                                                    </div>\
-                                                </div>\
-                                                <div class="col-xs-6 col-sm-4 lib-album-item">\
-                                                    <img src="./images/q.jpg" alt="...">\
-                                                    <div class="caption">\
-                                                        <p class="lib-album-name">Thumbnail label</p>\
-                                                        <p class="lib-album-info">Thumbnail label</p>\
-                                                    </div>\
-                                                </div>\
-                                            </div>\
+                                            <div class="row" id="libAlbumList">'
+                                                + al_html +
+                                            '</div>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -445,7 +443,7 @@
                                     <div class="col-sm-5 lib-theme">\
                                         <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
-                                            <div class="lib-play">\
+                                            <div class="lib-play song-play" name="hot-artist">\
                                                 <span class="glyphicon glyphicon-play-circle"></span>\
                                             </div>\
                                         </a>\
@@ -456,13 +454,13 @@
                                                 <span class="glyphicon glyphicon-menu-right"></span>\
                                             </div>\
                                             <div id="libArtistList">\
-                                                <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;">Taylor</div>\
-                                                <div class="l-item" style="width: 140px; height: 140px; border-radius: 70px;">Taylor Swift</div>\
-                                                <div class="l-item" style="width: 80px; height: 80px; border-radius: 40px;">Jay</div>\
-                                                <div class="l-item" style="width: 90px; height: 90px; border-radius: 45px;"></div>\
-                                                <div class="l-item" style="width: 130px; height: 130px; border-radius: 65px;"></div>\
-                                                <div class="l-item" style="width: 100px; height: 100px; border-radius: 50px;"></div>\
-                                                <div class="l-item" style="width: 120px; height: 120px; border-radius: 60px;"></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[0].name + '" style="width: 100px; height: 100px; border-radius: 50px;">' + info.artists[0].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[1].name + '" style="width: 140px; height: 140px; border-radius: 70px;">' + info.artists[1].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[2].name + '" style="width: 80px; height: 80px; border-radius: 40px;">' + info.artists[2].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[3].name + '" style="width: 90px; height: 90px; border-radius: 45px;">' + info.artists[3].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[4].name + '" style="width: 130px; height: 130px; border-radius: 65px;">' + info.artists[4].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[5].name + '" style="width: 100px; height: 100px; border-radius: 50px;">' + info.artists[5].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[6].name + '" style="width: 120px; height: 120px; border-radius: 60px;">' + info.artists[6].name + '</div>\
                                             </div>\
                                         </div>\
                                     </div>\

@@ -178,40 +178,47 @@
     padding: 15px 10px; }
   .lib-modal .lib-modal-body {
     padding: 15px 10px; }
-    .lib-modal .lib-modal-body .lib-song-seemore .list-group-item {
+    .lib-modal .lib-modal-body .lib-song-seemore > .row {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 20px; }
+    .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-option .lib-songs-play {
+      cursor: pointer;
+      color: #fc2347; }
+    .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item {
       border-left: none;
       border-right: none; }
-      .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .rank {
+      .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .rank {
         display: inline-block;
         width: 30px;
         text-align: center;
         line-height: 36px;
         font-weight: 600; }
-      .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-info {
+      .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-info {
         position: absolute;
         display: inline-block;
         margin-left: 20px;
         margin-right: 20px;
         text-overflow: ellipsis; }
-        .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-info p {
+        .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-info p {
           margin-bottom: 0;
           line-height: 18px; }
-          .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-info p:nth-child(1) {
+          .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-info p:nth-child(1) {
             font-size: 14px; }
-          .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-info p:nth-child(2) {
+          .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-info p:nth-child(2) {
             font-size: 13px;
             color: #666666; }
-      .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-option {
+      .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-option {
         position: absolute;
         right: 15px;
         display: inline-block;
         line-height: 36px;
         font-size: 14px;
         color: #969696; }
-        .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-option .glyphicon {
+        .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-option .glyphicon {
           cursor: pointer;
           margin-left: 10px; }
-          .lib-modal .lib-modal-body .lib-song-seemore .list-group-item .song-option .glyphicon:hover {
+          .lib-modal .lib-modal-body .lib-song-seemore .lib-songs-list .list-group-item .song-option .glyphicon:hover {
             color: #fc2347; }
     .lib-modal .lib-modal-body .lib-artist-seemore .lib-artist-seemore-item {
       padding-bottom: 10px;

@@ -146,7 +146,8 @@
   .container-nav-content #libraryFrame .panel-group .panel #libAlbumList .lib-album-item {
     padding-left: 8px;
     padding-right: 8px;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+    cursor: pointer; }
     .container-nav-content #libraryFrame .panel-group .panel #libAlbumList .lib-album-item img {
       width: 100%;
       border-radius: 5px; }

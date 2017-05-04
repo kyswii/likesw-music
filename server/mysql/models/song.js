@@ -33,16 +33,37 @@ SongAct.loadSong = function (req, res) {
                 label[item] = req.swagger.params[item].value;
             }            
         }
-  console.log('label.......', label);
+
         var sql = 'SELECT * FROM songs WHERE tags like "%' + label.tags + '%"';
-        if (label.tags == 'all-songs') {
-            sql = 'SELECT * FROM songs';
+
+        if (label.tags.indexOf('hot-') != -1) {
+            var arr = label.tags.split('-');
+            if (arr[1] == 'songs') {
+                sql = 'SELECT * FROM songs ORDER BY sumCollect DESC LIMIT 10';
+            } else if (arr[1] == 'albums') {
+                sql = 'SELECT * FROM songs ORDER BY sumCollect DESC LIMIT 10';
+            } else if (arr[1] == 'artist') {
+                sql = 'SELECT * FROM songs ORDER BY sumCollect DESC LIMIT 10';
+            }
+        } else {
+            if (label.tags.indexOf('albums-') != -1) {
+                var arr = label.tags.split('-');
+                sql = 'SELECT * FROM songs WHERE album = "' + arr[1] + '"';
+            }
+
+            if (label.tags.indexOf('artists-') != -1) {
+                var arr = label.tags.split('-');
+                sql = 'SELECT * FROM songs WHERE artist = "' + arr[1] + '"';
+            }
         }
+
         
+        
+        console.log('sql...', sql);
         conn.query(sql, function (err, result) {
             if (err) throw err;
             SongMethods.songClassify(label, result, function (info) {
-                console.log('song-info...', info);
+                // console.log('song-info...', info);
                 res.json(info);
             });
         });

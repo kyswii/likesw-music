@@ -4,6 +4,8 @@
     var Music = function () {
 
         //
+        this.basicData = null;
+        //
         this.images = {};
 
         //
@@ -18,6 +20,23 @@
         //
         this.artists = {};
     };
+
+    //
+    Music.prototype.loadBasicData = function (callback) {
+        var that = this;
+
+        $.ajax('/music/basic/load', {
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (result) {
+                that.basicData = result;
+                callback(result);
+            },
+            error: function (err) {
+                console.log('error...');
+            }
+        });
+    }
 
     //
     Music.prototype.imagesLoadReq = function (belong, callback) {
@@ -71,6 +90,26 @@
         return false;
     }
 
+    //
+    Music.prototype.musicLoadReq = function (callback) {
+        var that = this;
+
+        $.ajax('/music/all/load', {
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (result) {
+                callback(result);
+                that.songs = result.songs;
+                that.albums = result.albums;
+                that.artists = result.artists;
+            },
+            error: function (err) {
+                console.log('error...');
+            }
+        })
+    }
+
+    //
     Music.prototype.songsLoadReq = function (label, callback) {
         var that = this;
         console.log('songsLoadReq.. info', label);
@@ -79,35 +118,12 @@
             data: label,
             contentType: 'application/json',
             success: function (result) {
-                if (label.tags == 'all-songs') {
-                    that.songsClassify(result);
-                }
                 callback(result);
             },
             error: function (err) {
                 console.log('songsLoadReq error...');
             }
         })
-    }
-
-    //
-    Music.prototype.songsClassify = function (info) {
-        this.songs = info.data;
-        var that = this;
-        
-        this.songs.forEach(function (d, i) {
-            if (!that.albums[d.album]) {
-                that.albums[d.album] = {img: d.image, songs: []};
-            }
-            that.albums[d.album].songs.push(d);
-
-            if (!that.artists[d.artist]) {
-                that.artists[d.artist] = {img: d.image, songs: []};
-            }
-
-            that.artists[d.artist].songs.push(d);
-        });
-        console.log(that.albums, that.artists);
     }
 
     //

@@ -13,24 +13,20 @@
     var PROCESS_INTERVAL = null;
     var PROCESS_TIME = 100;
 
-    MUSIC.imagesLoadReq('home', function (belong, info) {
-        homeRender(belong, info);
-    });
-
     MUSIC.songsLoadReq({ "tags": 'countryside' }, function (info) {
         PLAYLIST = info.data;
         updatePlayList(info.data);
         AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
     });
 
-    MUSIC.songsLoadReq({"tags": 'all-songs'}, function (info) {
-        console.log('load all songs');
+    MUSIC.musicLoadReq(function (info) {
+        console.log('load all songs', info);
     });
 
     //
     var Router = Backbone.Router.extend({
         routes: {
-            'home': "home",
+            '': "home",
             'library': 'library',
             'foryou': 'foryou',
             'messages': 'messages',
@@ -38,13 +34,16 @@
         },
 
         home: function () {
-            MUSIC.imagesLoadReq('home', function (belong, info) {
-                homeRender(belong, info);
+            MUSIC.loadBasicData(function (data) {
+                console.log('basic data...', data);
+                homeRender();
             });
         },
 
         library: function() {
-         
+            // MUSIC.loadModuleInfo('library', function (info) {
+            //     libraryRender(info);
+            // });
             libraryRender();              
         },
 
@@ -146,14 +145,7 @@
         var label = { "tags": name };
 console.log('label...', label);
         MUSIC.songsLoadReq(label, function (info) {
-            PLAYLIST = info.data;
-            CURRENTPLAY = 0;
-            updatePlayList(info.data);
-            AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
-            AUDIO.play();
-            // console.log('volume', AUDIO.volume);
-            $('#musicStatus').removeClass('glyphicon-play');
-            $('#musicStatus').addClass('glyphicon-pause');
+            songsPlay(info.data);
         });
     });
     
@@ -249,6 +241,20 @@ console.log('share...', info);
 
     });
 
+    //
+    $(document).on('change', '.lib-songs-select', function () {
+        var label = $(this).val();
+        var html = allSongsClassify(label);
+        $('.lib-songs-list ul').html(html);
+    });
+
+    //
+    $(document).on('click', '.lib-songs-play', function () {
+        var label = $('.lib-songs-select').val().toLocaleLowerCase();
+        var songs = getSongsByTag(label);
+        songsPlay(songs);
+    });  
+
 
     //
     AUDIO.onended = function () {
@@ -282,14 +288,14 @@ console.log('share...', info);
     }
 
     //
-    function homeRender(belong, info) {
+    function homeRender() {
+        var info = MUSIC.basicData.home;
         $('#containerNavContent').html(AppHTML.homeFrame(info));
-
     }
 
     // 
-    function libraryRender() {
-        $('#containerNavContent').html(AppHTML.libraryFrame(''));
+    function libraryRender() {        
+        $('#containerNavContent').html(AppHTML.libraryFrame(MUSIC.basicData.library));
 
     }
 
@@ -381,11 +387,44 @@ console.log('share...', info);
     function allSongsRender() {
    
         // var songs = info.data;
-        var html = '<ul class="list-group lib-song-seemore">';
-        if (!MUSIC.songs) {
+        var html = '<div class="lib-song-seemore"><div class="row lib-songs-option">\
+                        <div class="col-xs-6">\
+                            <select class="form-control lib-songs-select">\
+                                <option value="countryside">Countryside</option>\
+                                <option value="light">Light</option>\
+                                <option value="jazz">Jazz</option>\
+                                <option value="british">British</option>\
+                                <option value="rock">Rock</option>\
+                                <option value="classical">Classical</option>\
+                                <option value="electronic">Electronic</option>\
+                            </select>\
+                        </div>\
+                        <div class="col-xs-6" style="text-align: right;">\
+                            <span class="glyphicon glyphicon-random lib-songs-play"></span>\
+                        </div>\
+                    </div>';
+        html += '<div class="row lib-songs-list"><ul class="list-group">';
+
+        html += allSongsClassify('countryside');
+        
+        
+        
+        html += '</ul></div></div>';
+
+        $('#myModal').html(AppHTML.libSeeMore('song', html));
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+       
+    }
+
+    //
+    function allSongsClassify(label) {
+        var songs = getSongsByTag(label);
+        var html = '';
+        if (songs.length == 0) {
             html += '<li><div class="alert alert-danger" role="alert">Sorry, Nothing!</div></li>';
         } else {
-            MUSIC.songs.forEach(function (d, i) {
+            songs.forEach(function (d, i) {
                 var name = d.id + '&' + d.artist + '&' + d.name + '&' + d.image + '&' + d.url;
                 html += '<li class="list-group-item">\
                                 <div class="rank">\
@@ -402,34 +441,42 @@ console.log('share...', info);
                             </li>';
             });
         }
-        
-        
-        html += '</ul>';
 
-        $('#myModal').html(AppHTML.libSeeMore('song', html));
-        $('.lib-modal').animate({'marginLeft': '0'}, 500);
-        $('#myModal').modal('show');
-       
+        return html;
+    }
+
+    //
+    function getSongsByTag(label) {
+        var songs = [];
+        if (MUSIC.songs) {
+            MUSIC.songs.forEach(function (d, i) {
+                if (d.tags.indexOf(label) != -1) {
+                    songs.push(d);
+                }
+            });
+        }
+
+        return songs;
     }
 
     //
     function allAlbumsRender() {
         var html = '<div class="row lib-album-seemore">';
 
-        if (_.isEmpty(MUSIC.albums)) {
+        if (MUSIC.albums.length == 0) {
             html += '<div class="alert alert-danger" role="alert">Sorry, Nothing!</div>';
         } else {            
-            for (var item in MUSIC.albums) {
-                html += '<div class="col-xs-6 col-sm-4">\
+            MUSIC.albums.forEach(function (d, i) {
+                html += '<div class="col-xs-6 col-sm-4 song-play" name="albums-' + d.name + '">\
                             <div class="thumbnail">\
-                                <img src="./music' + MUSIC.albums[item].img + '" alt="...">\
+                                <img src="./music' + d.image + '" alt="...">\
                                 <div class="caption">\
-                                    <h5>' + item + '</h5>\
+                                    <h5>' + d.name + '</h5>\
                                     <p>taylor</p>\
                                 </div>\
                             </div>\
                         </div>';
-            }
+            });
         }
         
         html += '</div>';
@@ -444,15 +491,15 @@ console.log('share...', info);
     function allArtistsRender(info) {
         var html = '<div class="row lib-artist-seemore">';
 
-        if (_.isEmpty(MUSIC.artists)) {
+        if (MUSIC.artists.length == 0) {
             html += '<div class="alert alert-danger" role="alert">Sorry, Nothing!</div>';
         } else {
-            for (var item in MUSIC.artists) {
-                html += '<div class="col-xs-6 col-sm-4 lib-artist-seemore-item">\
-                            <img src="./music' + MUSIC.artists[item].img + '">\
-                            <p>' + item + '</p>\
+            MUSIC.artists.forEach(function (d, i) {
+                html += '<div class="col-xs-6 col-sm-4 lib-artist-seemore-item song-play" name="artists-' + d.name + '">\
+                            <img src="./music' + d.image + '">\
+                            <p>' + d.name + '</p>\
                         </div>';
-            }
+            });
         }
         
         html += '</div>';
@@ -461,5 +508,17 @@ console.log('share...', info);
         $('.lib-modal').animate({'marginLeft': '0'}, 500);
         $('#myModal').modal('show');
      
+    }
+
+    //
+    function songsPlay(data) {
+        PLAYLIST = data;
+        CURRENTPLAY = 0;
+        updatePlayList(data);
+        AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
+        AUDIO.play();
+        // console.log('volume', AUDIO.volume);
+        $('#musicStatus').removeClass('glyphicon-play');
+        $('#musicStatus').addClass('glyphicon-pause');
     }
 }());
