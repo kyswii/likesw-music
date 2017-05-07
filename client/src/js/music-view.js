@@ -188,7 +188,7 @@ console.log('label...', label);
         };
 
         MUSIC.collectSong(info, function (result) {
-            console.log('collection....');
+            console.log('collection....', result);
         });
     });
     
@@ -301,7 +301,14 @@ console.log('share...', info);
 
     //
     function foryouRender() {
-        $('#containerNavContent').html(AppHTML.foryouFrame());
+        var accountid = -1;
+        if ($('.navbar-brand-account-photo').attr('src').indexOf('default-account') == -1) {
+            accountid = parseInt($('.dropdow-menu-account-photo').attr('alt'));
+        }
+        MUSIC.fetchForYouData(accountid, function (data) {
+            // console.log('info....', result);
+            $('#containerNavContent').html(AppHTML.foryouFrame(data));
+        });
     }
 
     //

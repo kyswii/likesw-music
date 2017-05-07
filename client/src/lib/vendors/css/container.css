@@ -183,6 +183,9 @@
         -webkit-transform: scale(1.1);
         -moz-transform: scale(1.1);
         -o-transform: scale(1.1); }
+      .container-nav-content #libraryFrame .panel-group .panel #libArtistList .l-item img {
+        width: 100%;
+        border-radius: 50%; }
   .container-nav-content #libraryFrame .panel-group .see-more {
     text-align: right; }
     .container-nav-content #libraryFrame .panel-group .see-more .panel-title {

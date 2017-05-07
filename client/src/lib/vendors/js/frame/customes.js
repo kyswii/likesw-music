@@ -454,13 +454,13 @@
                                                 <span class="glyphicon glyphicon-menu-right"></span>\
                                             </div>\
                                             <div id="libArtistList">\
-                                                <div class="l-item song-play" name="artists-' + info.artists[0].name + '" style="width: 100px; height: 100px; border-radius: 50px;">' + info.artists[0].name + '</div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[1].name + '" style="width: 140px; height: 140px; border-radius: 70px;">' + info.artists[1].name + '</div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[2].name + '" style="width: 80px; height: 80px; border-radius: 40px;">' + info.artists[2].name + '</div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[3].name + '" style="width: 90px; height: 90px; border-radius: 45px;">' + info.artists[3].name + '</div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[4].name + '" style="width: 130px; height: 130px; border-radius: 65px;">' + info.artists[4].name + '</div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[5].name + '" style="width: 100px; height: 100px; border-radius: 50px;">' + info.artists[5].name + '</div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[6].name + '" style="width: 120px; height: 120px; border-radius: 60px;">' + info.artists[6].name + '</div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[0].name + '" style="width: 100px; height: 100px; border-radius: 50px;"><img src="./music' + info.artists[0].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[1].name + '" style="width: 140px; height: 140px; border-radius: 70px;"><img src="./music' + info.artists[1].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[2].name + '" style="width: 80px; height: 80px; border-radius: 40px;"><img src="./music' + info.artists[2].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[3].name + '" style="width: 90px; height: 90px; border-radius: 45px;"><img src="./music' + info.artists[3].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[4].name + '" style="width: 130px; height: 130px; border-radius: 65px;"><img src="./music' + info.artists[4].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[5].name + '" style="width: 100px; height: 100px; border-radius: 50px;"><img src="./music' + info.artists[5].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" name="artists-' + info.artists[6].name + '" style="width: 120px; height: 120px; border-radius: 60px;"><img src="./music' + info.artists[6].image + '" alt="..."></div>\
                                             </div>\
                                         </div>\
                                     </div>\
@@ -490,28 +490,65 @@
 
         //
         foryouFrame: function(info) {
+            var account = info.account;
+            var songs = info.songs;
+            var albums = info.albums;
+            var artists = info.artists;
+
+            var ac_html = '';
+            if (!account) {
+                ac_html += '<div class="col-sm-4 fy-user-img">\
+                                <img src="./images/q.jpg"　alt="No login">\
+                            </div>';
+            } else {
+                ac_html += '<div class="col-sm-4 fy-user-img">\
+                                <img src="./music' + account.photo + '">\
+                            </div>\
+                            <div class="col-sm-8 fy-user-info">\
+                                <div class="row">\
+                                    <span class="m-title">' + account.name + '</span>\
+                                </div>\
+                                <div class="row">\
+                                    <span class="label">\
+                                        <span class="glyphicon glyphicon-heart"></span>\
+                                        <span class="badge">' + account.collectSongs.length + '</span>\
+                                    </span>\
+                                    <span class="label">\
+                                        <span class="glyphicon glyphicon-share"></span>\
+                                        <span class="badge">' + account.shareSongs.length + '</span>\
+                                    </span>\
+                                </div>\
+                            </div>'
+            }
+            var s_html = '';
+            songs.forEach(function (d, i) {
+                s_html += '<li class="list-group-item">\
+                            <span class="m-list-rank">' + (i + 1) + '</span>\
+                            <div class="m-list-info">\
+                                <p>' + d.name + '</p>\
+                            </div>\
+                            <div class="m-list-option">\
+                                <span class="glyphicon glyphicon-heart"></span>\
+                                <span class="glyphicon glyphicon-share"></span>\
+                            </div>\
+                        </li>'
+            });
+            
+            var al_html = '';
+            albums.forEach(function (d, i) {
+                al_html += '<div class="fy-album-item">\
+                                <div class="fy-album-item-img"><img src="./music/' + d.image + '"></div>\
+                                <div class="fy-album-item-info">\
+                                    <p>' +　d.name　+ '</p>\
+                                    <p>' + d.tags + '</p>\
+                                </div>\
+                            </div>';
+            });
             return (
                 '<div id="foryouFrame">\
-                    <div class="row">\
-                        <div class="col-sm-4 fy-user-img">\
-                            <img src="./images/q.jpg">\
-                        </div>\
-                        <div class="col-sm-8 fy-user-info">\
-                            <div class="row">\
-                                <span class="m-title">Taylor Swift</span>\
-                            </div>\
-                            <div class="row">\
-                                <span class="label">\
-                                    <span class="glyphicon glyphicon-heart"></span>\
-                                    <span class="badge">41</span>\
-                                </span>\
-                                <span class="label">\
-                                    <span class="glyphicon glyphicon-share"></span>\
-                                    <span class="badge">99</span>\
-                                </span>\
-                            </div>\
-                        </div>\
-                    </div>\
+                    <div class="row">'
+                        + ac_html +
+                    '</div>\
                     <div class="row">\
                         <p class="m-title"><span>For You</span></p>\
                         <div class="col-sm-7 fy-song-list">\
@@ -520,196 +557,20 @@
                                     <span class="glyphicon glyphicon-random"></span>\
                                     <span class="">See More</span>\
                                 </div>\
-                                <ul class="list-group">\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">1</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">2</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">3</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">4</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">5</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">6</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">7</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">8</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">9</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">10</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">11</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">12</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">13</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">14</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                    <li class="list-group-item">\
-                                        <span class="m-list-rank">15</span>\
-                                        <div class="m-list-info">\
-                                            <p>Cras justo odio</p>\
-                                        </div>\
-                                        <div class="m-list-option">\
-                                            <span class="glyphicon glyphicon-heart"></span>\
-                                            <span class="glyphicon glyphicon-share"></span>\
-                                        </div>\
-                                    </li>\
-                                </ul>\
+                                <ul class="list-group">'
+                                    + s_html +
+                                '</ul>\
                             </div>\
                         </div>\
                         <div class="col-sm-5 fy-song-intro">\
                             <div class="m-thumbnail">\
                                 <div class="m-thumbnail-img">\
-                                    <img src="./images/q.jpg">\
+                                    <img src="./music/' + artists[0].image + '">\
                                 </div>\
                                 <div class="caption">\
-                                    <div class="fy-album">\
-                                        <div class="fy-album-item">\
-                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
-                                            <div class="fy-album-item-info">\
-                                                <p>Taylor Swift</p>\
-                                                <p>Swift</p>\
-                                            </div>\
-                                        </div>\
-                                        <div class="fy-album-item">\
-                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
-                                            <div class="fy-album-item-info">\
-                                                <p>Taylor Swift</p>\
-                                                <p>Swift</p>\
-                                            </div>\
-                                        </div>\
-                                        <div class="fy-album-item">\
-                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
-                                            <div class="fy-album-item-info">\
-                                                <p>Taylor Swift</p>\
-                                                <p>Swift</p>\
-                                            </div>\
-                                        </div>\
-                                        <div class="fy-album-item">\
-                                            <div class="fy-album-item-img"><img src="./images/q.jpg"></div>\
-                                            <div class="fy-album-item-info">\
-                                                <p>Taylor Swift</p>\
-                                                <p>Swift</p>\
-                                            </div>\
-                                        </div>\
-                                    </div>\
+                                    <div class="fy-album">'
+                                        + al_html +
+                                    '</div>\
                                 </div>\
                             </div>\
                         </div>\

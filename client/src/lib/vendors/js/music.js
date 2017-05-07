@@ -157,6 +157,21 @@
         });
     }
 
+    //
+    Music.prototype.fetchForYouData = function (id, callback) {
+        
+        $.ajax('/music/foryou/' + id + '/load', {
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (result) {
+                callback(result);
+            },
+            error: function (err) {
+                console.log('err...');
+            }
+        })
+    }
+
 
 
     window.Music = Music;

@@ -14,7 +14,8 @@
     "mysql": "^2.12.0",
     "node-mysql": "0.4.2",
     "socket.io": "1.5.1",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "^0.1.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "should": "^7.1.0",

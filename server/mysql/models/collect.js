@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('underscore');
+
 var pool = require('../pool');
 
 
@@ -14,6 +16,11 @@ CollectAct.collectSong = function (req, res) {
             if (err) throw err;
 
             var info = JSON.parse(result[0].collect_song);
+     
+            if (_.indexOf(info, req.body.songID) != -1) {
+                res.json('Exited!');
+                return;
+            }
             info.push(req.body.songID);
             console.log('collect....', info);
             conn.query('UPDATE account SET collect_song = ? WHERE id = ?', [JSON.stringify(info), req.body.accountID], function () {
