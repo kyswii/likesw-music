@@ -281,6 +281,53 @@
                 }
             }
         }
+
+        .fy-person {
+            &>.row {
+                margin-left: 0;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .collect-item {
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 4px;
+                }
+
+                .collect-item-info {
+                    display: inline-block;
+                    position: absolute;
+                    margin-left: 20px;
+
+                    p {
+                        margin-bottom: 0;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .share-item {
+                margin: 15px 20px;
+                padding: 15px;
+                background: rgba(249, 225, 213, 0.4);
+                border-radius: 5px;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 4px;
+                }
+
+                .share-item-info {
+                    display: inline-block;
+                    position: absolute;
+                    margin-left: 20px;
+                }
+            }
+        }
         
     }
 }

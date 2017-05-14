@@ -19,6 +19,9 @@
 
         //
         this.artists = {};
+
+        //
+        this.foryouData = null;
     };
 
     //
@@ -160,7 +163,25 @@
     //
     Music.prototype.fetchForYouData = function (id, callback) {
         
+        var that = this;
         $.ajax('/music/foryou/' + id + '/load', {
+            type: 'GET',
+            contentType: 'application/json',
+            success: function (result) {
+                that.foryouData = result;
+                callback(result);
+            },
+            error: function (err) {
+                console.log('err...');
+            }
+        })
+    }
+
+    //
+    Music.prototype.messagesThumbsUp = function (id, callback) {
+        var that = this;
+
+        $.ajax('/music/messages/' + id + '/thumbsup', {
             type: 'GET',
             contentType: 'application/json',
             success: function (result) {

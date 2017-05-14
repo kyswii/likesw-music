@@ -175,7 +175,7 @@ console.log('label...', label);
     });
 
     //
-    $(document).on('click', '.glyphicon-heart', function() {
+    $(document).on('click', '.glyphicon-heart-collect', function() {
         if (!isLogin()) {
             return;
         }
@@ -194,7 +194,7 @@ console.log('label...', label);
     
     //
     //
-    $(document).on('click', '.glyphicon-share', function() {
+    $(document).on('click', '.glyphicon-share-share', function() {
         // console.log($(this).attr('name'));
         if (!isLogin()) {
             return;
@@ -255,6 +255,62 @@ console.log('share...', info);
         songsPlay(songs);
     });  
 
+    //
+    $(document).on('click', '#commentRefresh', function () {
+        MUSIC.messagesLoadReq(function (info) {
+            messagesRender(info);
+            $('#comRefreshAlert').html('<div class="alert alert-warning" role="alert">Has been refreshed!</div>');
+            $('#comRefreshAlert').slideDown();
+            setTimeout(function () {
+                $('#comRefreshAlert').slideUp();
+            }, 1500);
+        });
+    });
+
+    //
+    $(document).on('click', '#foryouSongsPlay', function () {
+        if (!MUSIC.foryouData.songs) {
+            return;
+        }
+
+        songsPlay(MUSIC.foryouData.songs);
+    });
+
+    $(document).on('click', '.lib-top-play', function () {
+        
+        songsPlay(MUSIC.basicData.library.songs);
+    });
+
+    //
+    $(document).on('click', '.fy-account-songs', function () {
+        var name = $(this).attr('name');
+        console.log('this.......', name);
+        if (name == 'account-collect') {
+            personalCollectSongsShow();
+        }
+
+        if (name == 'account-share') {
+            personalShareSongsShow();
+        }
+    });
+
+    //
+    $(document).on('click', '.person-songs-play', function () {
+        var songs = MUSIC.foryouData.account.collectSongs;
+        songsPlay(songs);
+    });
+
+    //
+    $(document).on('click', '.messages-thumbs-up', function () {
+        var id = parseInt($(this).attr('name'));
+        var num = parseInt($(this).next('.thumbs-up-num').html());
+
+        var that = this;
+        MUSIC.messagesThumbsUp(id, function (result) {
+            console.log('thtt...', $(that).next('.thumbs-up-num').html());
+            $(that).next('.thumbs-up-num').html((num+1));
+        });
+    });
 
     //
     AUDIO.onended = function () {
@@ -297,6 +353,13 @@ console.log('share...', info);
     function libraryRender() {        
         $('#containerNavContent').html(AppHTML.libraryFrame(MUSIC.basicData.library));
 
+        $('.l-item').tooltip({
+            placement: 'top',
+            title: function () {
+                return $(this).attr('name').substring(8);
+            }
+        });
+
     }
 
     //
@@ -306,7 +369,7 @@ console.log('share...', info);
             accountid = parseInt($('.dropdow-menu-account-photo').attr('alt'));
         }
         MUSIC.fetchForYouData(accountid, function (data) {
-            // console.log('info....', result);
+            console.log('info....', data);
             $('#containerNavContent').html(AppHTML.foryouFrame(data));
         });
     }
@@ -334,8 +397,8 @@ console.log('share...', info);
             group += '<li class="list-group-item">\
                         <img class="list-group-item-img" src="./music/' + data[item].image + '">&nbsp;&nbsp;\
                         <span>' + data[item].artist + '-' + data[item].name + '</span>\
-                        <span class="glyphicon glyphicon-share list-group-item-option" name="' + name + '"></span>\
-                        <span class="glyphicon glyphicon-heart list-group-item-option" name="' + name + '"></span>\
+                        <span class="glyphicon glyphicon-share glyphicon-share-share list-group-item-option" name="' + name + '"></span>\
+                        <span class="glyphicon glyphicon-heart glyphicon-heart-collect list-group-item-option" name="' + name + '"></span>\
                     </li>'
         }
 
@@ -407,7 +470,7 @@ console.log('share...', info);
                             </select>\
                         </div>\
                         <div class="col-xs-6" style="text-align: right;">\
-                            <span class="glyphicon glyphicon-random lib-songs-play"></span>\
+                            <span class="glyphicon glyphicon-headphones lib-songs-play"></span>\
                         </div>\
                     </div>';
         html += '<div class="row lib-songs-list"><ul class="list-group">';
@@ -442,8 +505,8 @@ console.log('share...', info);
                                     <p>' + d.artist + '</p>\
                                 </div>\
                                 <div class="song-option">\
-                                    <span class="glyphicon glyphicon-heart" name="' + name + '"></span>\
-                                    <span class="glyphicon glyphicon-share" name="' + name + '"></span>\
+                                    <span class="glyphicon glyphicon-heart glyphicon-heart-collect" name="' + name + '"></span>\
+                                    <span class="glyphicon glyphicon-share glyphicon-share-share" name="' + name + '"></span>\
                                 </div>\
                             </li>';
             });
@@ -517,6 +580,64 @@ console.log('share...', info);
      
     }
 
+
+
+    function personalCollectSongsShow() {
+        
+        var html = '<div class="fy-person"><div class="row">\
+                        <div class="col-xs-6">\
+                        </div>\
+                        <div class="col-xs-6" style="text-align: right;">\
+                            <span class="glyphicon glyphicon-headphones person-songs-play"></span>\
+                        </div>\
+                    </div>';
+        html += '<div class="row"><ul class="list-group">';
+
+        MUSIC.foryouData.account.collectSongs.forEach(function (d, i) {
+            html += '<li class="list-group-item collect-item">\
+                        <img src="./music' + d.image + '">\
+                        <div class="collect-item-info">\
+                            <p>' + d.name + '</p>\
+                            <p>' + d.artist + '</p>\
+                        </div>\
+                    </li>'
+        });     
+        
+        html += '</ul></div></div>';
+
+        $('#myModal').html(AppHTML.libSeeMore('Collect', html));
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+    }
+
+    function personalShareSongsShow() {
+     
+        var html = '<div class="fy-person"><div class="row">\
+                    </div>';
+        html += '<div class="row"><ul class="list-group">';
+
+        MUSIC.foryouData.account.shareSongs.forEach(function (d, i) {
+            html += '<li class="list-group-item">\
+                        <h4 class="list-group-item-heading">' + d.time + '</h4>\
+                        <p class="list-group-item-text">' + d.comment + '</p>\
+                        <div class="share-item">\
+                            <img src="./music' + d.song.image + '">\
+                            <div class="share-item-info">\
+                                <p>' + d.song.name + '</p>\
+                                <p>' + d.song.artist + '</p>\
+                            </div>\
+                        </div>\
+                    </li>';
+        });     
+        
+        html += '</ul></div></div>';
+        
+
+        $('#myModal').html(AppHTML.libSeeMore('Share', html));
+        $('.lib-modal').animate({'marginLeft': '0'}, 500);
+        $('#myModal').modal('show');
+    }
+
     //
     function songsPlay(data) {
         PLAYLIST = data;
@@ -528,4 +649,6 @@ console.log('share...', info);
         $('#musicStatus').removeClass('glyphicon-play');
         $('#musicStatus').addClass('glyphicon-pause');
     }
+
+    window.foryouRender = foryouRender;
 }());

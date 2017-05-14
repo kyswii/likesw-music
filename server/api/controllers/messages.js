@@ -15,4 +15,13 @@ MessagesApi.loadMessages = wrap(function* (req, res, next) {
     }
 });
 
+MessagesApi.thumbsUp = wrap(function* (req, res, next) {
+    console.log('id....////');
+    try {
+        MessagesAct.thumbsUp(req, res);
+    } catch (err) {
+        res.json(err);
+    }
+});
+
 module.exports = MessagesApi;

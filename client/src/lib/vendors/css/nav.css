@@ -229,6 +229,34 @@
       .lib-modal .lib-modal-body .lib-artist-seemore .lib-artist-seemore-item p {
         font-weight: 600;
         margin-top: 10px; }
+    .lib-modal .lib-modal-body .fy-person > .row {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 20px; }
+    .lib-modal .lib-modal-body .fy-person .collect-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px; }
+    .lib-modal .lib-modal-body .fy-person .collect-item .collect-item-info {
+      display: inline-block;
+      position: absolute;
+      margin-left: 20px; }
+      .lib-modal .lib-modal-body .fy-person .collect-item .collect-item-info p {
+        margin-bottom: 0;
+        line-height: 20px; }
+    .lib-modal .lib-modal-body .fy-person .share-item {
+      margin: 15px 20px;
+      padding: 15px;
+      background: rgba(249, 225, 213, 0.4);
+      border-radius: 5px; }
+      .lib-modal .lib-modal-body .fy-person .share-item img {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px; }
+      .lib-modal .lib-modal-body .fy-person .share-item .share-item-info {
+        display: inline-block;
+        position: absolute;
+        margin-left: 20px; }
 
 @media (max-width: 599px) {
   .lib-modal {

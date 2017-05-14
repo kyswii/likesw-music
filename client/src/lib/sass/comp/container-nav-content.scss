@@ -117,20 +117,47 @@ $m-theme-color: #fc2347;
                                 left: 0;
                                 align-items: center;
                                 justify-content: center;
+                                background: rgba(0,0,0,0.2);
 
-                                .glyphicon {
-                                    font-size: 80px;
-                                    color: transparent;
+                                // .glyphicon {
+                                //     font-size: 80px;
+                                //     color: rgba(255,255,255,0.5);
+                                // }
+                                h2 {
+                                    color: #fc2347;
+                                    font-weight: bold;
+                                    transition: transform 0.5s;
+                                    -webkit-transition: -webkit-transform 0.5s;
+                                    -moz-transition: -moz-transform 0.5s;
+                                    -o-transition: -o-transform 0.5s;
                                 }
-                                
+
+                                p {
+                                    color: #aaaaaa;
+                                    font-size: 14px;
+                                    text-decoration: underline;
+                                    text-align: center;
+                                    display: none;
+                                }
 
                                 &:hover {
                                     background: rgba(0,0,0,0.3);
 
-                                    &>span {
-                                        color: rgba(255,255,255,0.5);
+                                    h2 {
+                                        transform: scale(1.2);
+                                        -webkit-transform: scale(1.2);
+                                        -moz-transform: scale(1.2);
+                                        -o-transform: scale(1.2);
                                     }
                                 }
+
+                                // &:hover {
+                                //     background: rgba(0,0,0,0.3);
+
+                                //     &>span {
+                                //         color: rgba(255,255,255,0.5);
+                                //     }
+                                // }
                             }
                             
                         }
@@ -217,6 +244,29 @@ $m-theme-color: #fc2347;
                                 color: #666666;
                             }
                         }
+
+                        .lib-album-item-play {
+                            position: absolute;
+                            display: flex;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            align-items: center;
+                            justify-content: center;
+
+                            span {
+                                color: transparent;
+                                font-size: 25px;
+                            }
+
+                            &:hover {
+                                background: rgba(0,0,0,0.2);
+                                span {
+                                    color: #cccccc;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -241,12 +291,19 @@ $m-theme-color: #fc2347;
                         -moz-transition: -moz-transform 0.5s;
                         -o-transition: -o-transform 0.5s;
 
+                        span {
+                            color: transparent;
+                        }
+
                         &:hover {
                             transform: scale(1.1);
                             -webkit-transform: scale(1.1);
                             -moz-transform: scale(1.1);
                             -o-transform: scale(1.1);
                             
+                            span {
+                                color: #ffffff;
+                            }
                         }
 
                         img {
@@ -259,6 +316,7 @@ $m-theme-color: #fc2347;
             }
 
             .see-more {
+                display: none;
                 text-align: right;
 
                 .panel-title {
@@ -475,6 +533,10 @@ $m-theme-color: #fc2347;
             margin-left: 0;
             margin-right: 0;
         }
+
+        #comRefreshAlert {
+            display: none;
+        }
         &>.row {
             padding: 15px;
             border-bottom: solid 2px #dddddd;
@@ -585,7 +647,7 @@ $m-theme-color: #fc2347;
                     margin: 20px 0 20px 80px;
                     text-align: left;
                     span {
-                        margin-right: 30px;
+                        margin-right: 6px;
                         color: #aaaaaa;
                         cursor: pointer;
 
@@ -594,13 +656,14 @@ $m-theme-color: #fc2347;
                         -moz-transition: -moz-transform 0.5s;
                         -o-transition: -o-transform 0.5s;
 
-                        &:hover {
+                        &.glyphicon:hover {
                             transform: scale(2);
                             -webkit-transform: scale(2);
                             -moz-transform: scale(2);
                             -o-transform: scale(2);
                         }
                     }
+
                 }
 
                 @media (max-width: 767px) {

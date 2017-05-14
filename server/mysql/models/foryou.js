@@ -85,13 +85,21 @@ function getDataByAccount(accountId, data, conn, callback) {
    
         getCollectSongs(collect_song, conn, function (songs) {
             data.account = _.extend(data.account, {collectSongs: songs});
+            console.log('data.account....0', data.account);
             conn.query('SELECT * FROM song_share WHERE accountID = ?', accountId, function (err, ss_result) {
-                data.account = _.extend(data.account, {shareSongs: ss_result});
+                if (err) throw err;
 
-                getDataSongs(collect_song, conn, function (info) {
-                    data.songs = info;
-                    callback(data);
-                }); 
+                data.account = _.extend(data.account, {shareSongs: []});
+                
+                getSongInfo(ss_result, conn, function (ss_result_0) {
+                    data.account.shareSongs = ss_result_0;
+
+                    getDataSongs(collect_song, conn, function (info) {
+                        data.songs = info;
+                        callback(data);
+                    });
+                });              
+
             });
         })
         
@@ -104,6 +112,11 @@ function getDataByAccount(accountId, data, conn, callback) {
 //
 function getCollectSongs(collect_song, conn, callback) {
     var songs = [];
+    if (collect_song.length == 0) {
+        callback(songs);
+        return;
+    }
+
     collect_song.forEach(function (d, i) {
         conn.query('SELECT * FROM songs WHERE id = ?', d, function (err, result) {
             if (err) throw err;
@@ -118,9 +131,35 @@ function getCollectSongs(collect_song, conn, callback) {
 }
 
 //
+function getSongInfo(ss_result, conn, callback) {
+    var length = ss_result.length;
+
+    if (length == 0) {
+        callback(ss_result);
+        return;
+    }
+
+    ss_result.forEach(function (d, i) {
+        conn.query('SELECT * FROM songs WHERE id = ?', d.songID, function (err, result) {
+            if (err) throw err;
+
+            d = _.extend(d, {song: result[0]});
+
+            if ((i + 1) == length) {
+                callback(ss_result);
+            }
+        });
+    });
+}
+
+//
 function getDataSongs(collect_song, conn, callback) {
     var songJson = {};
     var songJsonLen = 0;
+    if (collect_song.length == 0) {
+        callback(collect_song);
+        return;
+    }
     collect_song.forEach(function (d, i) {
         conn.query('SELECT * FROM songs WHERE id = ?', d, function (err, son_result) {
             if (err) throw err;

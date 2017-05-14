@@ -117,6 +117,10 @@
 
         $('#myModal').modal('hide');
 
+        if (document.getElementById('foryouFrame')) {
+            foryouRender();
+        }        
+
         $('.account-settings').on('click', function () {
             accountInfoChange(info);
         });

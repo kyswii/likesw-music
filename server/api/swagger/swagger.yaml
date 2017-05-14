@@ -312,6 +312,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
             
+  /messages/{id}/thumbsup:
+    x-swagger-router-controller: messages
+    get:
+      tags:
+        - messages
+      description: thump up
+      operationId: thumbsUp
+      parameters:
+        - name: id
+          in: path
+          description: song share id
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      
+            
   /foryou/{id}/load:
     x-swagger-router-controller: foryou
     get:

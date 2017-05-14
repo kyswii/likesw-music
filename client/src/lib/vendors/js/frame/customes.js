@@ -335,6 +335,9 @@
                                         <p class="lib-album-name">' + d.name + '</p>\
                                         <p class="lib-album-info">' + d.tags + '</p>\
                                     </div>\
+                                    <div class="lib-album-item-play">\
+                                        <span class="glyphicon glyphicon-headphones"></span>\
+                                    </div>\
                                 </div>'
                 });
             }
@@ -355,14 +358,18 @@
                                         <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
                                             <div class="lib-play song-play" name="hot-songs">\
-                                                <span class="glyphicon glyphicon-play-circle"></span>\
+                                                <div>\
+                                                    <h2>TOP SONGS</h2>\
+                                                    <p>Play ></p>\
+                                                </div>\
                                             </div>\
                                         </a>\
                                     </div>\
                                     <div class="col-sm-7 lib-content">\
                                         <div class="lib-content-item">\
                                             <div class="lib-theme-option">\
-                                                <span class="glyphicon glyphicon-menu-right"></span>\
+                                                <span class="glyphicon glyphicon-headphones lib-top-play"></span>\
+                                                <span class="glyphicon glyphicon-menu-right" style="display: none;"></span>\
                                             </div>\
                                             <div>\
                                                 <ul class="list-group" id="libSongList">' 
@@ -400,14 +407,17 @@
                                         <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
                                             <div class="lib-play song-play" name="hot-albums">\
-                                                <span class="glyphicon glyphicon-play-circle"></span>\
+                                                <div>\
+                                                    <h2>TOP ALBUMS</h2>\
+                                                    <p>Play ></p>\
+                                                </div>\
                                             </div>\
                                         </a>\
                                     </div>\
                                     <div class="col-sm-7 lib-content">\
                                         <div class="lib-content-item">\
                                             <div class="lib-theme-option">\
-                                                <span class="glyphicon glyphicon-menu-right"></span>\
+                                                <span class="glyphicon glyphicon-menu-right" style="display: none;"></span>\
                                             </div>\
                                             <div class="row" id="libAlbumList">'
                                                 + al_html +
@@ -444,23 +454,40 @@
                                         <a href="javascript:;" class="thumbnail">\
                                             <img src="./images/q.jpg" alt="">\
                                             <div class="lib-play song-play" name="hot-artist">\
-                                                <span class="glyphicon glyphicon-play-circle"></span>\
+                                                <div>\
+                                                    <h2>TOP ARTISTS</h2>\
+                                                    <p>Play ></p>\
+                                                </div>\
                                             </div>\
                                         </a>\
                                     </div>\
                                     <div class="col-sm-7 lib-content">\
                                         <div class="lib-content-item">\
                                             <div class="lib-theme-option">\
-                                                <span class="glyphicon glyphicon-menu-right"></span>\
+                                                <span class="glyphicon glyphicon-menu-right" style="display: none;"></span>\
                                             </div>\
                                             <div id="libArtistList">\
-                                                <div class="l-item song-play" name="artists-' + info.artists[0].name + '" style="width: 100px; height: 100px; border-radius: 50px;"><img src="./music' + info.artists[0].image + '" alt="..."></div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[1].name + '" style="width: 140px; height: 140px; border-radius: 70px;"><img src="./music' + info.artists[1].image + '" alt="..."></div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[2].name + '" style="width: 80px; height: 80px; border-radius: 40px;"><img src="./music' + info.artists[2].image + '" alt="..."></div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[3].name + '" style="width: 90px; height: 90px; border-radius: 45px;"><img src="./music' + info.artists[3].image + '" alt="..."></div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[4].name + '" style="width: 130px; height: 130px; border-radius: 65px;"><img src="./music' + info.artists[4].image + '" alt="..."></div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[5].name + '" style="width: 100px; height: 100px; border-radius: 50px;"><img src="./music' + info.artists[5].image + '" alt="..."></div>\
-                                                <div class="l-item song-play" name="artists-' + info.artists[6].name + '" style="width: 120px; height: 120px; border-radius: 60px;"><img src="./music' + info.artists[6].image + '" alt="..."></div>\
+                                                <div class="l-item song-play" id="lItem-0" name="artists-' + info.artists[0].name + '" style="width: 100px; height: 100px; border-radius: 50px;">\
+                                                    <img src="./music' + info.artists[0].image + '" alt="...">\
+                                                </div>\
+                                                <div class="l-item song-play" id="lItem-1" name="artists-' + info.artists[1].name + '" style="width: 140px; height: 140px; border-radius: 70px;">\
+                                                    <img src="./music' + info.artists[1].image + '" alt="...">\
+                                                </div>\
+                                                <div class="l-item song-play" id="lItem-2" name="artists-' + info.artists[2].name + '" style="width: 80px; height: 80px; border-radius: 40px;">\
+                                                    <img src="./music' + info.artists[2].image + '" alt="...">\
+                                                </div>\
+                                                <div class="l-item song-play" id="lItem-3" name="artists-' + info.artists[3].name + '" style="width: 90px; height: 90px; border-radius: 45px;">\
+                                                    <img src="./music' + info.artists[3].image + '" alt="...">\
+                                                </div>\
+                                                <div class="l-item song-play" id="lItem-4" name="artists-' + info.artists[4].name + '" style="width: 130px; height: 130px; border-radius: 65px;">\
+                                                    <img src="./music' + info.artists[4].image + '" alt="...">\
+                                                </div>\
+                                                <div class="l-item song-play" id="lItem-5" name="artists-' + info.artists[5].name + '" style="width: 100px; height: 100px; border-radius: 50px;">\
+                                                    <img src="./music' + info.artists[5].image + '" alt="...">\
+                                                </div>\
+                                                <div class="l-item song-play" id="lItem-6" name="artists-' + info.artists[6].name + '" style="width: 120px; height: 120px; border-radius: 60px;">\
+                                                    <img src="./music' + info.artists[6].image + '" alt="...">\
+                                                </div>\
                                             </div>\
                                         </div>\
                                     </div>\
@@ -509,11 +536,11 @@
                                     <span class="m-title">' + account.name + '</span>\
                                 </div>\
                                 <div class="row">\
-                                    <span class="label">\
+                                    <span class="label fy-account-songs" name="account-collect">\
                                         <span class="glyphicon glyphicon-heart"></span>\
                                         <span class="badge">' + account.collectSongs.length + '</span>\
                                     </span>\
-                                    <span class="label">\
+                                    <span class="label fy-account-songs" name="account-share">\
                                         <span class="glyphicon glyphicon-share"></span>\
                                         <span class="badge">' + account.shareSongs.length + '</span>\
                                     </span>\
@@ -522,21 +549,22 @@
             }
             var s_html = '';
             songs.forEach(function (d, i) {
+                var name = d.id + '&' + d.artist + '&' + d.name + '&' + d.image + '&' + d.url;
                 s_html += '<li class="list-group-item">\
                             <span class="m-list-rank">' + (i + 1) + '</span>\
                             <div class="m-list-info">\
                                 <p>' + d.name + '</p>\
                             </div>\
                             <div class="m-list-option">\
-                                <span class="glyphicon glyphicon-heart"></span>\
-                                <span class="glyphicon glyphicon-share"></span>\
+                                <span class="glyphicon glyphicon-heart glyphicon-heart-collect" name="' + name + '"></span>\
+                                <span class="glyphicon glyphicon-share glyphicon-share-share" name="' + name + '"></span>\
                             </div>\
                         </li>'
             });
             
             var al_html = '';
             albums.forEach(function (d, i) {
-                al_html += '<div class="fy-album-item">\
+                al_html += '<div class="fy-album-item song-play" name="albums-' + d.name + '">\
                                 <div class="fy-album-item-img"><img src="./music/' + d.image + '"></div>\
                                 <div class="fy-album-item-info">\
                                     <p>' +　d.name　+ '</p>\
@@ -554,8 +582,8 @@
                         <div class="col-sm-7 fy-song-list">\
                             <div class="m-list-group">\
                                 <div class="m-list-group-option">\
-                                    <span class="glyphicon glyphicon-random"></span>\
-                                    <span class="">See More</span>\
+                                    <span class="glyphicon glyphicon-headphones" id="foryouSongsPlay"></span>\
+                                    <span class="" style="display: none;">See More</span>\
                                 </div>\
                                 <ul class="list-group">'
                                     + s_html +
@@ -564,7 +592,7 @@
                         </div>\
                         <div class="col-sm-5 fy-song-intro">\
                             <div class="m-thumbnail">\
-                                <div class="m-thumbnail-img">\
+                                <div class="m-thumbnail-img song-play" name="artists-' + artists[0].name + '">\
                                     <img src="./music/' + artists[0].image + '">\
                                 </div>\
                                 <div class="caption">\
@@ -604,9 +632,11 @@
                             </div>\
                         </div>\
                         <div class="row me-option">\
-                            <span class="glyphicon glyphicon-heart"></span>\
-                            <span class="glyphicon glyphicon-share"></span>\
-                            <span class="glyphicon glyphicon-comment"></span>\
+                            <span class="glyphicon glyphicon-thumbs-up messages-thumbs-up" name="' + d.id + '"></span>\
+                            <span class="thumbs-up-num">' + d.sumCollect + '</span>\
+                            <span class="glyphicon glyphicon-heart glyphicon-heart-collect" style="display: none;"></span>\
+                            <span class="glyphicon glyphicon-share glyphicon-share-share" style="display: none;"></span>\
+                            <span class="glyphicon glyphicon-comment" style="display: none;"></span>\
                         </div>\
                     </div>'
             });
@@ -616,9 +646,11 @@
                         <div class="me-header">\
                             <p class="me-title">Messages</p>\
                             <p class="me-refresh">\
-                                <span class="glyphicon glyphicon-refresh"></span>\
+                                <span class="glyphicon glyphicon-refresh" id="commentRefresh"></span>\
                             </p>\
                         </div>\
+                    </div>\
+                    <div id="comRefreshAlert">\
                     </div>'
                     + html
                 + '</div>'
