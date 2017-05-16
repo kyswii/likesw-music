@@ -193,6 +193,18 @@
         })
     }
 
+    //
+    Music.prototype.exploreSongs = function (value, callback) {
+        var songs = [];
+        this.songs.forEach(function (d, i) {
+            if (d.name.toLocaleLowerCase().indexOf(value) != -1 || d.artist.toLocaleLowerCase().indexOf(value) != -1) {
+                songs.push(d);
+            }
+        });
+
+        callback(songs);
+    }
+
 
 
     window.Music = Music;

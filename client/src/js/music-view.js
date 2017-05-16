@@ -10,6 +10,8 @@
     var PLAYLIST = null;
     var CURRENTPLAY = 0;
 
+    var MODAL_ID = null;
+
     var PROCESS_INTERVAL = null;
     var PROCESS_TIME = 100;
 
@@ -30,7 +32,7 @@
             'library': 'library',
             'foryou': 'foryou',
             'messages': 'messages',
-            'playlist': 'playlist'
+            'explore': 'explore'
         },
 
         home: function () {
@@ -60,9 +62,9 @@
             });
         },
 
-        playlist: function () {
+        explore: function () {
             // MUSIC.songsLoadReq('foryou', function (belong, info) {
-                playlistRender();
+                exploreRender();
             // });
         }
     });
@@ -186,9 +188,11 @@ console.log('label...', label);
             songID: songid,
             accountID: accountid
         };
-
+        
+        var that = this;
         MUSIC.collectSong(info, function (result) {
             console.log('collection....', result);
+            $(that).css("color", "#fc2347");
         });
     });
     
@@ -201,13 +205,25 @@ console.log('label...', label);
         }
 
         var arr = $(this).attr('name').split('&');
+
+        $('.modal').each(function () {
+            if ($(this).hasClass('in')) {
+                MODAL_ID = $(this).attr('id');
+            }
+        });
         
         songShareComment(arr);
 
+        if (MODAL_ID) {
+            $('#' + MODAL_ID).css('display', 'none');
+        }
     });
 
     //
     $(document).on('click', '.alert-close', function () {
+        if (MODAL_ID) {
+            $('#' + MODAL_ID).css('display', 'block');
+        }
         $('.alert-bg').css('display', 'none');
     });
 
@@ -215,16 +231,20 @@ console.log('label...', label);
     $(document).on('click', '.share-publish', function () {
         var songid = parseInt($(this).attr('name').substring(10));
         var accountid = parseInt($('.dropdow-menu-account-photo').attr('alt'));
+        var comment = $('#shareComment').val();
         var time = (new Date()).getFullYear() + '-' + ((new Date()).getMonth() + 1) + '-' + (new Date()).getDate();
         var info = {
             songID: songid,
             accountID: accountid,
-            comment: 'comment',
+            comment: comment,
             time: time
         };
 console.log('share...', info);
         MUSIC.publishComment(info, function (result) {
             console.log('save......', result);
+            if (MODAL_ID) {
+                $('#' + MODAL_ID).css('display', 'block');
+            }
             $('.alert-bg').css('display', 'none');
         });
     });
@@ -313,6 +333,19 @@ console.log('share...', info);
     });
 
     //
+    $(document).on('click', '.explore-search', function () {
+        var value = $('.explore-search-value').val().toLocaleLowerCase();
+        if (!value) {
+            return;
+        }
+console.log('value.....', value);
+        MUSIC.exploreSongs(value, function (data) {
+            exploreSongsRender(data);
+        });
+    });
+
+
+    //
     AUDIO.onended = function () {
         console.log('ended......');
         if (CURRENTPLAY + 1 < PLAYLIST.length) {
@@ -356,8 +389,9 @@ console.log('share...', info);
         $('.l-item').tooltip({
             placement: 'top',
             title: function () {
-                return $(this).attr('name').substring(8);
-            }
+                return '<div>' + $(this).attr('name').substring(8) + '&nbsp;&nbsp;<span class="glyphicon glyphicon-headphones"></span></div>';
+            },
+            html: true,
         });
 
     }
@@ -380,8 +414,8 @@ console.log('share...', info);
     }
 
     //
-    function playlistRender() {
-        $('#containerNavContent').html(AppHTML.playlistFrame());
+    function exploreRender() {
+        $('#containerNavContent').html(AppHTML.exploreFrame(MUSIC.basicData.library.songs));
     }
 
     //
@@ -441,7 +475,7 @@ console.log('share...', info);
             </div>\
             <div class="row m-alert-share">\
                 <form>\
-                    <textarea class="form-control" placeholder="Your Comment" rows="3"></textarea>\
+                    <textarea class="form-control" id="shareComment" placeholder="Your Comment" rows="3"></textarea>\
                 </form>\
             </div>'
         );
@@ -648,6 +682,28 @@ console.log('share...', info);
         // console.log('volume', AUDIO.volume);
         $('#musicStatus').removeClass('glyphicon-play');
         $('#musicStatus').addClass('glyphicon-pause');
+    }
+
+    //
+    function exploreSongsRender(data) {
+        var html = '<ul class="list-group">';
+        if (data.length == 0) {
+            html += '<li class="list-group-item"><span class="glyphicon glyphicon-cloud"></span>&nbsp;&nbsp;None !</li>'
+        } else {
+            data.forEach(function (d, i) {
+                html += '<li class="list-group-item">\
+                            <img src="./music' + d.image + '">\
+                            <div class="song-info">\
+                                <p>' + d.name + '</p>\
+                                <p>' + d.artist + '</p>\
+                            </div>\
+                        </li>'
+            });
+        }
+        html += '</ul>';
+
+        $('.search-list').html(html);
+        $('.search-list').slideDown();       
     }
 
     window.foryouRender = foryouRender;

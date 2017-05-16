@@ -453,6 +453,11 @@ $m-theme-color: #fc2347;
                                         padding-left: 8px;
                                         padding-right: 8px;
                                         color: #999999;
+                                        cursor: pointer;
+
+                                        &:hover {
+                                            color: $m-theme-color;
+                                        }
                                     }
                                 }
                             }
@@ -464,6 +469,8 @@ $m-theme-color: #fc2347;
                     .m-thumbnail {
                         .m-thumbnail-img{
                             text-align: center;
+                            cursor: pointer;
+
                             img {
                                 width: 90%;
                                 border-radius: 5px;
@@ -486,6 +493,7 @@ $m-theme-color: #fc2347;
                                     display: inline-block;
                                     margin: 10px 10px;
                                     width: 130px;
+                                    cursor: pointer;
 
                                     div {
                                         margin-bottom: 10px;
@@ -685,8 +693,71 @@ $m-theme-color: #fc2347;
 
     }
     
-    #playlistFrame {
-       
+    #exploreFrame {
+        &>.row {
+            margin-left: 25px;
+            margin-right: 25px;
+            &:nth-child(1) {
+                .input-group {
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                }
+
+                .search-content {
+                    background: rgba(192, 174, 164, 0.8);
+                    margin-bottom: 30px;
+                    padding: 10px 0;
+
+                    .search-default {
+                        text-align: center;
+                    }
+
+                    .search-list {
+                        margin: 10px 20px;
+                        display: none;
+
+                        .list-group {
+                            .list-group-item {
+                                background: rgba(255,255,255,0.1);
+                                color: #ffffff;
+
+                                img {
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 5px;
+                                }
+
+                                .song-info {
+                                    position: absolute;
+                                    display: inline-block;
+                                    margin-left: 20px;
+
+                                    p {
+                                        margin-bottom: 0;
+                                        line-height: 25px;
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                .thumbnail {
+                    h5 {
+                        
+                    }
+
+                    p {
+                        font-weight: bold;
+                        font-size: 13px;
+                        color: #666666;
+                    }
+                }
+            }
+        }
     }
 }
 
