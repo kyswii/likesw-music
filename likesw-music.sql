@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 2017-05-04 17:31:58
+-- Generation Time: 2017-05-16 23:13:03
 -- 服务器版本： 5.7.18-0ubuntu0.17.04.1
 -- PHP Version: 7.0.15-1ubuntu4
 
@@ -42,7 +42,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `name`, `password`, `tags`, `email`, `photo`, `region`, `collect_song`) VALUES
-(18, 'kys', '3344', 'amazing', '3344@mail.com', '/public/images/accounts/3344@mail.com-Sat Feb 11 2017 18:21:41 GMT+0800 (CST).png', 'England', '[2,8,4,1,4,3,4,2,5,2]');
+(18, 'kys', '3344', 'amazing', '3344@mail.com', '/public/images/accounts/3344@mail.com-Sat Feb 11 2017 18:21:41 GMT+0800 (CST).png', 'England', '[2,5,7]'),
+(19, 'op', '1313', 'beautiful', '1313@mail.com', '/public/images/accounts/1313@mail.com-Sun May 14 2017 20:20:53 GMT+0800 (CST).png', 'England', '[5,7,9,6]');
 
 -- --------------------------------------------------------
 
@@ -188,14 +189,14 @@ CREATE TABLE `songs` (
 
 INSERT INTO `songs` (`id`, `name`, `artist`, `album`, `url`, `image`, `tags`, `sumCollect`) VALUES
 (1, 'Remember', '7AND5', 'The Truth', '/public/songs/7AND5 - Remember.mp3', '/public/images/other/test-2.jpg', 'light/jazz/popular/british/rock', 0),
-(2, 'Chupee', 'Cocoon', 'For Paolo', '/public/songs/Cocoon - Chupee.mp3', '/public/images/other/test-1.jpg', 'countryside/classical/jazz/british', 2),
+(2, 'Chupee', 'Cocoon', 'For Paolo', '/public/songs/Cocoon - Chupee.mp3', '/public/images/other/test-1.jpg', 'countryside/classical/jazz/british', 4),
 (3, 'Sista Tryckaren', 'Detektivbyrån', 'Sista Tryckaren', '/public/songs/Detektivbyrån - Sista Tryckaren.mp3', '/public/images/other/test-1.jpg', 'light/electronic/popular/british/rock', 0),
-(4, 'Making Memories Of Us', 'Keith Urban', 'Making Memories Of Us', '/public/songs/Keith Urban - Making Memories Of Us.mp3', '/public/images/other/test-2.jpg', 'countryside/jazz/classical', 0),
-(5, 'A Little More', 'HAZZY', 'A Little More', '/public/songs/HAZZY - A Little More.mp3', '/public/images/other/test-1.jpg', 'light/rock/countryside', 1),
-(6, 'We Are Complicated (MASHUP)', 'Raheem D', 'We Are Complicated (MASHUP)', '/public/songs/Raheem D - We Are Complicated (MASHUP).mp3', '/public/images/other/test-1.jpg', 'countryside/british/light', 0),
-(7, 'Back Again', 'Taxiride', 'Back Again', '/public/songs/Taxiride - Back Again.mp3', '/public/images/other/test-2.jpg', 'countryside/british/classical/jazz', 0),
+(4, 'Making Memories Of Us', 'Keith Urban', 'Making Memories Of Us', '/public/songs/Keith Urban - Making Memories Of Us.mp3', '/public/images/other/test-2.jpg', 'countryside/jazz/classical', 1),
+(5, 'A Little More', 'HAZZY', 'A Little More', '/public/songs/HAZZY - A Little More.mp3', '/public/images/other/test-1.jpg', 'light/rock/countryside', 4),
+(6, 'We Are Complicated (MASHUP)', 'Raheem D', 'We Are Complicated (MASHUP)', '/public/songs/Raheem D - We Are Complicated (MASHUP).mp3', '/public/images/other/test-1.jpg', 'countryside/british/light', 2),
+(7, 'Back Again', 'Taxiride', 'Back Again', '/public/songs/Taxiride - Back Again.mp3', '/public/images/other/test-2.jpg', 'countryside/british/classical/jazz', 3),
 (8, 'Wooden Chair (feat. Marion Mayer) [Duo Version]', 'Angus Stone,Marion Mayer', 'Wooden Chair (feat. Marion Mayer) [Duo Version]', '/public/songs/Angus Stone,Marion Mayer - Wooden Chair (feat. Marion Mayer) [Duo Version].mp3', '/public/images/other/test-2.jpg', 'popular/jazz/rock/electronic/light', 0),
-(9, 'Better Together', 'Us The Duo', 'Better Together', '/public/songs/Us The Duo - Better Together.mp3', '/public/images/other/test-1.jpg', 'popular/countryside/british/jazz', 0);
+(9, 'Better Together', 'Us The Duo', 'Better Together', '/public/songs/Us The Duo - Better Together.mp3', '/public/images/other/test-1.jpg', 'popular/countryside/british/jazz', 2);
 
 -- --------------------------------------------------------
 
@@ -208,23 +209,27 @@ CREATE TABLE `song_share` (
   `songID` int(11) NOT NULL,
   `accountID` int(11) NOT NULL,
   `comment` varchar(1000) CHARACTER SET utf8 NOT NULL,
-  `time` varchar(255) CHARACTER SET utf8 NOT NULL
+  `time` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `sumCollect` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- 转存表中的数据 `song_share`
 --
 
-INSERT INTO `song_share` (`id`, `songID`, `accountID`, `comment`, `time`) VALUES
-(1, 1, 2, 'comment', ''),
-(2, 2, 18, 'comment', ''),
-(3, 4, 18, 'comment', ''),
-(4, 7, 18, 'comment', ''),
-(5, 2, 18, 'comment', '2017-4-23'),
-(6, 2, 18, 'comment', '2017-4-23'),
-(7, 3, 18, 'comment', '2017-4-23'),
-(8, 8, 18, 'comment', '2017-4-23'),
-(9, 7, 18, 'comment', '2017-4-26');
+INSERT INTO `song_share` (`id`, `songID`, `accountID`, `comment`, `time`, `sumCollect`) VALUES
+(5, 2, 18, 'comment', '2017-4-23', 1),
+(6, 2, 18, 'comment', '2017-4-23', 0),
+(7, 3, 18, 'comment', '2017-4-23', 1),
+(8, 8, 18, 'comment', '2017-4-23', 0),
+(9, 7, 18, 'comment', '2017-4-26', 1),
+(10, 4, 18, 'comment', '2017-5-7', 7),
+(11, 1, 18, 'comment', '2017-5-7', 9),
+(12, 2, 19, 'comment', '2017-5-14', 1),
+(13, 4, 19, 'comment', '2017-5-16', 0),
+(14, 2, 19, 'comment', '2017-5-16', 0),
+(15, 9, 19, 'Beautiful song.', '2017-5-16', 0),
+(16, 1, 19, 'light', '2017-5-16', 0);
 
 --
 -- Indexes for dumped tables
@@ -280,7 +285,7 @@ ALTER TABLE `song_share`
 -- 使用表AUTO_INCREMENT `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- 使用表AUTO_INCREMENT `albums`
 --
@@ -310,7 +315,7 @@ ALTER TABLE `songs`
 -- 使用表AUTO_INCREMENT `song_share`
 --
 ALTER TABLE `song_share`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
