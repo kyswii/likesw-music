@@ -686,7 +686,8 @@
                             <div class="search-list"></div>\
                         </div>\
                     </div>\
-                    <div class="row">'
+                    <div class="row">\
+                        <div class="explore-default"><span class="glyphicon glyphicon-headphones explore-play" name="default"></span></div>'
                         + html +
                     '</div>\
                 </div>'

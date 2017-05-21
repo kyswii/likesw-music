@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 2017-05-16 23:13:03
+-- Generation Time: 2017-05-21 21:21:47
 -- 服务器版本： 5.7.18-0ubuntu0.17.04.1
--- PHP Version: 7.0.15-1ubuntu4
+-- PHP Version: 7.0.18-0ubuntu0.17.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -228,8 +228,10 @@ INSERT INTO `song_share` (`id`, `songID`, `accountID`, `comment`, `time`, `sumCo
 (12, 2, 19, 'comment', '2017-5-14', 1),
 (13, 4, 19, 'comment', '2017-5-16', 0),
 (14, 2, 19, 'comment', '2017-5-16', 0),
-(15, 9, 19, 'Beautiful song.', '2017-5-16', 0),
-(16, 1, 19, 'light', '2017-5-16', 0);
+(15, 9, 19, 'Beautiful song.', '2017-5-16', 2),
+(16, 1, 19, 'light', '2017-5-16', 2),
+(17, 6, 18, 'fun', '2017-5-17', 0),
+(18, 4, 19, 'yfksdnfslk', '2017-5-17', 1);
 
 --
 -- Indexes for dumped tables
@@ -315,7 +317,7 @@ ALTER TABLE `songs`
 -- 使用表AUTO_INCREMENT `song_share`
 --
 ALTER TABLE `song_share`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

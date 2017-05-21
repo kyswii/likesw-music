@@ -22,6 +22,12 @@
 
         //
         this.foryouData = null;
+
+        //
+        this.exploreSongs = {
+            search: [],
+            default: []
+        };
     };
 
     //
@@ -33,6 +39,7 @@
             contentType: 'application/json',
             success: function (result) {
                 that.basicData = result;
+                that.exploreSongs.default = result.library.songs;
                 callback(result);
             },
             error: function (err) {
@@ -194,15 +201,17 @@
     }
 
     //
-    Music.prototype.exploreSongs = function (value, callback) {
-        var songs = [];
+    Music.prototype.getExploreSongs = function (value, callback) {
+        this.exploreSongs.search = [];
+        var that = this;
+
         this.songs.forEach(function (d, i) {
             if (d.name.toLocaleLowerCase().indexOf(value) != -1 || d.artist.toLocaleLowerCase().indexOf(value) != -1) {
-                songs.push(d);
+                that.exploreSongs.search.push(d);
             }
         });
 
-        callback(songs);
+        callback(that.exploreSongs.search);
     }
 
 

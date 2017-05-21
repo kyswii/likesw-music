@@ -697,6 +697,11 @@ $m-theme-color: #fc2347;
         &>.row {
             margin-left: 25px;
             margin-right: 25px;
+
+            .explore-play {
+                cursor: pointer;
+            }
+
             &:nth-child(1) {
                 .input-group {
                     margin-top: 30px;
@@ -713,7 +718,7 @@ $m-theme-color: #fc2347;
                     }
 
                     .search-list {
-                        margin: 10px 20px;
+                        padding: 10px 20px;
                         display: none;
 
                         .list-group {
@@ -755,6 +760,10 @@ $m-theme-color: #fc2347;
                         font-size: 13px;
                         color: #666666;
                     }
+                }
+                .explore-default {
+                    margin: 15px 0;
+                    color: $m-theme-color;
                 }
             }
         }

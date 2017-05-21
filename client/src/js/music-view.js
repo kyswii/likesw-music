@@ -338,10 +338,16 @@ console.log('share...', info);
         if (!value) {
             return;
         }
-console.log('value.....', value);
-        MUSIC.exploreSongs(value, function (data) {
+
+        MUSIC.getExploreSongs(value, function (data) {
             exploreSongsRender(data);
         });
+    });
+
+    //
+    $(document).on('click', '.explore-play', function () {
+        var name = $(this).attr('name');
+        songsPlay(MUSIC.exploreSongs[name]);
     });
 
 
@@ -415,7 +421,7 @@ console.log('value.....', value);
 
     //
     function exploreRender() {
-        $('#containerNavContent').html(AppHTML.exploreFrame(MUSIC.basicData.library.songs));
+        $('#containerNavContent').html(AppHTML.exploreFrame(MUSIC.exploreSongs.default));
     }
 
     //
@@ -690,6 +696,7 @@ console.log('value.....', value);
         if (data.length == 0) {
             html += '<li class="list-group-item"><span class="glyphicon glyphicon-cloud"></span>&nbsp;&nbsp;None !</li>'
         } else {
+            html +='<li class="list-group-item"><span class="glyphicon glyphicon-headphones explore-play" name="search"></li>'
             data.forEach(function (d, i) {
                 html += '<li class="list-group-item">\
                             <img src="./music' + d.image + '">\
@@ -702,8 +709,11 @@ console.log('value.....', value);
         }
         html += '</ul>';
 
-        $('.search-list').html(html);
-        $('.search-list').slideDown();       
+        $('.search-list').slideUp(function () {
+            $('.search-list').html(html);
+            $('.search-list').slideDown(); 
+        });
+              
     }
 
     window.foryouRender = foryouRender;
