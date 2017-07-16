@@ -1,9 +1,9 @@
 
 const dbInfo = {
 	host: 'localhost',
-	user: '',
-	password: '',
-	database: '',
+	user: 'root',
+	password: '9419',
+	database: 'likesw-music',
 	port: 3306
 };
 

@@ -25,52 +25,6 @@
         console.log('load all songs', info);
     });
 
-    //
-    var Router = Backbone.Router.extend({
-        routes: {
-            '': "home",
-            'library': 'library',
-            'foryou': 'foryou',
-            'messages': 'messages',
-            'explore': 'explore'
-        },
-
-        home: function () {
-            MUSIC.loadBasicData(function (data) {
-                console.log('basic data...', data);
-                homeRender();
-            });
-        },
-
-        library: function() {
-            // MUSIC.loadModuleInfo('library', function (info) {
-            //     libraryRender(info);
-            // });
-            libraryRender();              
-        },
-
-        foryou: function () {
-            // MUSIC.songsLoadReq('foryou', function (belong, info) {
-                foryouRender();
-            // });
-        },
-
-        messages: function () {
-            MUSIC.messagesLoadReq(function (info) {
-                // console.log('messages....', info);
-                messagesRender(info);
-            });
-        },
-
-        explore: function () {
-            // MUSIC.songsLoadReq('foryou', function (belong, info) {
-                exploreRender();
-            // });
-        }
-    });
-
-    new Router();
-    Backbone.history.start();
 
     //
     $('#navMusic').click(function () {
@@ -143,11 +97,12 @@
     //
     
     $(document).on('click', '.song-play', function () {
-        var name = $(this).attr('name');
-        var label = { "tags": name };
-console.log('label...', label);
+        var name = $(this).attr('name'); // 获取播放歌曲类型
+        var label = { "tags": name }; 
+        
+        // 加载歌曲
         MUSIC.songsLoadReq(label, function (info) {
-            songsPlay(info.data);
+            songsPlay(info.data); // 播放歌曲列表
         });
     });
     
@@ -158,22 +113,19 @@ console.log('label...', label);
         // $('.lib-content').addClass('lib-content-in');
     });
 
-    //
+    // 
     $(document).on('click', '#libraryFrame .option-item', function () {
-        var name = $(this).attr('name');
+        var name = $(this).attr('name'); // 获取被触发的标签名
         if (name == 'song') {
-            allSongsRender();
+            allSongsRender(); // 所有歌曲展示
 
         } else if (name == 'album') {
-            allAlbumsRender();
+            allAlbumsRender(); // 所有专辑展示
             
         } else if (name == 'artist') {
-            allArtistsRender();
+            allArtistsRender(); // 所有歌曲展示
             
-        }
-
-        // $('.lib-modal').addClass('lib-modal-in');
-        
+        }        
     });
 
     //
@@ -326,8 +278,9 @@ console.log('share...', info);
         var num = parseInt($(this).next('.thumbs-up-num').html());
 
         var that = this;
+        // 收集点赞
         MUSIC.messagesThumbsUp(id, function (result) {
-            console.log('thtt...', $(that).next('.thumbs-up-num').html());
+            // 数据累加展示
             $(that).next('.thumbs-up-num').html((num+1));
         });
     });
@@ -351,46 +304,49 @@ console.log('share...', info);
     });
 
 
-    //
+    //　单曲播放完后触发
     AUDIO.onended = function () {
         console.log('ended......');
         if (CURRENTPLAY + 1 < PLAYLIST.length) {
             CURRENTPLAY += 1;
 
-            updateCurrentPlayInfo();
+            updateCurrentPlayInfo(); // 当前播放歌曲信息更新
             $('#musicProgressBar').css('width', '0');
             AUDIO.src = '/music/' + PLAYLIST[CURRENTPLAY].url;
             AUDIO.play();
         }
     }
 
-    //
+    // 暂停播放时触发
     AUDIO.onpause = function () {
         $('#musicStatus').removeClass('glyphicon-pause');
         $('#musicStatus').addClass('glyphicon-play');
         clearInterval(PROCESS_INTERVAL);
     }
 
-    //
+    // 音乐播放时触发
     AUDIO.onplay = function () {
         $('#musicStatus').removeClass('glyphicon-play');
         $('#musicStatus').addClass('glyphicon-pause');
 
         PROCESS_INTERVAL = setInterval(function () {
             var percent = AUDIO.currentTime / AUDIO.duration * 100 + '%';
-            $('#musicProgressBar').css('width', percent);
+            $('#musicProgressBar').css('width', percent);　// 播放进度条
         }, PROCESS_TIME);
     }
 
+
     //
     function homeRender() {
-        var info = MUSIC.basicData.home;
-        $('#containerNavContent').html(AppHTML.homeFrame(info));
+        MUSIC.loadBasicData(function (data) {
+            var info = MUSIC.basicData.home;
+            $('#containerNavContent').html(HomeView(info));
+        });
     }
 
     // 
     function libraryRender() {        
-        $('#containerNavContent').html(AppHTML.libraryFrame(MUSIC.basicData.library));
+        $('#containerNavContent').html(LibraryView(MUSIC.basicData.library));
 
         $('.l-item').tooltip({
             placement: 'top',
@@ -404,25 +360,37 @@ console.log('share...', info);
 
     //
     function foryouRender() {
-        var accountid = -1;
+        var accountid = -1; // 未登录状态默认值
+
+        // 判断账户是否已登录
         if ($('.navbar-brand-account-photo').attr('src').indexOf('default-account') == -1) {
+            // 未登录状态
             accountid = parseInt($('.dropdow-menu-account-photo').attr('alt'));
         }
+        // 已登录时触发，账户数据请求
         MUSIC.fetchForYouData(accountid, function (data) {
-            console.log('info....', data);
-            $('#containerNavContent').html(AppHTML.foryouFrame(data));
+
+            $('#containerNavContent').html(ForYouView(data));
         });
     }
 
     //
-    function messagesRender(info) {
-        $('#containerNavContent').html(AppHTML.messagesFrame(info));
+    function messagesRender() {
+        MUSIC.messagesLoadReq(function (info) {
+            $('#containerNavContent').html(MessagesView(info));
+        });        
     }
 
     //
     function exploreRender() {
-        $('#containerNavContent').html(AppHTML.exploreFrame(MUSIC.exploreSongs.default));
+        $('#containerNavContent').html(ExploreView(MUSIC.exploreSongs.default));
     }
+
+    window.homeRender = homeRender;
+    window.libraryRender = libraryRender;
+    window.foryouRender = foryouRender;
+    window.messagesRender = messagesRender;
+    window.exploreRender = exploreRender;
 
     //
     function updatePlayList(playlist) {
@@ -521,7 +489,7 @@ console.log('share...', info);
         
         html += '</ul></div></div>';
 
-        $('#myModal').html(AppHTML.libSeeMore('song', html));
+        $('#myModal').html(LibrarySeeMoreView('song', html));
         $('.lib-modal').animate({'marginLeft': '0'}, 500);
         $('#myModal').modal('show');
        
@@ -591,7 +559,7 @@ console.log('share...', info);
         
         html += '</div>';
 
-        $('#myModal').html(AppHTML.libSeeMore('album', html));
+        $('#myModal').html(LibrarySeeMoreView('album', html));
         $('.lib-modal').animate({'marginLeft': '0'}, 500);
         $('#myModal').modal('show');
      
@@ -614,7 +582,7 @@ console.log('share...', info);
         
         html += '</div>';
 
-        $('#myModal').html(AppHTML.libSeeMore('artist', html));
+        $('#myModal').html(LibrarySeeMoreView('artist', html));
         $('.lib-modal').animate({'marginLeft': '0'}, 500);
         $('#myModal').modal('show');
      
@@ -645,7 +613,7 @@ console.log('share...', info);
         
         html += '</ul></div></div>';
 
-        $('#myModal').html(AppHTML.libSeeMore('Collect', html));
+        $('#myModal').html(LibrarySeeMoreView('Collect', html));
         $('.lib-modal').animate({'marginLeft': '0'}, 500);
         $('#myModal').modal('show');
     }
@@ -673,7 +641,7 @@ console.log('share...', info);
         html += '</ul></div></div>';
         
 
-        $('#myModal').html(AppHTML.libSeeMore('Share', html));
+        $('#myModal').html(LibrarySeeMoreView('Share', html));
         $('.lib-modal').animate({'marginLeft': '0'}, 500);
         $('#myModal').modal('show');
     }

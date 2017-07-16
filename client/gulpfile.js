@@ -3,26 +3,26 @@ var clean = require("gulp-clean");
 var connect = require("gulp-connect");
 var proxy = require("http-proxy-middleware");
 var sass = require("gulp-sass");
+var uglify = require("gulp-uglify");
+var concat = require("gulp-concat");
+var minify = require("gulp-minify-css");
 
-gulp.task('sass-nav', function() {
-    return gulp.src('./src/lib/sass/nav.scss')
+gulp.task('sass-app', function () {
+    return gulp.src('./src/css/sass/style.scss')
         .pipe(sass({
             outputStyle: 'nested',
             errLogToConsole: true
         }))
-        .pipe(gulp.dest('./src/lib/vendors/css/'));
+        .pipe(gulp.dest('./src/css/'));
 });
 
-gulp.task('sass-container', ['sass-nav'], function() {
-    return gulp.src('./src/lib/sass/container.scss')
-        .pipe(sass({
-            outputStyle: 'nested',
-            errLogToConsole: true
-        }))
-        .pipe(gulp.dest('./src/lib/vendors/css/'));
+gulp.task('concat-comp', ['sass-app'], function () {
+    return gulp.src('./src/js/view/component/*.js')
+        .pipe(concat('LSWMusicApp.js'))
+        .pipe(gulp.dest('./src/js/view/'));
 });
 
-gulp.task('clean', ['sass-container'], function () {
+gulp.task('clean', ['concat-comp'], function () {
     return gulp.src('.ship/release', { read: false }).pipe(clean());
 });
 
@@ -32,7 +32,6 @@ gulp.task('copy', ['clean'], function () {
         './src/css/**',
         './src/js/**',
         './src/images/**',
-        './src/lib/vendors/**',
         './src/thirdparty/**'
     ];
 

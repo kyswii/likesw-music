@@ -12,6 +12,7 @@
     };
 
     ACCOUNT.loginWrong = function () {
+        // 登录失败提示信息
         $('.login-wrong').slideDown('slow');
     };
 
@@ -27,7 +28,7 @@
 
 
     $('.account-register').on('click', function () {
-        $('#myModal').html(AppHTML.registerModal);
+        $('#myModal').html(RegisterModal());
         $('#myModal').modal();
 
         // $('#register-photo-choose').on('click', function () {
@@ -37,16 +38,18 @@
         // });
 
         $('#registerSubmit').on('click', function () {
+            // 用户注册
             accountInfoSubmit();
         });
     });
 
     $('.account-login').on('click', function () {
-        $('#myModal').html(AppHTML.loginModal);
+        $('#myModal').html(LoginModal());
         $('#myModal').modal();
 
+        // 登录信息表单提交
         $('#loginSubmit').on('click', function () {
-            accountInfoConfirm();
+            accountInfoConfirm();  // 账户信息确认
         });
     });
 
@@ -85,35 +88,35 @@
     }
 
     function accountInfoSubmit() {
-        var email = document.getElementById('registerEmail').value;
-        var password = document.getElementById('registerPassword').value;
-        var name = document.getElementById('registerName').value;
-        var tags = document.getElementById('registerTags').value;
-        var region = document.getElementById('registerRegion').value;
+        var email = document.getElementById('registerEmail').value;　// 邮箱
+        var password = document.getElementById('registerPassword').value; // 密码
+        var name = document.getElementById('registerName').value; // 姓名
+        var tags = document.getElementById('registerTags').value; // 标签
+        var region = document.getElementById('registerRegion').value; // 地区
 
         var info = {
             "email": email,
             "password": password,
             "name": name,
-            "photo": PHOTO,
+            "photo": PHOTO, // 用户头像
             "tags": tags,
             "region": region
         };
-        ACCOUNT.registerReq(info);
+        ACCOUNT.registerReq(info); // 注册请求
     }
 
     function accountInfoConfirm() {
-        var email = document.getElementById('loginEmail').value;
-        var password = document.getElementById('loginPassword').value;
+        var email = document.getElementById('loginEmail').value; // 用户邮箱
+        var password = document.getElementById('loginPassword').value; // 用户密码
 
         var info = { "email": email, "password": password };
-        ACCOUNT.loginReq(info);
+        ACCOUNT.loginReq(info); // 登录请求
     }
 
     function dropdownStyleChange(info) {
         console.log('dropdownStyleChange..........');
         $('.navbar-brand-account-photo').attr('src', './music' + info.photo);
-        $('.nav-dropdown-account-detail-info').html(AppHTML.accountInfo(info));
+        $('.nav-dropdown-account-detail-info').html(AccountInfo(info));
 
         $('#myModal').modal('hide');
 
@@ -122,6 +125,7 @@
         }        
 
         $('.account-settings').on('click', function () {
+            // 账户设置
             accountInfoChange(info);
         });
 
@@ -131,15 +135,15 @@
     }
 
     function accountInfoChange(info) {
-        $('#myModal').html(AppHTML.settingsModal(info));
+        $('#myModal').html(SettingsModal(info));
         $('#myModal').modal();
 
         var filechooserid = 'settingsPhotoChoose';
         var previewerid = 'settingsPhoto';
-        accountPhotoChoose(filechooserid, previewerid);
+        accountPhotoChoose(filechooserid, previewerid); // 账户头像更新
 
         $('#settingsSubmit').on('click', function () {
-            accountInfoUpdate(info);
+            accountInfoUpdate(info); // 账户更新请求
         })
     }
 

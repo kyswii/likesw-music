@@ -206,8 +206,10 @@
         var that = this;
 
         this.songs.forEach(function (d, i) {
+            // 判断是否包含输入的字符串
             if (d.name.toLocaleLowerCase().indexOf(value) != -1 || d.artist.toLocaleLowerCase().indexOf(value) != -1) {
-                that.exploreSongs.search.push(d);
+                // 包含
+                that.exploreSongs.search.push(d); // 添加到搜索结果列表
             }
         });
 

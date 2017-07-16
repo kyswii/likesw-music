@@ -22,5 +22,13 @@
     });
 
     //
+    // $('#musicOption').popover({
+    //     placement: 'top',
+    //     title: '<h3>Option</h3>',
+    //     template: '<div><span class="glyphicon glyphicon-share"></span><span class="glyphicon glyphicon-heart"></span><span class=""></span></div>',
+    //     html: true,
+    // });
+
+    //
 
 }());
